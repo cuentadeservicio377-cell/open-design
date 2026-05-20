@@ -6,33 +6,71 @@
 
 ---
 
-## 📌 Configuración de Empresa
+## 🧠 Open Design Brain — Memoria Multi-Empresa
 
-> **✏️ PERSONALIZA ESTA SECCIÓN para tu cliente/proyecto actual.**
-> Reemplaza los valores abajo con los de tu empresa.
+> **Inspirado en gbrain de Garry Tan.** El agente tiene memoria persistente por empresa.
+> Cada empresa es un "brain" independiente con su propio brief, design system, assets y proyectos.
+> No se mezclan. No se confunden. No se olvidan.
 
-**Cliente por defecto:** [Nombre de tu empresa]
+### 🏢 Empresas Activas
 
-Al iniciar cada sesión, cargo automáticamente:
-1. **Company brief:** `.company/brief.md` — quién es la empresa, sus servicios, ICP, tono
-2. **Design System:** `design-systems/company/DESIGN.md` — colores, tipografía, componentes, tokens
-3. **Default Config:** `.company/default.json` — skills por defecto, preferencias de diseño
-4. **Project Memory:** `.company/projects/` — memoria por proyecto
+| Empresa | Brain | Design System | Estado |
+|---------|-------|---------------|--------|
+| **WS Capital** | `.company/ws-capital/brain.md` | `design-systems/ws-capital/DESIGN.md` | 🟢 Activo |
+| **We Law** | `.company/we-law/brain.md` | `design-systems/we-law/DESIGN.md` (pendiente) | 🟡 Esperando brief |
 
-### 🧠 Sistema de Memoria por Proyecto
+### 🔀 Protocolo de Carga (OBLIGATORIO al iniciar sesión)
 
-Cuando trabajamos en algo, creo un archivo en `.company/projects/<nombre>.md`.
-Cuando inicies una sesión diciendo "quiero trabajar en [proyecto]", leo ese archivo.
-Cuando cambies de proyecto, creo uno nuevo.
+```
+1. Leer .company/BRAIN.md                     ← Índice global
+2. Detectar empresa mencionada por el usuario  ← "WS", "We Law", etc.
+3. Si no se menciona → PREGUNTAR: "¿WS Capital o We Law?"
+4. Cargar en orden:
+   a. .company/{empresa}/brain.md              ← Memoria de diseños, proyectos, assets
+   b. .company/{empresa}/brief.md               ← Quiénes son, ICP, tono
+   c. .company/{empresa}/settings.json          ← Config técnica
+   d. design-systems/{empresa}/DESIGN.md        ← Design system completo
+```
 
-**Proyectos actuales:**
-- *(vacío — añade aquí tus proyectos)*
+> **📄 Doc completa:** `.company/BRAIN_LOADER.md`
 
-**¿Qué significa esto?**
-- Cuando pidas un diseño, **ya sé tu marca, tu audiencia y tu tono**. No necesito preguntar lo básico.
-- Uso tu design system por defecto a menos que explícitamente pidas otro estilo.
-- El company brief es mi memoria permanente: si cambia algo, actualiza el archivo.
-- Si dices "sigue con [proyecto]" o "trabajemos en X", sé exactamente dónde lo dejamos.
+### 🧠 Sistema de Memoria por Empresa
+
+Cada empresa tiene su propio brain con:
+
+```
+.company/{empresa}/
+├── brain.md            ← ÍNDICE MAESTRO: proyectos, assets, historial de diseños
+├── brief.md            ← Quiénes son, servicios, ICP, tono
+├── settings.json       ← Config técnica (colores, fonts, URLs, pricing)
+├── assets/
+│   └── manifest.md     ← Inventario de logos, imágenes, fuentes
+└── projects/
+    └── {proyecto}.md   ← Un archivo por proyecto con historial de cambios
+```
+
+### 📝 Reglas del Brain
+
+1. **Antes de diseñar** → leer el brain de la empresa correspondiente
+2. **Después de diseñar** → agregar entrada en `brain.md` → Historial de Diseños
+3. **Nuevo proyecto** → crear `.md` en `projects/` y linkear en `brain.md`
+4. **NUNCA mezclar** → assets, colores, tono de WS solo para WS. We Law solo para We Law.
+5. **Si no hay brief** → no diseñar. Pedir brief primero.
+6. **Cada entrada en el historial** lleva: fecha, tipo de diseño, archivos creados, cambios específicos
+
+### ⚡ Ejemplo de uso
+
+```
+Usuario: "Quiero trabajar en WS Capital"
+→ Agente carga .company/ws-capital/brain.md
+→ Ya sabe: brief, design system, 6 proyectos activos, historial completo
+→ Listo para diseñar sin preguntar lo básico
+
+Usuario: "Diseña un carrusel de LinkedIn para We Law"
+→ Agente carga .company/we-law/brain.md
+→ Detecta que no hay brief → "Pablo, necesito el brief de We Law primero"
+→ NO usa los colores de WS por error
+```
 
 ---
 

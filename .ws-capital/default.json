@@ -1,0 +1,43 @@
+{
+  "company": "WS Capital",
+  "tagline": "AI Lab · Digital Inclusion for Latin American SMEs",
+  "design_system": "ws-capital",
+  "brief_file": ".ws-capital/brief.md",
+  "site_url": "https://wsc.lat",
+  "repo": "https://github.com/cuentadeservicio377-cell/hermes-business-os",
+
+  "brand": {
+    "palette": "platinum",
+    "colors": {
+      "bg": "#cccccc",
+      "surface": "#f0f0f0",
+      "text": "#000000",
+      "accent": "#0000D0",
+      "teal": "#008080",
+      "red": "#FF3B30"
+    },
+    "fonts": {
+      "display": "VT323",
+      "mono": "Share Tech Mono",
+      "body": "Inter"
+    }
+  },
+
+  "pricing": {
+    "total": "$3,500 USD",
+    "phase1": "$1,200 USD",
+    "phase2": "$1,200 USD",
+    "phase3": "$1,100 USD",
+    "model": "pago unico, 3 plazos"
+  },
+
+  "product": {
+    "name": "Hermes Business OS",
+    "modules": ["núcleo", "ventas", "operaciones", "documentos", "finanzas", "equipo", "memoria", "cron"],
+    "base": "Hermes Agent (Nous Research)",
+    "license": "MIT"
+  },
+
+  "tone": "mexicano, directo, tecnico cuando toca",
+  "icp": "dueños de negocio con años de oficio"
+}

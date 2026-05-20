@@ -1,0 +1,21 @@
+{
+  "_status": "PLACEHOLDER — esperando brief de We Law",
+  "_note": "Este archivo se llenará cuando Pablo envíe la información de We Law",
+
+  "company": "We Law",
+  "tagline": "",
+  "design_system": "we-law",
+  "brief_file": ".company/we-law/brief.md",
+  "site_url": "",
+
+  "brand": {
+    "palette": "",
+    "colors": {},
+    "fonts": {}
+  },
+
+  "pricing": {},
+  "product": {},
+  "tone": "",
+  "icp": ""
+}

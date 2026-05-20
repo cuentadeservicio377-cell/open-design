@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes Agent | Implementación para tu Negocio | WS Capital</title>
+    <meta name="description" content="8 módulos de IA para tu negocio. Memoria que te conoce. Trabajos automatizados. $3,500 USD en 3 pagos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root{--plat-50:#ffffff;--plat-100:#f0f0f0;--plat-200:#e0e0e0;--plat-300:#cccccc;--plat-400:#aaaaaa;--plat-500:#888888;--plat-600:#666666;--plat-700:#444444;--plat-800:#222222;--plat-900:#000000;--accent-red:#FF3B30;--accent-blue:#0000D0;--accent-blue-soft:#CCCCFF;--accent-teal:#008080;--ws-rust:#A9552C;--accent-gold:#c9a227;--font-sans:'Inter',-apple-system,system-ui,sans-serif;--font-pixel:'VT323',monospace;--font-mono:'Share Tech Mono',monospace;--gap-sm:8px;--gap-md:16px;--gap-lg:32px}
+        *{margin:0;padding:0;box-sizing:border-box}html{font-size:16px;scroll-behavior:smooth}
+        body.retro-os{background:var(--plat-300);background-image:radial-gradient(circle,rgba(0,0,0,0.05)1px,transparent 1px);background-size:8px 8px;color:var(--plat-900);font-family:var(--font-sans);padding-top:32px;min-height:100dvh}
+        ::-webkit-scrollbar{width:14px}::-webkit-scrollbar-track{background:var(--plat-200);border-left:1px solid #000}::-webkit-scrollbar-thumb{background:var(--plat-400);border:2px solid #000}
+        #loader{position:fixed;inset:0;background:var(--plat-300);z-index:20000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s}
+        .os-menubar{position:fixed;top:0;left:0;width:100%;height:32px;z-index:1000;background:var(--plat-100);border-bottom:2px solid #000;display:flex;justify-content:space-between;align-items:center;padding:0 12px;font-size:0.9rem;font-weight:600;box-shadow:inset 0 -1px 0 #FFF,0 2px 4px rgba(0,0,0,0.1)}
+        .menu-left,.menu-right{display:flex;align-items:center;gap:20px}.ws-icon{font-size:1.4rem;color:var(--accent-blue)}
+        .active-app{padding-right:15px;border-right:2px solid var(--plat-400);font-family:var(--font-mono);font-size:0.8rem}
+        .os-nav{display:flex;gap:15px}.os-nav a{color:inherit;text-decoration:none;font-size:0.85rem}.os-nav a:hover{color:var(--accent-blue);text-decoration:underline}
+        .os-widget{font-family:var(--font-mono);font-size:0.8rem}.status-online{color:var(--accent-teal)}
+        .desktop-env{max-width:1100px;margin:0 auto;padding:var(--gap-md);position:relative}
+        .os-window{background:var(--plat-100);border:2px solid #000;box-shadow:6px 6px 0 #000;margin-bottom:var(--gap-md);border-top:2px solid #FFF;border-left:2px solid #FFF}
+        .win-titlebar{height:30px;background:var(--plat-400);border-bottom:2px solid #000;display:flex;align-items:center;padding:0 10px;background-image:repeating-linear-gradient(to bottom,transparent 0px,transparent 2px,#BEBEBE 2px,#BEBEBE 4px);box-shadow:inset 0 1px 0 #FFF}
+        .win-controls{display:flex;gap:8px;margin-right:15px}.win-btn{width:14px;height:14px;border:2px solid #000;background:var(--plat-100);box-shadow:1px 1px 0 #FFF;flex-shrink:0}
+        .win-title{font-family:var(--font-mono);font-size:0.85rem;font-weight:700;text-transform:uppercase;background:var(--plat-400);padding:0 10px;flex-grow:1}
+        .win-body{padding:var(--win-padding,1.5rem)}
+        .pixel-heading{font-family:var(--font-pixel);font-size:3rem;line-height:1;margin-bottom:0.8rem;text-transform:uppercase;word-spacing:-5px}
+        .pixel-heading.md{font-size:2.2rem}.pixel-heading.sm{font-size:1.5rem}.pixel-heading.xs{font-size:1.2rem}
+        .hero-tagline{font-family:var(--font-mono);font-size:1.1rem;color:var(--plat-700);margin-bottom:1.2rem}
+        .text-body{font-size:1rem;line-height:1.6;color:var(--plat-800)}.text-dim{font-size:0.85rem;color:var(--plat-700);line-height:1.4}
+        .mono-label{font-family:var(--font-mono);font-size:0.8rem}
+        .os-btn{padding:10px 20px;border:2px solid #000;font-family:var(--font-mono);font-weight:700;text-decoration:none;color:#000;background:var(--plat-100);box-shadow:2px 2px 0 #000;transition:all 0.1s;display:inline-block}
+        .os-btn.primary{background:var(--accent-blue-soft)}.os-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #000}.os-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 #000}
+        .os-btn.gold{background:var(--accent-gold);color:#000}
+        .dual-column{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap-md)}@media(max-width:768px){.dual-column{grid-template-columns:1fr}}
+        .border-left{border-left:2px dashed var(--plat-500);padding-left:var(--gap-md)}@media(max-width:768px){.border-left{border-left:none;border-top:2px dashed var(--plat-500);padding-top:var(--gap-md)}}
+        .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--gap-md);margin-top:var(--gap-md)}
+        .card{border:2px solid #000;background:var(--plat-100);padding:1.2rem;box-shadow:3px 3px 0 #000;transition:all 0.2s}.card:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 #000}
+        .card-icon{font-size:2rem;margin-bottom:0.5rem;display:block;text-align:center}.card-title{font-family:var(--font-pixel);font-size:1.2rem;margin-bottom:0.5rem;text-align:center}
+        .terminal-section{background:var(--plat-900);color:#00FF00;font-family:var(--font-mono);padding:1.5rem;border:2px solid #000;box-shadow:6px 6px 0 #000}
+        .terminal-form{display:flex;flex-direction:column;gap:0.8rem}.terminal-group{display:flex;flex-direction:column;gap:0.2rem}.terminal-group label{font-size:0.75rem;color:#00AA00;text-transform:uppercase}
+        .terminal-input,.terminal-textarea{background:transparent;border:none;border-bottom:1px solid #005500;color:#00FF00;font-family:var(--font-mono);font-size:0.9rem;padding:4px 0;outline:none}
+        .terminal-input:focus,.terminal-textarea:focus{border-bottom-color:#00FF00}.terminal-textarea{border:1px solid #005500;padding:8px;min-height:60px;resize:vertical}
+        .terminal-submit{padding:10px 20px;font-family:var(--font-mono);font-weight:700;font-size:0.9rem;background:var(--plat-800);color:#00FF00;border:2px solid #00FF00;cursor:pointer;transition:all 0.1s;margin-top:0.5rem;width:100%}.terminal-submit:hover{background:var(--plat-700)}
+        .retro-progress{height:16px;background:var(--plat-100);border:1px solid var(--plat-600);overflow:hidden}.retro-progress-fill{height:100%;background:repeating-linear-gradient(45deg,#000,#000 10px,#222 10px,#222 20px);transition:width 0.3s}
+        .os-footer{border-top:2px solid #000;background:var(--plat-100);padding:10px 20px;display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:0.85rem}
+        .status-indicator{width:10px;height:10px;border-radius:50%;background:var(--accent-teal);display:inline-block;margin-right:8px;animation:pulse 2s infinite}
+        @keyframes pulse{0%{opacity:0.4}50%{opacity:1}100%{opacity:0.4}}
+        .fade-in-up{opacity:0;transform:translateY(15px);transition:opacity 0.6s ease-out,transform 0.6s ease-out}.fade-in-up.visible{opacity:1;transform:translateY(0)}
+        .delay-1{transition-delay:0.1s}.delay-2{transition-delay:0.2s}.delay-3{transition-delay:0.3s}.delay-4{transition-delay:0.4s}.delay-5{transition-delay:0.5s}
+        .desktop-icons{position:fixed;top:60px;right:20px;display:flex;flex-direction:column;gap:16px;z-index:5}
+        .desktop-icon{display:flex;flex-direction:column;align-items:center;width:64px;text-align:center;font-size:11px;font-weight:600;color:#000;text-shadow:1px 1px 0 var(--plat-50);transition:transform 0.1s}
+        .desktop-icon:hover{transform:scale(1.05)}.desktop-icon .icon-gfx{width:32px;height:32px;background:var(--plat-300);border:2px solid #000;margin-bottom:4px;display:flex;align-items:center;justify-content:center}
+        @media(max-width:768px){.desktop-icons{display:none}}.text-center{text-align:center}.mt-md{margin-top:var(--gap-md)}.mb-md{margin-bottom:var(--gap-md)}
+        .i18n-btn{background:var(--plat-900);color:var(--plat-100);border:none;padding:2px 8px;font-family:var(--font-mono);cursor:pointer;font-size:0.75rem;transition:background 0.1s}.i18n-btn:hover{background:var(--accent-blue)}
+        .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:9999}.modal-overlay.active{display:flex}
+        .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+        .icm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap-sm);margin-top:var(--gap-md)}@media(max-width:600px){.icm-grid{grid-template-columns:1fr}}
+        .icm-item{display:flex;align-items:center;gap:var(--gap-sm);font-family:var(--font-mono);font-size:0.9rem}.icm-item::before{content:"▸";color:var(--accent-teal)}
+        .three-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap-md)}@media(max-width:700px){.three-grid,.four-grid{grid-template-columns:1fr}}
+        .four-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap-md)}@media(max-width:900px){.four-grid{grid-template-columns:repeat(2,1fr)}}
+        .process-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap-md);position:relative}@media(max-width:700px){.process-timeline{grid-template-columns:1fr}}
+        .process-step{position:relative;padding:1.5rem;border:2px solid #000;background:var(--plat-100);box-shadow:3px 3px 0 #000}.process-step::after{content:"→";position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:var(--font-pixel);font-size:2rem;color:var(--accent-blue)}@media(max-width:700px){.process-step::after{content:"↓";right:50%;bottom:-24px;top:auto;transform:translateX(50%)}}.process-step:last-child::after{display:none}
+        .step-cost{font-family:var(--font-pixel);font-size:1.8rem;color:var(--accent-teal);margin-top:0.5rem}
+    </style>
+</head>
+<body class="retro-os">
+
+    <div id="loader">
+        <span style="font-family:var(--font-pixel);font-size:1.8rem;background:#000;color:var(--plat-100);padding:6px 16px;letter-spacing:3px;margin-bottom:1rem;">HERMES_AGENT</span>
+        <div class="pixel-heading sm" style="margin-bottom:var(--gap-md);">LOADING SYSTEM</div>
+        <div class="retro-progress" style="max-width:260px;"><div class="retro-progress-fill" id="boot-fill"></div></div>
+        <p class="mono-label" id="boot-msg" style="margin-top:var(--gap-sm);">Cargando módulos de negocio...</p>
+    </div>
+
+    <header class="os-menubar">
+        <div class="menu-left">
+            <span class="ws-icon">◈</span>
+            <span class="active-app">HERMES_AGENT</span>
+            <nav class="os-nav">
+                <a href="#product" data-i18n="hnav.producto">Producto</a>
+                <a href="#modulos" data-i18n="hnav.modulos">Módulos</a>
+                <a href="#dia" data-i18n="hnav.dia">Tu día</a>
+                <a href="#proceso" data-i18n="hnav.proceso">Proceso</a>
+                <a href="#diferente" data-i18n="hnav.diferente">Diferente</a>
+                <a href="index.html">WS Capital</a>
+            </nav>
+        </div>
+        <div class="menu-right">
+            <span class="os-widget status-online">● Online</span>
+            <span class="os-widget" id="os-clock">00:00:00</span>
+            <button id="i18n-switch" class="i18n-btn" aria-label="Switch Language">
+                <span class="lang-label">ES</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="desktop-icons">
+        <div class="desktop-icon" onclick="window.location='index.html'"><div class="icon-gfx" style="font-family:var(--font-mono);font-size:0.8rem;">◈</div><span class="label">WS Capital</span></div>
+        <div class="desktop-icon" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><div class="icon-gfx" style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-teal);">CMD</div><span class="label" style="color:var(--accent-teal);">Contacto</span></div>
+    </div>
+
+    <main class="desktop-env">
+
+        <!-- ═══ HERO ═══ -->
+        <article class="os-window fade-in-up" id="product">
+            <div class="win-titlebar">
+                <div class="win-controls"><span class="win-btn close"></span><span class="win-btn"></span><span class="win-btn"></span></div>
+                <div class="win-title" style="color:var(--accent-gold);">Hermes_Agent.exe</div>
+            </div>
+            <div class="win-body dual-column">
+                <div>
+                    <h1 class="pixel-heading">Tu segundo yo<br>que no descansa.</h1>
+                    <p class="hero-tagline" style="font-size:1rem;">Extraemos tu expertise, construimos tu sistema, te acompañamos hasta que lo uses sin pensar. Pago único. Sin suscripciones.</p>
+                    <div class="icm-grid">
+                        <div class="icm-item">Primer módulo en 2 semanas</div>
+                        <div class="icm-item">$3,500 USD en 3 pagos</div>
+                        <div class="icm-item">Memoria que te conoce y evoluciona</div>
+                        <div class="icm-item">Trabajos automáticos programados</div>
+                        <div class="icm-item">Funciona por voz desde tu celular</div>
+                        <div class="icm-item">Conectado a Google Drive y WhatsApp</div>
+                    </div>
+                    <div class="hero-actions" style="margin-top:2rem;">
+                        <a href="#contact" class="os-btn gold" onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Quiero empezar →</a>
+                        <a href="#modulos" class="os-btn secondary">Ver los 8 módulos</a>
+                    </div>
+                </div>
+                <div class="border-left" style="display:flex;flex-direction:column;justify-content:center;">
+                    <div style="background:var(--plat-900);padding:1.5rem;border:2px solid var(--accent-gold);color:var(--plat-200);font-family:var(--font-mono);font-size:0.85rem;line-height:2.2;">
+                        <div style="color:var(--accent-gold);margin-bottom:0.5rem;">> SISTEMA | STATUS</div>
+                        <div>> Módulos activos: <span style="color:#00FF00;">8/8</span></div>
+                        <div>> Memoria: <span style="color:#00FF00;">APRENDIENDO</span></div>
+                        <div>> Cron activos: <span style="color:#00FF00;">4 PROGRAMADOS</span></div>
+                        <div>> Google Drive: <span style="color:#00FF00;">SINCRONIZADO</span></div>
+                        <div>> Voz: <span style="color:#00FF00;">CONECTADA</span></div>
+                        <div style="color:var(--accent-gold);margin-top:0.5rem;">> Tu empresa siempre lista</div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ═══ 8 MÓDULOS ═══ -->
+        <section class="os-window fade-in-up delay-1" id="modulos">
+            <div class="win-titlebar">
+                <div class="win-lines" style="flex-grow:1;"></div>
+                <div class="win-title">Los_8_Modulos.exe</div>
+                <div class="win-lines" style="flex-grow:1;"></div>
+                <div class="win-controls" style="margin-left:10px;"><span class="win-btn hide" onclick="toggleShade(this)"></span></div>
+            </div>
+            <div class="win-body">
+                <h2 class="pixel-heading md text-center">Cada módulo se construye con tus procesos</h2>
+                <p class="hero-tagline text-center" style="font-size:0.95rem;">No son plantillas. Son sistemas hechos para ti, que evolucionan contigo.</p>
+                <div class="card-grid" style="grid-template-columns:repeat(4,1fr);">
+                    <div class="card"><div class="card-icon">⚙️</div><div class="card-title">Núcleo</div><div class="text-dim">El cerebro. Conexión con Google Workspace, routing de tareas, configuración general de tu sistema.</div></div>
+                    <div class="card"><div class="card-icon">📊</div><div class="card-title">Ventas</div><div class="text-dim">CRM, cotizaciones, pipeline. Tu asistente da seguimiento para que no pierdas oportunidades.</div></div>
+                    <div class="card"><div class="card-icon">📋</div><div class="card-title">Operaciones</div><div class="text-dim">Proyectos, tareas y checklists. Coordina a tu equipo sin reuniones ni cadenas de WhatsApp.</div></div>
+                    <div class="card"><div class="card-icon">📄</div><div class="card-title">Documentos</div><div class="text-dim">Contratos, propuestas, reportes. Se generan solos. Solo revisas y envías.</div></div>
+                    <div class="card"><div class="card-icon">💰</div><div class="card-title">Finanzas</div><div class="text-dim">Presupuestos, pagos, facturación. Sabes cuánto entra, cuánto sale, cuándo cobrar.</div></div>
+                    <div class="card"><div class="card-icon">👥</div><div class="card-title">Equipo</div><div class="text-dim">Gestión de personal por proyecto. Asistencia, carga laboral, comunicación.</div></div>
+                    <div class="card" style="border-color:var(--accent-teal);"><div class="card-icon">🧠</div><div class="card-title" style="color:var(--accent-teal);">Memoria</div><div class="text-dim">Te conoce. Aprende de ti. Recuerda preferencias, clientes, decisiones. Evoluciona con cada interacción.</div></div>
+                    <div class="card" style="border-color:var(--accent-teal);"><div class="card-icon">⏰</div><div class="card-title" style="color:var(--accent-teal);">Cron Jobs</div><div class="text-dim">Trabajos programados. Investigación automática, marketing, recordatorios. Todo lo que necesitas en automático.</div></div>
+                </div>
+                <p class="text-body text-center" style="max-width:600px;margin:1rem auto 0;font-size:0.85rem;">Los módulos se construyen en orden de prioridad. Empezamos por lo que más urgencia tiene en tu negocio y sumamos los demás.</p>
+            </div>
+        </section>
+
+        <!-- ═══ TU DÍA CON HERMES ═══ -->
+        <section class="os-window fade-in-up delay-2" id="dia">
+            <div class="win-titlebar">
+                <div class="win-lines" style="flex-grow:1;"></div>
+                <div class="win-title">Tu_Dia_Con_Hermes.log</div>
+                <div class="win-lines" style="flex-grow:1;"></div>
+            </div>
+            <div class="win-body dual-column">
+                <div>
+                    <h2 class="pixel-heading sm">Así funciona en el día a día</h2>
+                    <p class="text-body" style="margin-top:0.5rem;">No es teoría. Esto es lo que hace el sistema con clientes reales.</p>
+                    <p class="text-body" style="margin-top:0.5rem;">A las 8 de la mañana abres Telegram y Hermes ya te tiene todo listo. Tareas del día, clientes nuevos, alertas de pago. No tienes que preguntar nada especial: le hablas como a una persona.</p>
+                    <p class="text-body" style="margin-top:0.5rem;">Cuando llega un cliente por WhatsApp, lo registra solo. Genera cotización, la envía, y te avisa cuando la ven. Tú solo revisas y autorizas.</p>
+                    <p class="text-body" style="margin-top:0.5rem;">A las 5 de la tarde te manda un resumen. Lo que facturaste, lo que falta por cobrar, lo que vence mañana. Sin que le pidas nada.</p>
+                    <div class="hero-actions" style="margin-top:var(--gap-md);">
+                        <a href="#proceso" class="os-btn primary">Ver el proceso completo →</a>
+                    </div>
+                </div>
+                <div class="border-left" style="background:var(--plat-800);color:var(--plat-200);font-family:var(--font-mono);font-size:0.85rem;line-height:2.2;padding:var(--gap-md);border-left-color:var(--accent-teal);">
+                    <p style="color:var(--accent-teal);margin-bottom:0.5rem;">> REGISTRO DE INTERACCIÓN</p>
+                    <div style="color:var(--plat-300);">8:00 AM | Abres Telegram:</div>
+                    <div style="color:var(--accent-teal);">"Buenos días. Tienes 3 tareas: confirmar lugar boda Martínez, cotización para González, registrar pago de López. El pago de López vence mañana. ¿Envío recordatorio?"</div>
+                    <div style="color:var(--plat-300);margin-top:0.5rem;">10:30 AM | Cliente nuevo por WhatsApp:</div>
+                    <div style="color:var(--accent-teal);">"Carlos Ruiz registrado como prospecto. Cotización generada: $35,000 MXN. ¿La envío?"</div>
+                    <div style="color:var(--plat-300);margin-top:0.5rem;">2:00 PM | Consultas el proyecto:</div>
+                    <div style="color:var(--accent-teal);">"Boda Martínez al 65%. Tareas: 8/12. Pendiente: catering (vence hoy) y sonido (mañana)."</div>
+                    <div style="color:var(--plat-300);margin-top:0.5rem;">5:00 PM | Resumen automático:</div>
+                    <div style="color:var(--accent-teal);">"Hoy facturaste: $35,000. Por cobrar: $45,000. 2 pagos vencidos. ¿Envío recordatorios?"</div>
+                    <div style="color:var(--plat-300);margin-top:0.5rem;">10:00 PM | Cron nocturno ejecutado:</div>
+                    <div style="color:var(--accent-teal);">"Investigación de mercado actualizada. 3 nuevas oportunidades detectadas en tu zona."</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ PROCESO ═══ -->
+        <section class="os-window fade-in-up delay-3" id="proceso">
+            <div class="win-titlebar">
+                <div class="win-lines" style="flex-grow:1;"></div>
+                <div class="win-title">Proceso_de_Implementacion.exe</div>
+                <div class="win-lines" style="flex-grow:1;"></div>
+                <div class="win-controls" style="margin-left:10px;"><span class="win-btn hide" onclick="toggleShade(this)"></span></div>
+            </div>
+            <div class="win-body">
+                <h2 class="pixel-heading sm text-center">$3,500 USD en 3 pagos · Primer módulo en 2 semanas</h2>
+                <p class="hero-tagline text-center" style="font-size:0.9rem;">Pago único. El sistema es tuyo. Sin suscripciones mensuales.</p>
+                <div class="process-timeline" style="margin-top:var(--gap-lg);">
+                    <div class="process-step">
+                        <div style="font-family:var(--font-pixel);font-size:1.5rem;color:var(--accent-teal);margin-bottom:0.5rem;">FASE 1</div>
+                        <h3 class="pixel-heading xs" style="margin-bottom:0.3rem;">Diagnóstico + Construcción</h3>
+                        <p class="text-dim">Una cita para conocer tu negocio. Extraemos tus procesos. Construimos tu primer módulo conectado a tu celular y Google Workspace.</p>
+                        <div class="step-cost">$1,200 USD</div>
+                        <div class="mono-label" style="color:var(--plat-500);">Semana 1 a 2</div>
+                    </div>
+                    <div class="process-step">
+                        <div style="font-family:var(--font-pixel);font-size:1.5rem;color:var(--accent-blue);margin-bottom:0.5rem;">FASE 2</div>
+                        <h3 class="pixel-heading xs" style="margin-bottom:0.3rem;">Expansión + Ajustes</h3>
+                        <p class="text-dim">Usas el sistema, nos das retroalimentación. Creamos más módulos según lo que necesita tu negocio. Capacitación para tu equipo.</p>
+                        <div class="step-cost" style="color:var(--accent-blue);">$1,200 USD</div>
+                        <div class="mono-label" style="color:var(--plat-500);">Mes 2</div>
+                    </div>
+                    <div class="process-step">
+                        <div style="font-family:var(--font-pixel);font-size:1.5rem;color:var(--accent-blue);margin-bottom:0.5rem;">FASE 3</div>
+                        <h3 class="pixel-heading xs" style="margin-bottom:0.3rem;">Autonomía + Soporte</h3>
+                        <p class="text-dim">El sistema ya trabaja solo. Te acompañamos en el uso diario. Ajustes finos, actualizaciones, cron jobs configurados y memoria activa.</p>
+                        <div class="step-cost" style="color:var(--accent-blue);">$1,100 USD</div>
+                        <div class="mono-label" style="color:var(--plat-500);">Mes 3</div>
+                    </div>
+                </div>
+                <p class="text-body text-center" style="max-width:550px;margin:var(--gap-lg) auto 0;font-size:0.85rem;">Después de la implementación, el sistema corre solo. Tú decides si quieres más módulos después. Cada módulo adicional tiene su propio costo.</p>
+            </div>
+        </section>
+
+        <!-- ═══ ARQUITECTURA ═══ -->
+        <section class="os-window fade-in-up delay-3">
+            <div class="win-titlebar">
+                <div class="win-lines" style="flex-grow:1;"></div>
+                <div class="win-title">System_Architecture.sys</div>
+                <div class="win-lines" style="flex-grow:1;"></div>
+            </div>
+            <div class="win-body">
+                <h2 class="pixel-heading sm text-center">Las 4 capas de tu sistema</h2>
+                <div style="background:var(--plat-900);color:var(--plat-300);font-family:var(--font-mono);font-size:0.8rem;line-height:2.5;padding:1.5rem;margin-top:var(--gap-md);border:2px solid #000;">
+                    <div style="color:var(--accent-gold);">Capa 1 | Tu interfaz</div>
+                    <div style="padding-left:2rem;">Celular (voz) · WhatsApp · Telegram · Dashboard web</div>
+                    <div style="color:var(--accent-gold);margin-top:0.3rem;">Capa 2 | Hermes Agent</div>
+                    <div style="padding-left:2rem;">Razonamiento · Memoria persistente · Routing de tareas</div>
+                    <div style="color:var(--accent-gold);margin-top:0.3rem;">Capa 3 | Tus 8 módulos</div>
+                    <div style="padding-left:2rem;">Núcleo · Ventas · Operaciones · Documentos · Finanzas · Equipo · Memoria · Cron</div>
+                    <div style="color:var(--accent-gold);margin-top:0.3rem;">Capa 4 | Tus herramientas</div>
+                    <div style="padding-left:2rem;">Google Drive · Google Sheets · Calendario · Almacenamiento local</div>
+                </div>
+                <p class="text-body text-center" style="max-width:550px;margin:var(--gap-md) auto 0;font-size:0.85rem;">Tus datos están en tus herramientas. Tus procesos son tuyos. El sistema se adapta a ti, no al revés.</p>
+            </div>
+        </section>
+
+        <!-- ═══ DIFERENTE ═══ -->
+        <section class="os-window fade-in-up delay-4" id="diferente">
+            <div class="win-titlebar">
+                <div class="win-lines" style="flex-grow:1;"></div>
+                <div class="win-title">Por_Que_Somos_Diferentes.log</div>
+                <div class="win-lines" style="flex-grow:1;"></div>
+                <div class="win-controls" style="margin-left:10px;"><span class="win-btn hide" onclick="toggleShade(this)"></span></div>
+            </div>
+            <div class="win-body">
+                <h2 class="pixel-heading sm text-center">No es un CRM. No es una plataforma. No es una suscripción.</h2>
+                <p class="hero-tagline text-center" style="font-size:0.9rem;">Es un sistema hecho para ti. Y hay una diferencia enorme entre eso y lo que venden los demás.</p>
+                <div class="four-grid" style="margin-top:var(--gap-md);">
+                    <div class="unit-tile" style="padding:1.2rem;text-align:left;">
+                        <h4 class="pixel-title" style="font-size:1rem;">🧠 No es un CRM</h4>
+                        <p class="text-dim" style="font-size:0.85rem;">Los CRMs te obligan a meter datos en su formato. Nosotros extraemos cómo trabajas tú y lo convertimos en un sistema que entiende tu lógica, no la de un ingeniero de Salesforce.</p>
+                    </div>
+                    <div class="unit-tile" style="padding:1.2rem;text-align:left;">
+                        <h4 class="pixel-title" style="font-size:1rem;">🎤 No es una plataforma</h4>
+                        <p class="text-dim" style="font-size:0.85rem;">Las plataformas venden suscripciones. Nosotros vendemos implementación. Una vez que el sistema está listo, es tuyo. Sin mensualidades, sin límites de usuarios, sin upgrades forzados.</p>
+                    </div>
+                    <div class="unit-tile" style="padding:1.2rem;text-align:left;">
+                        <h4 class="pixel-title" style="font-size:1rem;">📱 No es un chatbot</h4>
+                        <p class="text-dim" style="font-size:0.85rem;">Un chatbot responde preguntas. Hermes ejecuta procesos. Cotiza, agenda, factura, investiga, recuerda, programa. No es lo mismo.</p>
+                    </div>
+                    <div class="unit-tile" style="padding:1.2rem;text-align:left;">
+                        <h4 class="pixel-title" style="font-size:1rem;">🔗 No es otro SaaS</h4>
+                        <p class="text-dim" style="font-size:0.85rem;">No necesitas aprender una plataforma nueva. Funciona con las herramientas que ya usas: Google Drive, WhatsApp, Telegram. Tus datos están contigo, no en nuestro servidor.</p>
+                    </div>
+                    <div class="unit-tile" style="padding:1.2rem;text-align:left;">
+                        <h4 class="pixel-title" style="font-size:1rem;">🧑‍🤝‍🧑 Te enseñamos a mejorarlo</h4>
+                        <p class="text-dim" style="font-size:0.85rem;">Nosotros podemos adaptar tus procesos y enseñarte a hacerlo para que tú mismo puedas mejorar tu propio sistema.</p>
+                    </div>
+                    <div class="unit-tile" style="padding:1.2rem;text-align:left;">
+                        <h4 class="pixel-title" style="font-size:1rem;">🔓 No es código cerrado</h4>
+                        <p class="text-dim" style="font-size:0.85rem;">Usamos herramientas abiertas. Hermes Agent, Paperclip, entre otras. Si en el futuro quieres que otro equipo lo mantenga, puedes hacerlo. No hay vendor lock-in.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ PARA QUIÉN ═══ -->
+        <section class="os-window fade-in-up delay-5">
+            <div class="win-titlebar">
+                <div class="win-lines" style="flex-grow:1;"></div>
+                <div class="win-title">Para_quien_es.sys</div>
+                <div class="win-lines" style="flex-grow:1;"></div>
+            </div>
+            <div class="win-body dual-column">
+                <div class="content-block">
+                    <h2 class="sub-pixel">Esto es para ti si...</h2>
+                    <div style="margin-top:var(--gap-md);">
+                        <div class="icm-item">Tienes años de experiencia en tu oficio</div>
+                        <div class="icm-item">Pierdes horas en cotizaciones y papeleo</div>
+                        <div class="icm-item">Quieres dejar de depender de Excel y WhatsApp</div>
+                        <div class="icm-item">Necesitas un sistema, no más suscripciones</div>
+                        <div class="icm-item">Quieres que tu equipo trabaje sin que estés encima</div>
+                    </div>
+                </div>
+                <div class="content-block border-left">
+                    <h2 class="sub-pixel highlight">Esto no es para ti si...</h2>
+                    <div style="margin-top:var(--gap-md);">
+                        <div class="icm-item">Estás aprendiendo tu oficio (todavía no)</div>
+                        <div class="icm-item">Buscas una plataforma mágica que resuelva todo</div>
+                        <div class="icm-item">No tienes claros tus procesos</div>
+                        <div class="icm-item">Quieres gastar lo mínimo sin invertir tiempo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ OPEN SOURCE ═══ -->
+        <section class="os-window fade-in-up">
+            <div class="win-titlebar">
+                <div class="win-lines" style="flex-grow:1;"></div>
+                <div class="win-title">Open_Source.sys</div>
+                <div class="win-lines" style="flex-grow:1;"></div>
+            </div>
+            <div class="win-body dual-column">
+                <div>
+                    <h2 class="pixel-heading sm">Código abierto. Implementación profesional.</h2>
+                    <p class="text-body" style="margin-top:0.5rem;">Puedes revisar el código en GitHub, modificarlo, forkearlo. Es MIT, úsalo como quieras.</p>
+                    <p class="text-body" style="margin-top:0.5rem;">Creemos en el código abierto y la democratización de herramientas de AI.</p>
+                    <div class="hero-actions" style="margin-top:var(--gap-md);">
+                        <a href="https://github.com/cuentadeservicio377-cell/hermes-business-os" target="_blank" class="os-btn primary">Ver código →</a>
+                        <a href="#contact" class="os-btn secondary" onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Empezar</a>
+                    </div>
+                </div>
+                <div class="border-left" style="background:var(--plat-900);color:var(--plat-300);padding:var(--gap-md);font-family:var(--font-mono);font-size:0.8rem;line-height:2;border-left-color:var(--accent-teal);">
+                    <div style="color:var(--accent-teal);">$ git clone https://github.com/</div>
+                    <div style="color:var(--accent-teal);">  cuentadeservicio377-cell/</div>
+                    <div style="color:var(--accent-teal);">  hermes-business-os.git</div>
+                    <div style="color:var(--plat-400);">Cloning into 'hermes-business-os'...</div>
+                    <div style="color:#00FF00;">✓ 72 tests passed</div>
+                    <div style="color:var(--plat-400);">6 skills · MIT license · Python + Hermes Agent</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ CTA ═══ -->
+        <section class="fade-in-up" id="contact">
+            <div class="win-titlebar" style="background:var(--plat-800);">
+                <div class="win-title" style="background:var(--plat-800);color:var(--accent-gold);">Iniciar_Implementacion.exe</div>
+            </div>
+            <div class="terminal-section">
+                <p class="mono-label" style="color:#00FF00;margin-bottom:1rem;">CONEXIÓN SEGURA. LISTO PARA EMPEZAR.</p>
+                <form action="https://formsubmit.co/p@wsc.lat" method="POST" class="terminal-form">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="IMPLEMENTACION HERMES">
+                    <input type="hidden" name="_template" value="table">
+                    <div class="terminal-group"><label>> NOMBRE</label><input type="text" name="nombre" class="terminal-input" required placeholder="_"></div>
+                    <div class="terminal-group"><label>> NEGOCIO</label><input type="text" name="negocio" class="terminal-input" required placeholder="_"></div>
+                    <div class="terminal-group"><label>> TELÉFONO</label><input type="tel" name="celular" class="terminal-input" required placeholder="+52 _"></div>
+                    <div class="terminal-group"><label>> CORREO</label><input type="email" name="email" class="terminal-input" required placeholder="name@domain.com"></div>
+                    <div class="terminal-group"><label>> ¿QUÉ PROCESO QUIERES AUTOMATIZAR PRIMERO?</label><textarea name="descripcion" class="terminal-textarea" required placeholder="Cuéntanos tu negocio y lo que más tiempo te quita..."></textarea></div>
+                    <button type="submit" class="terminal-submit">[ INICIAR_IMPLEMENTACION ]</button>
+                </form>
+                <p style="color:#00AA00;text-align:center;font-size:0.7rem;margin-top:0.8rem;">SISTEMA: ESPERANDO TUS DATOS_</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- LANGUAGE SELECTOR MODAL -->
+    <div id="lng-modal" class="modal-overlay">
+        <div class="window-bezel modal-window" style="width:90%;max-width:500px;background:var(--plat-100);border:2px solid #000;box-shadow:10px 10px 0px rgba(0,0,0,0.2);">
+            <div class="window-header" style="height:30px;background:var(--plat-400);border-bottom:2px solid #000;display:flex;align-items:center;justify-content:space-between;padding:0 10px;">
+                <span class="window-title" style="font-family:var(--font-mono);font-size:0.85rem;font-weight:700;text-transform:uppercase;background:var(--plat-400);padding:0 10px;">System.Config.Language</span>
+                <div class="window-controls"><button class="win-btn close-modal" style="width:14px;height:14px;border:2px solid #000;background:var(--plat-100);" onclick="document.getElementById('lng-modal').classList.remove('active')">×</button></div>
+            </div>
+            <div class="window-content" style="padding:1.5rem;text-align:center;">
+                <h2 class="pixel-heading sm mb-md" style="font-size:1.5rem;margin-bottom:1rem;">SELECT OPERATING LANGUAGE</h2>
+                <div class="lang-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+                    <button class="lang-opt" data-lang="en" style="background:var(--plat-200);border:2px solid;border-color:var(--plat-50) var(--plat-600) var(--plat-600) var(--plat-50);color:#000;padding:12px;font-family:var(--font-mono);font-size:0.9rem;cursor:pointer;text-transform:uppercase;text-align:center;">ENGLISH</button>
+                    <button class="lang-opt" data-lang="es" style="background:var(--plat-200);border:2px solid;border-color:var(--plat-50) var(--plat-600) var(--plat-600) var(--plat-50);color:#000;padding:12px;font-family:var(--font-mono);font-size:0.9rem;cursor:pointer;text-transform:uppercase;text-align:center;">ESPAÑOL</button>
+                    <button class="lang-opt" data-lang="de" style="background:var(--plat-200);border:2px solid;border-color:var(--plat-50) var(--plat-600) var(--plat-600) var(--plat-50);color:#000;padding:12px;font-family:var(--font-mono);font-size:0.9rem;cursor:pointer;text-transform:uppercase;text-align:center;">DEUTSCH</button>
+                    <button class="lang-opt" data-lang="zh" style="background:var(--plat-200);border:2px solid;border-color:var(--plat-50) var(--plat-600) var(--plat-600) var(--plat-50);color:#000;padding:12px;font-family:var(--font-mono);font-size:0.9rem;cursor:pointer;text-transform:uppercase;text-align:center;">中文</button>
+                    <button class="lang-opt" data-lang="it" style="background:var(--plat-200);border:2px solid;border-color:var(--plat-50) var(--plat-600) var(--plat-600) var(--plat-50);color:#000;padding:12px;font-family:var(--font-mono);font-size:0.9rem;cursor:pointer;text-transform:uppercase;text-align:center;">ITALIANO</button>
+                    <button class="lang-opt" data-lang="ja" style="background:var(--plat-200);border:2px solid;border-color:var(--plat-50) var(--plat-600) var(--plat-600) var(--plat-50);color:#000;padding:12px;font-family:var(--font-mono);font-size:0.9rem;cursor:pointer;text-transform:uppercase;text-align:center;">日本語</button>
+                    <button class="lang-opt" data-lang="ar" style="background:var(--plat-200);border:2px solid;border-color:var(--plat-50) var(--plat-600) var(--plat-600) var(--plat-50);color:#000;padding:12px;font-family:var(--font-mono);font-size:0.9rem;cursor:pointer;text-transform:uppercase;text-align:center;">العربية</button>
+                    <button class="lang-opt" data-lang="pt" style="background:var(--plat-200);border:2px solid;border-color:var(--plat-50) var(--plat-600) var(--plat-600) var(--plat-50);color:#000;padding:12px;font-family:var(--font-mono);font-size:0.9rem;cursor:pointer;text-transform:uppercase;text-align:center;">PORTUGUÊS</button>
+                    <button class="lang-opt" data-lang="ko" style="background:var(--plat-200);border:2px solid;border-color:var(--plat-50) var(--plat-600) var(--plat-600) var(--plat-50);color:#000;padding:12px;font-family:var(--font-mono);font-size:0.9rem;cursor:pointer;text-transform:uppercase;text-align:center;">한국어</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="os-footer">
+        <div class="footer-left"><span class="status-indicator"></span><span>Kernel: HERMES_v2_IMPLEMENTACION_READY</span></div>
+        <div class="footer-right"><p>WS Capital | <a href="index.html" style="color:inherit;text-decoration:underline;">Volver a inicio</a></p></div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="app.js"></script>
+    <script>
+        const fill=document.getElementById('boot-fill');const msg=document.getElementById('boot-msg');const texts=['Cargando módulos de negocio...','Activando memoria...','Programando cron jobs...','Sistema listo.'];let p=0,i=0;const iv=setInterval(()=>{p+=Math.random()*18;if(p>=100){p=100;clearInterval(iv);msg.textContent=texts[texts.length-1];setTimeout(()=>{document.getElementById('loader').style.opacity='0';setTimeout(()=>{document.getElementById('loader').style.display='none'},500)},400)}fill.style.width=p+'%';if(p>i*30&&i<texts.length-1){msg.textContent=texts[i];i++}},100);
+        // i18n engine (espanol default)
+        let currentLang = 'es';
+        const switchBtn = document.getElementById('i18n-switch');
+        const langLabel = switchBtn ? switchBtn.querySelector('.lang-label') : null;
+        const modal = document.getElementById('lng-modal');
+        const runTranslations = () => {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const keyPath = el.getAttribute('data-i18n');
+                const keys = keyPath.split('.');
+                let value = translations[currentLang];
+                for (const key of keys) { if (value && value[key]) value = value[key]; else { value = null; break; } }
+                if (value) el.innerHTML = value;
+            });
+            document.documentElement.lang = currentLang;
+        };
+        if (switchBtn && modal) {
+            switchBtn.addEventListener('click', () => modal.classList.add('active'));
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+            document.querySelectorAll('.lang-opt').forEach(opt => {
+                opt.addEventListener('click', () => {
+                    currentLang = opt.getAttribute('data-lang');
+                    if (langLabel) langLabel.textContent = currentLang.toUpperCase();
+                    runTranslations();
+                    modal.classList.remove('active');
+                });
+            });
+        }
+        runTranslations();
+        console.log('HERMES_v2: System initialized [OK]');
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>José Pablo Meneses García | CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#e0e0e0;font-family:'Inter',sans-serif;color:#1a1a1a;padding:40px;display:flex;justify-content:center}
+.page{max-width:1000px;width:100%;background:#f0f0f0;border:2px solid #000;box-shadow:8px 8px 0 #000;padding:60px;position:relative}
+.header{border-bottom:2px solid #000;padding-bottom:30px;margin-bottom:30px}
+.name{font-family:'VT323',monospace;font-size:3.5rem;text-transform:uppercase;line-height:1;margin-bottom:8px;letter-spacing:-2px}
+.title{font-family:'Share Tech Mono',monospace;font-size:1rem;text-transform:uppercase;letter-spacing:2px;color:#555;margin-bottom:15px}
+.contact{display:flex;gap:30px;flex-wrap:wrap;font-family:'Share Tech Mono',monospace;font-size:0.8rem}
+.contact a{color:#000;text-decoration:none;border-bottom:1px solid #999}.contact a:hover{border-bottom-color:#008080;color:#008080}
+.section{margin-bottom:30px}
+.section h2{font-family:'VT323',monospace;font-size:1.5rem;text-transform:uppercase;border-bottom:1px solid #000;padding-bottom:5px;margin-bottom:15px}
+.job{margin-bottom:25px}
+.job-header{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;margin-bottom:5px}
+.job-title{font-weight:600;font-size:1.05rem}
+.job-company{font-family:'Share Tech Mono',monospace;font-size:0.8rem;color:#555;margin-bottom:8px}
+.job-date{font-family:'Share Tech Mono',monospace;font-size:0.75rem;color:#777}
+.job-body{font-size:0.92rem;line-height:1.6;color:#333}
+.job-body p{margin-bottom:8px}
+.job-body ul{margin:8px 0;padding-left:20px}
+.job-body li{margin-bottom:4px;font-size:0.88rem;line-height:1.5}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.skill-cat{background:#fff;border:1px solid #000;padding:12px 16px}
+.skill-cat h3{font-family:'Share Tech Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;color:#008080}
+.skill-cat p{font-size:0.85rem;line-height:1.5;color:#444}
+.filosofia{background:#fff;border:2px solid #000;padding:20px;font-size:0.9rem;line-height:1.6;color:#333;margin-top:10px}
+.footer{border-top:1px solid #000;margin-top:30px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'Share Tech Mono',monospace;font-size:0.75rem;color:#666}
+@media print{body{background:#fff;padding:0}.page{box-shadow:none;border:none;padding:40px}}
+@media(max-width:700px){.page{padding:30px}.name{font-size:2.2rem}.skills-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="name">José Pablo<br>Meneses García</div>
+    <div class="title">Arquitecto de Ecosistemas Empresariales</div>
+    <div class="contact">
+      <span>📍 Guadalajara, Jal.</span>
+      <a href="mailto:p@wsc.lat">p@wsc.lat</a>
+      <a href="https://wsc.lat" target="_blank">wsc.lat</a>
+      <a href="https://www.linkedin.com/in/pablo-meneses-garcia/" target="_blank">LinkedIn</a>
+      <a href="https://x.com/pablomeneng" target="_blank">X: @pablomeneng</a>
+    </div>
+  </div>
+
+  <!-- PERFIL -->
+  <div class="section">
+    <h2>Perfil</h2>
+    <p style="font-size:0.95rem;line-height:1.7;color:#333">Corporativista con más de 15 años acortando la brecha entre derecho empresarial, tecnología y automatización operativa. Pasé de gestionar un despacho legal de 68 personas a crear metodologías que convierten procesos complejos en sistemas que las empresas realmente usan. Mi trayectoria atraviesa startups, fintech, comercio internacional de commodities, brokeraje Swift, y ahora investigación aplicada sobre cómo las PYMES latinoamericanas adoptan IA.</p>
+  </div>
+
+  <!-- EXPERIENCIA -->
+  <div class="section">
+    <h2>Experiencia</h2>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Fundador | WS Capital AI Lab</span>
+        <span class="job-date">Feb 2023 | Presente</span>
+      </div>
+      <div class="job-company">Zapopan, Jal. (Híbrido)</div>
+      <div class="job-body">
+        <p>Fundé un laboratorio que investiga cómo las personas reales, las empresas reales usan, aprenden e implementan IA en su día a día. La premisa: la falta de educación especializada y planificación gubernamental crea brechas masivas de talento que la IA puede cerrar si se implementa correctamente.</p>
+        <ul>
+          <li>Publiqué un paper de investigación ("Cerrando la Brecha") con datos del BID, CEPAL y OCDE sobre digitalización de PYMES en LATAM. 99.5% de las empresas, 96% sin presencia web, 56% sin valor tangible con IA</li>
+          <li>Diseñé y lancé Hermes Business OS, distribución de 8 módulos de IA sobre Hermes Agent (Nous Research). Núcleo, ventas, operaciones, documentos, finanzas, equipo, memoria y cron jobs. Código abierto (MIT)</li>
+          <li>Creé una metodología de implementación en 3 fases (diagnóstico, expansión, autonomía) que reduce 60-80% la carga operativa de las empresas. $3,500 USD pago único, primer módulo en 2 semanas</li>
+          <li>Ejecuté un ciclo completo de investigación (marzo 2024 - junio 2025) sobre capacitación de equipos con asistentes de IA. Validé que trabajadores con formación de educación pública mexicana pueden competir con profesionales de universidades de élite usando herramientas de IA bien implementadas</li>
+          <li>Lancé el sitio wsc.lat como plataforma de difusión del modelo de investigación. Desarrollo y gestión de la infraestructura digital del laboratorio</li>
+          <li>Descubrí que el cuello de botella no es la herramienta: es la metodología de entrenamiento de agentes específicos para cada industria y la disposición humana a aprender</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Co-Fundador | We Law</span>
+        <span class="job-date">May 2024 | Presente</span>
+      </div>
+      <div class="job-company">Guadalajara, Jal. (Híbrido)</div>
+      <div class="job-body">
+        <p>Arquitectura legal que elimina fricciones operativas y documenta procesos mientras genera compliance. Mapeamos operaciones en dos sesiones de design thinking.</p>
+        <ul>
+          <li>Workshops de Design Thinking con empresarios para extraer conocimiento operativo</li>
+          <li>Sistemas que han reducido disputas comerciales en software, agencias digitales y organizaciones civiles</li>
+          <li>Alianzas con compliance officers, constructoras y profesionales médicos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Senior Managing Partner | Advacoo Consulting</span>
+        <span class="job-date">Ene 2018 | Mar 2024</span>
+      </div>
+      <div class="job-company">Guadalajara, Jal. (Presencial)</div>
+      <div class="job-body">
+        <p>Construí y operé durante 6 años una firma multidisciplinaria que llegó a 68 personas en nómina. Esta fue mi MBA real: aprendí a crear estructura, delegar operación y escalar servicios profesionales complejos.</p>
+        <ul>
+          <li>Fusioné mi firma Recht Legal con socios contadores creando Advacoo como plataforma integrada fiscal-legal</li>
+          <li>Diseñé e implementé toda la estructura operativa: RRHH, administración, jurídico interno y contabilidad interna</li>
+          <li>Automaticé procesos con la tecnología disponible en época pre-IA generativa (workflows, plantillas dinámicas, CRM especializado)</li>
+          <li>Vendí mi participación en marzo 2024 para enfocarme en WS Capital y desarrollar nuevos modelos de negocio basados en IA</li>
+        </ul>
+        <p style="font-size:0.85rem;color:#555;margin-top:6px;">Práctica legal dentro de Advacoo: Fintech y compliance financiero (Sofomes, Sofipos) · Startups y venture capital (cap tables, term sheets, due diligence) · Propiedad intelectual (marca, patentes de software) · Compliance para empresas extranjeras en México (España, LATAM, USA)</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Co-Founder | Apolo DX</span>
+        <span class="job-date">Ene 2022 | Mar 2023</span>
+      </div>
+      <div class="job-company">Guadalajara, Jal. (Presencial)</div>
+      <div class="job-body">
+        <p>Brokeraje Swift para transacciones financieras internacionales. Estructuré documentación y compliance: MDAs, cartas de crédito, SBLC, IMFPA. Negocié con contrapartes en Europa, Asia y LATAM.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Representante Comercial y Legal México | KAKTU SOLUTIONS SL</span>
+        <span class="job-date">2021 | 2022</span>
+      </div>
+      <div class="job-company">Remoto</div>
+      <div class="job-body">
+        <p>Representante en México de trading de commodities. Redacción de IMFPA, cartas de crédito, validación de SBLC. Negociación con compradores en África, Asia y LATAM.</p>
+        <p style="font-size:0.85rem;color:#555;margin-top:6px;"><strong>Aprendizaje crítico:</strong> Entendí cómo funcionan las transacciones Swift desde la perspectiva comercial y legal, lo que me permitió luego cofundar Apolo DX con conocimiento operativo real.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Socio Fundador | Recht Legal</span>
+        <span class="job-date">Ene 2013 | Ene 2018</span>
+      </div>
+      <div class="job-company">Guadalajara, Jal.</div>
+      <div class="job-body">
+        <p>Mi primera firma. Empecé en cuarto semestre de la carrera. Aprendí a vender, a operar, a escalar y a fracasar. Pivoté de PyMEs locales a startups y propiedad intelectual. Me enseñé marketing digital y WordPress para no depender de referencias. La firma se fusionó con contadores para crear Advacoo.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LIDERAZGO -->
+  <div class="section">
+    <h2>Liderazgo y Actividades</h2>
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Networker y Equipo de Liderazgo | BNI Guerreros</span>
+        <span class="job-date">2019 — 2022</span>
+      </div>
+      <div class="job-body">
+        <p>Fui de los primeros miembros en formar el capítulo y tomé puestos de Coordinador de Ética, Tesorero, Coordinador de Entrevistas y Coordinador de Invitados. Fortalecí mi entendimiento de cómo funcionan las PyMEs y aprendí cómo personas con otra formación resolvieron los mismos problemas empresariales de maneras distintas.</p>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Socio Fundador y Tesorero | Impulso Integral Universitario AC</span>
+        <span class="job-date">2011 — 2014</span>
+      </div>
+      <div class="job-body">
+        <p>Co-fundé y operé una asociación civil universitaria enfocada en unión estudiantil y desarrollo cultural. Crecimos a 50 miembros activos con oficinas en ICAPS. Como tesorero gestioné finanzas, presupuestos de eventos, coordinación de equipo de liderazgo y desarrollo de alianzas con instituciones culturales y gobierno local. Mi primera experiencia gestionando personas y presupuestos.</p>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Equipo de Debate | Torneo Nacional Mar Adentro AC</span>
+        <span class="job-date">Universidad</span>
+      </div>
+      <div class="job-body">
+        <p>Formé parte del equipo de debate de la Facultad de Derecho y competí en torneos nacionales. Desarrollé argumentación estructurada bajo presión, oratoria persuasiva e investigación rápida. Fundamental para mi desarrollo como litigante y negociador comercial posterior.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCACIÓN -->
+  <div class="section">
+    <h2>Educación</h2>
+    <div class="job-body">
+      <p><strong>Licenciatura en Derecho</strong> | Universidad de Guadalajara (2011-2014). Derecho Financiero y Tributario.</p>
+      <p><strong>Diplomado PLD/FT</strong> | GAIO (2020). Prevención de lavado de dinero.</p>
+      <p><strong>Programa de Incubación Yo Emprendo</strong> | TEC de Monterrey (2014-2015).</p>
+    </div>
+  </div>
+
+  <!-- COMPETENCIAS -->
+  <div class="section">
+    <h2>Competencias</h2>
+    <div class="skills-grid">
+      <div class="skill-cat"><h3>Legal</h3><p>Derecho corporativo · Compliance financiero · PLD/FT · Propiedad intelectual · Contratos tecnológicos · Legal Design · Regulación fintech · Instrumentos financieros internacionales (Swift, SBLC, IMFPA)</p></div>
+      <div class="skill-cat"><h3>Tecnología</h3><p>Vibe coding · GPTs customizados · Prompt engineering · Google Apps Script · APIs · Cursor AI · Hermes Agent · Infraestructura de agentes de IA</p></div>
+      <div class="skill-cat"><h3>Metodología</h3><p>Design Thinking · Legal Design · Automatización de procesos · Product-market fit · Investigación aplicada · Lean Startup</p></div>
+      <div class="skill-cat"><h3>Idiomas</h3><p>Español (nativo) · Inglés (avanzado · negociación comercial)</p></div>
+    </div>
+  </div>
+
+  <!-- FILOSOFÍA -->
+  <div class="section">
+    <h2>Filosofía</h2>
+    <div class="filosofia">
+      El humano piensa. La tecnología ejecuta. El humano revisa. La tecnología aprende. Mi trabajo es construir los sistemas para que ese ciclo ocurra sin fricción, combinando investigación, diseño de procesos y automatización con IA.
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>CV | Mayo 2026</span>
+    <span>p@wsc.lat · wsc.lat</span>
+  </div>
+
+</div>
+</body>
+</html>

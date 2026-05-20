@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WS Capital | Strategic Pitch Deck</title>
+    <link rel="icon" href="data:," />
+    <!-- Premium Fonts for Pitch Deck -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./pitch-deck.css" />
+    <style>
+      /* Smooth transitions for OS integration */
+      body {
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+      }
+      body.loaded {
+        opacity: 1;
+      }
+      .return-btn {
+        background: rgba(23, 20, 17, 0.05);
+        border: 1px solid rgba(77, 66, 53, 0.1);
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        color: var(--fg-secondary);
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+      .return-btn:hover {
+        background: var(--ws-rust);
+        color: white;
+        border-color: var(--ws-rust);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <div class="brand-lockup">
+            <div class="brand-mark"></div>
+            <div class="brand-copy">
+              <div class="brand-name">WS Capital</div>
+              <div class="brand-tag">Strategic Intelligence Unit</div>
+            </div>
+          </div>
+          <nav class="nav-row">
+            <a href="#proof">Proof</a>
+            <a href="#offers">Offers</a>
+            <a href="#proof-architecture">Map</a>
+            <a href="#founder-latam">Edge</a>
+            <a href="index.html" class="return-btn">Return to OS</a>
+            <a class="button button-primary" href="#close">See direction</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="section hero">
+          <div class="hero-halo hero-halo-left"></div>
+          <div class="hero-halo hero-halo-right"></div>
+          <div class="section-inner hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">Current purchase, visible mechanism, real pressure</span>
+              <h1 class="display">Turn overloaded work into runnable operational capacity.</h1>
+              <p class="lede">
+                WS Capital enters where real businesses already have work, but that work still leaks
+                through approvals, notes, spreadsheets, handoffs, and founder memory. The company
+                starts from the dominant bottleneck, maps the workflow, and turns it into a system that can actually close work.
+              </p>
+              <div class="button-row">
+                <a class="button button-primary" href="#offers">See current offers</a>
+                <a class="button button-secondary" href="#method">See the method</a>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="hero-board-top">
+                <span>WS Capital / opening mechanism</span>
+                <span>before + method + after</span>
+              </div>
+              <div class="hero-board-main">
+                <div class="hero-before-after">
+                  <div class="state-panel state-before">
+                    <div class="label">before</div>
+                    <div class="state-title">Tacit work is already expensive.</div>
+                    <div class="state-copy">Quoting, approvals, intake, documents, follow-through, and execution still live in people and scattered tools.</div>
+                  </div>
+                  <div class="state-panel state-method">
+                    <div class="label">method</div>
+                    <div class="state-title">Interview the work. Find the bottleneck. Adapt the system.</div>
+                    <div class="state-copy">Transcription, process extraction, memory, guardrails, human review, and real-tool execution.</div>
+                  </div>
+                  <div class="state-panel state-after">
+                    <div class="label">after</div>
+                    <div class="state-title">The buyer gets structure, continuity, and capacity.</div>
+                    <div class="state-copy">The workflow starts closing with less drag, less manual follow-through, and more usable output.</div>
+                  </div>
+                </div>
+
+                <div class="hero-system-board">
+                  <div class="system-step">
+                    <div class="step-label">state 01</div>
+                    <div class="step-title">Work lives in heads</div>
+                  </div>
+                  <div class="system-arrow">→</div>
+                  <div class="system-step">
+                    <div class="step-label">state 02</div>
+                    <div class="step-title">Workflow gets mapped</div>
+                  </div>
+                  <div class="system-arrow">→</div>
+                  <div class="system-step">
+                    <div class="step-label">state 03</div>
+                    <div class="step-title">System runs with review</div>
+                  </div>
+                </div>
+
+                <div class="hero-contradiction-strip">
+                  <div class="surface mini-signal">
+                    <div class="label">wrong category</div>
+                    <div class="heading heading-s">Not generic SaaS</div>
+                    <div class="muted">The business does not contort itself to fit a rigid product shell.</div>
+                  </div>
+                  <div class="surface mini-signal">
+                    <div class="label">wrong category</div>
+                    <div class="heading heading-s">Not generic chat</div>
+                    <div class="muted">The system owns memory, approvals, execution, and operating context.</div>
+                  </div>
+                  <div class="surface mini-signal">
+                    <div class="label">current purchase</div>
+                    <div class="heading heading-s">Operational capacity</div>
+                    <div class="muted">Buyers pay for structure that moves real work, not for AI theater.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="trust-band" id="proof">
+          <div class="section-inner trust-grid">
+            <div class="trust-intro">
+              <span class="eyebrow">Early proof band</span>
+              <h2 class="heading heading-s">Credibility lands early because the evidence is commercial, not decorative.</h2>
+              <p class="muted">
+                The page earns trust with a paid case, visible scope, implementation speed, and a concrete value moment.
+              </p>
+            </div>
+            <article class="trust-stat">
+              <div class="label">paid case</div>
+              <div class="stat-number">50,000 MXN</div>
+              <div class="muted">Paola paid once for a live multiagent implementation.</div>
+            </article>
+            <article class="trust-stat">
+              <div class="label">implementation speed</div>
+              <div class="stat-number">20 hours</div>
+              <div class="muted">Approximate internal implementation time for the first delivered system shape.</div>
+            </article>
+            <article class="trust-stat">
+              <div class="label">visible scope</div>
+              <div class="stat-number">5 agents</div>
+              <div class="muted">Sales, operations, HR, inventory, and direction with separate workspaces.</div>
+            </article>
+            <article class="trust-stat">
+              <div class="label">value felt</div>
+              <div class="stat-number">5 hours</div>
+              <div class="muted">Manual intake collapsed into quote, presentation, structured data, and next-step activation.</div>
+            </article>
+          </div>
+        </div>
+
+        <section class="section section-block alt" id="case-loop">
+          <div class="section-inner">
+            <div class="section-heading-wrap">
+              <div>
+                <span class="eyebrow">Case proof</span>
+                <h2 class="heading">Paola makes the value visible without collapsing the company into one module.</h2>
+              </div>
+              <p class="lede">
+                The point is not that WS Capital is a sales product. The point is that one painful bottleneck
+                was turned from manual intake into structured operation fast enough for the value to become obvious.
+              </p>
+            </div>
+
+            <div class="case-layout">
+              <div class="diagram-surface case-diagram-surface">
+                <svg viewBox="0 0 1180 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paola bottleneck proof diagram">
+                  <rect width="1180" height="640" rx="26" fill="#fbf8f1"/>
+                  <text x="62" y="70" font="12px IBM Plex Mono, monospace" letter-spacing="0.08em" fill="#6c6156">case proof / value moment</text>
+                  <text x="62" y="120" font="38px Fraunces, Georgia, serif" fill="#171411">One intake becomes an operating package</text>
+                  <rect x="72" y="176" width="248" height="360" rx="26" fill="rgba(169,85,44,.10)" stroke="rgba(169,85,44,.42)"/>
+                  <text x="108" y="220" font="12px IBM Plex Mono, monospace" fill="#6c6156">before / bottleneck</text>
+                  <text x="108" y="266" font="28px Fraunces, Georgia, serif" fill="#171411">Commercial call + manual drag</text>
+                  <text x="108" y="304" font="17px IBM Plex Sans, Arial, sans-serif" fill="#171411">Notes, pricing logic, follow-up, spreadsheets, and next actions still sit on one operator.</text>
+                  <rect x="422" y="204" width="332" height="304" rx="26" fill="#241d17"/>
+                  <text x="458" y="244" font="12px IBM Plex Mono, monospace" fill="rgba(255,253,248,.62)">method / transformation rail</text>
+                  <text x="458" y="290" font="30px Fraunces, Georgia, serif" fill="#fffdf8">Transcribe</text>
+                  <text x="458" y="334" font="30px Fraunces, Georgia, serif" fill="#fffdf8">Extract process</text>
+                  <text x="458" y="378" font="30px Fraunces, Georgia, serif" fill="#fffdf8">Generate assets</text>
+                  <text x="458" y="422" font="30px Fraunces, Georgia, serif" fill="#fffdf8">Trigger workflow</text>
+                  <text x="458" y="470" font="16px IBM Plex Sans, Arial, sans-serif" fill="rgba(255,253,248,.72)">This proves the dominant-bottleneck method. It does not prove a universal sales module.</text>
+                  <rect x="860" y="176" width="248" height="360" rx="26" fill="rgba(51,95,86,.12)" stroke="rgba(51,95,86,.42)"/>
+                  <text x="896" y="220" font="12px IBM Plex Mono, monospace" fill="#6c6156">after / structured operation</text>
+                  <text x="896" y="266" font="28px Fraunces, Georgia, serif" fill="#171411">Quote + presentation + data + agenda</text>
+                  <text x="896" y="304" font="17px IBM Plex Sans, Arial, sans-serif" fill="#171411">The value feels obvious because the output is operationally useful immediately.</text>
+                  <path d="M320 356 H404" stroke="#8f806d" stroke-width="3" fill="none"/>
+                  <path d="M754 356 H842" stroke="#8f806d" stroke-width="3" fill="none"/>
+                  <circle cx="372" cy="356" r="10" fill="#a9552c"/>
+                  <circle cx="798" cy="356" r="10" fill="#335f56"/>
+                </svg>
+              </div>
+              <div class="case-rail">
+                <article class="surface proof-card">
+                  <div class="label">what this proves</div>
+                  <div class="heading heading-s">The bottleneck can be found and moved fast.</div>
+                  <div class="muted">What generalizes is the method for finding the bottleneck, not the exact module that surfaced in one case.</div>
+                </article>
+                <article class="surface proof-card">
+                  <div class="label">what the buyer felt</div>
+                  <div class="heading heading-s">The intake stopped being dead work.</div>
+                  <div class="muted">One conversation started producing quote, presentation, structured data, agenda, and workflow activation.</div>
+                </article>
+                <article class="surface proof-card">
+                  <div class="label">what stays bounded</div>
+                  <div class="heading heading-s">Paola is proof of method, not total category definition.</div>
+                  <div class="muted">The company cannot be reduced to sales automation just because that was the clearest first value moment.</div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- [Following sections unchanged from original protocol content] -->
+         <section class="section section-block" id="buyers">
+          <div class="section-inner">
+            <div class="section-heading-wrap">
+              <div>
+                <span class="eyebrow">Buyer fit / market layer</span>
+                <h2 class="heading">The right buyer already knows the work and already feels the pressure.</h2>
+              </div>
+              <p class="lede">
+                This is not a flat audience and not a generic “AI for business” page. The opening is for operators whose work is already real, already tacit, and already expensive to carry manually.
+              </p>
+            </div>
+
+            <div class="buyer-layout">
+              <div class="diagram-surface">
+                <svg viewBox="0 0 960 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Buyer eligibility layers diagram">
+                  <rect width="960" height="680" rx="24" fill="#fbf8f1"/>
+                  <text x="56" y="68" font="12px IBM Plex Mono, monospace" letter-spacing="0.08em" fill="#6c6156">market layers / buyer eligibility</text>
+                  <text x="56" y="118" font="38px Fraunces, Georgia, serif" fill="#171411">Ordered layers, not one flat market</text>
+                  <rect x="84" y="166" width="792" height="128" rx="24" fill="rgba(169,85,44,.14)" stroke="rgba(169,85,44,.56)" />
+                  <rect x="132" y="330" width="696" height="118" rx="22" fill="rgba(51,95,86,.12)" stroke="rgba(51,95,86,.46)" />
+                  <rect x="186" y="486" width="588" height="96" rx="20" fill="rgba(178,140,45,.14)" stroke="rgba(178,140,45,.46)" />
+                  <text x="118" y="210" font="12px IBM Plex Mono, monospace" fill="#6c6156">layer 01 / buy now</text>
+                  <text x="164" y="254" font="28px Fraunces, Georgia, serif" fill="#171411">Solopreneurs and operators who already know how the work runs</text>
+                  <text x="166" y="286" font="16px IBM Plex Sans, Arial, sans-serif" fill="#171411">They need multiplication, continuity, and follow-through now.</text>
+                  <text x="164" y="370" font="12px IBM Plex Mono, monospace" fill="#6c6156">layer 02 / expand through roles</text>
+                  <text x="204" y="412" font="26px Fraunces, Georgia, serif" fill="#171411">Dense SMB workflows with approvals, documents, handoffs, and role-specific pressure</text>
+                  <text x="204" y="444" font="16px IBM Plex Sans, Arial, sans-serif" fill="#171411">The company expands where the workflow already exists and the coordination burden is visible.</text>
+                  <text x="220" y="524" font="12px IBM Plex Mono, monospace" fill="#6c6156">not the opening</text>
+                  <text x="248" y="560" font="22px Fraunces, Georgia, serif" fill="#171411">People still guessing their process, generic audiences, or future-platform buyers</text>
+                </svg>
+              </div>
+              <div class="buyer-grid">
+                <article class="buyer-card">
+                  <div class="label">for whom yes</div>
+                  <div class="heading-s">Operator with tacit knowledge</div>
+                  <div class="muted">The workflow already exists in enough detail to be captured and adapted.</div>
+                </article>
+                <article class="buyer-card">
+                  <div class="label">for whom yes</div>
+                  <div class="heading-s">Small business with real coordination drag</div>
+                  <div class="muted">Approvals, documents, quotes, and follow-through already create daily friction.</div>
+                </article>
+                <article class="buyer-card">
+                  <div class="label">for whom no</div>
+                  <div class="heading-s">Founder still inventing the work</div>
+                  <div class="muted">If the process is not stable yet, there is nothing serious enough to turn into a system.</div>
+                </article>
+                <article class="buyer-card">
+                  <div class="label">why now</div>
+                  <div class="heading-s">The pain is already current</div>
+                  <div class="muted">That keeps the page commercial instead of speculative and keeps the offer grounded in current need.</div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-block alt" id="method">
+          <div class="section-inner">
+            <div class="section-heading-wrap">
+              <div>
+                <span class="eyebrow">Method</span>
+                <h2 class="heading">The dominant-bottleneck method shows state change instead of stack theater.</h2>
+              </div>
+              <p class="lede">
+                The company does not start from a module. It starts from interview, onboarding, workflow diagnosis, and the pressure point that is actually destroying leverage inside the business.
+              </p>
+            </div>
+
+            <div class="method-layout">
+              <div class="diagram-surface">
+                <svg viewBox="0 0 1120 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Workflow transformation diagram">
+                  <rect width="1120" height="520" rx="24" fill="#fbf8f1"/>
+                  <text x="64" y="70" font="12px IBM Plex Mono, monospace" letter-spacing="0.08em" fill="#6c6156">workflow transformation / system visual</text>
+                  <text x="64" y="116" font="36px Fraunces, Georgia, serif" fill="#171411">From tacit pressure to runnable structure</text>
+                  <path d="M110 310 H1010" stroke="#8f806d" stroke-width="2" fill="none"/>
+                  <rect x="92" y="224" width="166" height="120" rx="18" fill="rgba(251,248,241,.92)" stroke="rgba(77,66,53,.18)"/>
+                  <text x="118" y="252" font="12px IBM Plex Mono, monospace" fill="#6c6156">state 01</text>
+                  <text x="118" y="286" font="22px Fraunces, Georgia, serif" fill="#171411">Tacit workflow</text>
+                  <text x="118" y="314" font="15px IBM Plex Sans, Arial, sans-serif" fill="#171411">Calls, notes, approvals, documents, handoffs</text>
+                  <rect x="304" y="236" width="150" height="96" rx="16" fill="rgba(169,85,44,.08)" stroke="rgba(169,85,44,.46)"/>
+                  <text x="334" y="268" font="20px Fraunces, Georgia, serif" fill="#171411">Transcribe</text>
+                  <rect x="488" y="236" width="150" height="96" rx="16" fill="rgba(51,95,86,.10)" stroke="rgba(51,95,86,.42)"/>
+                  <text x="508" y="268" font="20px Fraunces, Georgia, serif" fill="#171411">Extract process</text>
+                  <rect x="672" y="236" width="150" height="96" rx="16" fill="rgba(178,140,45,.12)" stroke="rgba(178,140,45,.42)"/>
+                  <text x="698" y="268" font="20px Fraunces, Georgia, serif" fill="#171411">Adapt system</text>
+                  <rect x="856" y="196" width="188" height="164" rx="22" fill="#241d17" stroke="rgba(255,253,248,.08)"/>
+                  <text x="886" y="232" font="12px IBM Plex Mono, monospace" fill="rgba(255,253,248,.62)">state 02 / runnable</text>
+                  <text x="886" y="282" font="28px Fraunces, Georgia, serif" fill="#fffdf8">Memory</text>
+                  <text x="886" y="318" font="28px Fraunces, Georgia, serif" fill="#fffdf8">Review</text>
+                  <text x="886" y="354" font="28px Fraunces, Georgia, serif" fill="#fffdf8">Execution</text>
+                  <text x="884" y="392" font="15px IBM Plex Sans, Arial, sans-serif" fill="rgba(255,253,248,.72)">Real tools. Human gates. Operational continuity.</text>
+                  <rect x="550" y="168" width="26" height="26" rx="6" fill="rgba(169,85,44,.16)" stroke="rgba(169,85,44,.58)"/>
+                  <text x="538" y="154" font="12px IBM Plex Mono, monospace" fill="#6c6156">dominant bottleneck gate</text>
+                </svg>
+              </div>
+              <div class="method-rail">
+                <article class="method-note">
+                  <div class="label">rule</div>
+                  <div class="heading-s">Start from the real bottleneck</div>
+                  <div class="muted">The system adapts around the pain point instead of forcing a pre-built software category onto the business.</div>
+                </article>
+                <article class="method-note">
+                  <div class="label">rule</div>
+                  <div class="heading-s">Keep human review visible</div>
+                  <div class="muted">The implementation feels serious because control remains visible in the workflow.</div>
+                </article>
+                <article class="method-note">
+                  <div class="label">rule</div>
+                  <div class="heading-s">Show state change, not stack depth</div>
+                  <div class="muted">The diagram exists to prove operating transformation, not to advertise technical machinery.</div>
+                </article>
+                <article class="method-note">
+                  <div class="label">rule</div>
+                  <div class="heading-s">Personalization is part of the value</div>
+                  <div class="muted">The company wins because it fits the workflow to the business, not the business to the product.</div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-block" id="offers">
+          <div class="section-inner">
+            <div class="section-heading-wrap">
+              <div>
+                <span class="eyebrow">Current offers</span>
+                <h2 class="heading">NEO and Paperclip are the current packaging of the value, not the company’s whole identity.</h2>
+              </div>
+              <p class="lede">
+                The page names the two sellable offers clearly, while keeping them downstream of the broader logic: operational capacity gained by diagnosing and adapting around the dominant bottleneck.
+              </p>
+            </div>
+
+            <div class="offer-layout">
+              <div class="offer-stack">
+                <article class="offer-panel">
+                  <div class="offer-panel-header">
+                    <div>
+                      <div class="label">current offer / layer 01</div>
+                      <div class="heading heading-s">NEO</div>
+                    </div>
+                    <div class="offer-price">800 USD</div>
+                  </div>
+                  <p class="muted">
+                    Built for the overloaded solopreneur or founder-operator who needs continuity, memory, follow-through, and administrative relief without rebuilding the company around software.
+                  </p>
+                  <ul class="bullet-list">
+                    <li>Best when one operator is holding too much context alone.</li>
+                    <li>Value is felt quickly because the pain is already personal and repetitive.</li>
+                    <li>Acts as the first packaging of the broader operating method.</li>
+                  </ul>
+                </article>
+
+                <article class="offer-panel">
+                  <div class="offer-panel-header">
+                    <div>
+                      <div class="label">current offer / layer 02</div>
+                      <div class="heading heading-s">Paperclip multiagent systems</div>
+                    </div>
+                    <div class="offer-price">2500 USD</div>
+                  </div>
+                  <p class="muted">
+                    Expands the same implementation logic into role-based teams and dense SMB workflows where approvals, documents, and execution need to move under structure.
+                  </p>
+                  <ul class="bullet-list">
+                    <li>Best when the workflow already spans roles, handoffs, approvals, and documents.</li>
+                    <li>Supports separate workspaces, review gates, and execution inside real tools.</li>
+                    <li>Still sells current operational capacity, not future-platform ambition.</li>
+                  </ul>
+                </article>
+              </div>
+
+              <div class="editorial-surface">
+                <div class="offer-bridge">
+                  <span class="eyebrow">Shared implementation rail</span>
+                  <h3 class="heading heading-s">Both offers come from one operating method.</h3>
+                  <p class="muted">
+                    Transcription-led onboarding, process extraction, adaptation, memory, guardrails,
+                    human review, and execution over real tools. The product line feels coherent because the same method sits underneath both offers.
+                  </p>
+                </div>
+                <div class="stack-5 mt-5">
+                  <div class="surface proof-card">
+                    <span class="label">what this section avoids</span>
+                    <div class="heading heading-s">No SaaS pricing-table behavior</div>
+                    <div class="muted">These are sellable offers, but they are not generic product tiers detached from the method.</div>
+                  </div>
+                  <div class="surface proof-card">
+                    <span class="label">what stays visible</span>
+                    <div class="heading heading-s">The offers do not erase the broader logic</div>
+                    <div class="muted">What the buyer buys is still highly personalized operational capacity fitted to the workflow.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-block alt" id="proof-architecture">
+          <div class="section-inner">
+            <div class="section-heading-wrap">
+              <div>
+                <span class="eyebrow">Proof architecture</span>
+                <h2 class="heading">What is sold now, what proves delivery, and what only supports repeatability are not the same thing.</h2>
+              </div>
+              <p class="lede">
+                The company already has proof across contexts, but the proof categories are uneven. This section separates product proof, usage proof, founder proof, support/moat, and the still-weak buyer-proof packaging.
+              </p>
+            </div>
+
+            <div class="proof-architecture-layout">
+              <div class="diagram-surface proof-hierarchy-surface">
+                <svg viewBox="0 0 1180 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Proof hierarchy diagram">
+                  <rect width="1180" height="720" rx="28" fill="#fbf8f1"/>
+                  <text x="60" y="72" font="12px IBM Plex Mono, monospace" letter-spacing="0.08em" fill="#6c6156">proof hierarchy / what counts and what does not</text>
+                  <text x="60" y="122" font="38px Fraunces, Georgia, serif" fill="#171411">Commercial proof, delivery proof, and support proof stay separate</text>
+                  <rect x="74" y="178" width="1032" height="126" rx="26" fill="rgba(169,85,44,.12)" stroke="rgba(169,85,44,.46)"/>
+                  <text x="108" y="220" font="12px IBM Plex Mono, monospace" fill="#6c6156">sold now / product proof</text>
+                  <text x="108" y="264" font="30px Fraunces, Georgia, serif" fill="#171411">NEO + Paperclip multiagent systems</text>
+                  <text x="108" y="296" font="17px IBM Plex Sans, Arial, sans-serif" fill="#171411">These are the current offers and the only things that should read like present-tense product packaging.</text>
+                  <rect x="126" y="352" width="928" height="124" rx="24" fill="rgba(51,95,86,.12)" stroke="rgba(51,95,86,.42)"/>
+                  <text x="158" y="392" font="12px IBM Plex Mono, monospace" fill="#6c6156">delivery + usage proof</text>
+                  <text x="158" y="436" font="28px Fraunces, Georgia, serif" fill="#171411">Paola, Willow, Sistema We Law</text>
+                  <text x="158" y="468" font="17px IBM Plex Sans, Arial, sans-serif" fill="#171411">Cross-context evidence that the method adapts across legal, events, and operations-heavy workflows.</text>
+                  <rect x="204" y="520" width="772" height="120" rx="22" fill="rgba(178,140,45,.14)" stroke="rgba(178,140,45,.46)"/>
+                  <text x="238" y="560" font="12px IBM Plex Mono, monospace" fill="#6c6156">support / moat / repeatability support</text>
+                  <text x="238" y="602" font="26px Fraunces, Georgia, serif" fill="#171411">Paperclip Master + welaw-web</text>
+                  <text x="238" y="632" font="16px IBM Plex Sans, Arial, sans-serif" fill="#171411">Important for leverage and repeatability, but not a substitute for buyer proof.</text>
+                </svg>
+              </div>
+
+              <div class="proof-architecture-rail">
+                <article class="surface proof-card">
+                  <div class="label">product proof</div>
+                  <div class="heading heading-s">NEO and the multiagent product class exist now.</div>
+                  <div class="muted">NEO proves the wedge product. Paola and Willow prove the multiagent offer as a current product class, not a theoretical service idea.</div>
+                </article>
+                <article class="surface proof-card">
+                  <div class="label">usage proof</div>
+                  <div class="heading heading-s">The method already runs in live workflows.</div>
+                  <div class="muted">Legal intake, documents, approvals, quoting, operations, inventory, finance, and coordination all show cross-context delivery depth.</div>
+                </article>
+                <article class="surface proof-card">
+                  <div class="label">founder proof</div>
+                  <div class="heading heading-s">Founder proof is stronger than buyer-proof packaging.</div>
+                  <div class="muted">The founder clearly knows how to build and adapt these systems, but the commercial packaging of buyer proof still needs to get cleaner.</div>
+                </article>
+                <article class="surface proof-card">
+                  <div class="label">support / moat</div>
+                  <div class="heading heading-s">Tooling supports repeatability but should not front-run the story.</div>
+                  <div class="muted">Paperclip Master and welaw-web matter because they improve setup, orchestration, and review, not because they are the opening product.</div>
+                </article>
+                <article class="surface proof-card">
+                  <div class="label">what stays weak</div>
+                  <div class="heading heading-s">Buyer proof is the weakest layer.</div>
+                  <div class="muted">Pricing is explicit and delivery proof is real, but the package still needs tighter named buyer-proof packaging across the current offer line.</div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-block" id="founder-latam">
+          <div class="section-inner">
+            <div class="section-heading-wrap">
+              <div>
+                <span class="eyebrow">Founder + LatAm edge</span>
+                <h2 class="heading">The edge is not abstract AI enthusiasm. It is operator pattern recognition in the exact market this product serves.</h2>
+              </div>
+              <p class="lede">
+                The founder advantage and the LatAm advantage reinforce each other: deep implementation range, legal and compliance depth, and proximity to the messy workflows that rigid software usually misses.
+              </p>
+            </div>
+
+            <div class="advantage-layout">
+              <div class="diagram-surface comparison-surface">
+                <div class="comparison-board">
+                  <div class="comparison-panel">
+                    <div class="label">founder advantage</div>
+                    <div class="heading heading-s">Pablo sees the operating pattern, not just the tooling layer.</div>
+                    <ul class="bullet-list">
+                      <li>Operator pattern recognition across messy service and operations-heavy businesses.</li>
+                      <li>Legal, compliance, and implementation depth that makes structured workflows believable.</li>
+                      <li>Repeated adaptation across more than one operating context.</li>
+                      <li>Real founder edge with explicit current dependence still visible.</li>
+                    </ul>
+                  </div>
+                  <div class="comparison-panel">
+                    <div class="label">latam edge</div>
+                    <div class="heading heading-s">This closes specifically because the LatAm fit is real today.</div>
+                    <ul class="bullet-list">
+                      <li>Cost advantage versus alternatives that still require headcount or expensive implementation.</li>
+                      <li>Timing advantage because these workflows are ready for help now.</li>
+                      <li>Product fit for businesses too messy for rigid SaaS and too operationally important for generic chat.</li>
+                      <li>Market understanding that comes from proximity to the reality of these operators.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="advantage-rail">
+                <article class="surface proof-card">
+                  <div class="label">why this matters</div>
+                  <div class="heading heading-s">The founder can actually enter the workflow.</div>
+                  <div class="muted">That is what makes the diagnosis and adaptation credible rather than performative.</div>
+                </article>
+                <article class="surface proof-card">
+                  <div class="label">honesty boundary</div>
+                  <div class="heading heading-s">Founder edge is real. Founder dependence is still partial.</div>
+                  <div class="muted">The page keeps both truths alive: this business already has real capability, but the founder still carries meaningful parts of diagnosis and delivery.</div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-block alt" id="trajectory">
+          <div class="section-inner">
+            <div class="section-heading-wrap">
+              <div>
+                <span class="eyebrow">Company today vs future company</span>
+                <h2 class="heading">Today WS Capital sells systems and operational capacity Over time it can become a stronger infrastructure for finding and strengthening the best operators in LatAm.</h2>
+              </div>
+              <p class="lede">
+                The future only makes sense because the current wedge is real. The company cannot skip from bespoke-looking delivery to investment language without passing through more templates, more validation, and deeper operating visibility first.
+              </p>
+            </div>
+
+            <div class="trajectory-layout">
+              <div class="comparison-surface">
+                <div class="trajectory-columns">
+                  <div class="trajectory-column trajectory-now">
+                    <div class="label">today</div>
+                    <div class="heading heading-s">What the company is now</div>
+                    <ul class="bullet-list">
+                      <li>Highly personalized automation, digital employees, and operational capacity.</li>
+                      <li>Diagnosis + implementation around the dominant bottleneck.</li>
+                      <li>Current sellable products: NEO and Paperclip multiagent systems.</li>
+                      <li>Proof anchored in live delivery and current buyer logic.</li>
+                    </ul>
+                  </div>
+                  <div class="trajectory-arrow">→</div>
+                  <div class="trajectory-column trajectory-future">
+                    <div class="label">future</div>
+                    <div class="heading heading-s">What it can become</div>
+                    <ul class="bullet-list">
+                      <li>More templates and faster adaptation across more contexts.</li>
+                      <li>Cross-industry validation and deeper operating visibility.</li>
+                      <li>Stronger ability to identify which operators and businesses are exceptional.</li>
+                      <li>An eventual investment layer built on real operating evidence rather than abstract thesis language.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="trajectory-rail">
+                <article class="surface proof-card">
+                  <div class="label">structural idea</div>
+                  <div class="heading heading-s">The company is learning from deployments, not fantasizing beyond them.</div>
+                  <div class="muted">That is why the future reads as a sequence of growing visibility and stronger judgment, not as a slogan about becoming a platform or a fund overnight.</div>
+                </article>
+                <article class="surface proof-card">
+                  <div class="label">boundary</div>
+                  <div class="heading heading-s">The future cannot eat the current purchase.</div>
+                  <div class="muted">The page keeps the sellable present tense clear so the ambition feels earned instead of inflated.</div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-block" id="status-map">
+          <div class="section-inner">
+            <div class="section-heading-wrap">
+              <div>
+                <span class="eyebrow">Proven / partial / future</span>
+                <h2 class="heading">A serious homepage makes the proof boundary explicit.</h2>
+              </div>
+              <p class="lede">
+                This is not a weakness section. It is a confidence section. The company feels stronger when the proof line is drawn carefully instead of smoothed away.
+              </p>
+            </div>
+
+            <div class="status-layout">
+              <article class="status-column status-proven">
+                <div class="label">proven</div>
+                <div class="heading heading-s">What is already real</div>
+                <ul class="bullet-list">
+                  <li>Implementation model built around interview, process extraction, adaptation, review, and execution.</li>
+                  <li>Live cases across more than one workflow context.</li>
+                  <li>Current purchase logic: buyers want personalized operational capacity now.</li>
+                </ul>
+              </article>
+              <article class="status-column status-partial">
+                <div class="label">partial</div>
+                <div class="heading heading-s">What is directionally real but still uneven</div>
+                <ul class="bullet-list">
+                  <li>Broader repeatability beyond the founder.</li>
+                  <li>Cleaner packaged buyer proof across the current two-offer line.</li>
+                  <li>Adoption quality and post-deployment consistency.</li>
+                </ul>
+              </article>
+              <article class="status-column status-future">
+                <div class="label">future</div>
+                <div class="heading heading-s">What should stay future-tense</div>
+                <ul class="bullet-list">
+                  <li>Investment thesis as a present-tense story.</li>
+                  <li>Deep compound advantage from repeated operating visibility.</li>
+                  <li>A stronger infrastructure for identifying exceptional operators at scale.</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-block close-section" id="close">
+          <div class="section-inner strategic-close-layout">
+            <div class="close-panel strategic-close-panel">
+              <div class="stack-5">
+                <span class="eyebrow">Strategic close</span>
+                <h2 class="display">WS Capital is building the operating infrastructure to work with, strengthen, and eventually recognize the best operators in Latin America.</h2>
+                <p class="lede">
+                  Today that means selling systems, digital employees, and operational capacity to businesses whose work already exists and already hurts. Over time, each deployment can also increase the company’s ability to see which workflows, teams, and operators are truly exceptional.
+                </p>
+                <p class="close-bridge">
+                  The ambition is bigger than automation, but it stays grounded in the current product: start with the bottleneck, make the work runnable, learn from real operators, and let that operating visibility compound before anything else tries to sit on top of it.
+                </p>
+              </div>
+              <div class="cta-inline">
+                <a class="button button-primary" href="#proof-architecture">Review the proof map</a>
+                <a class="button button-secondary" href="index.html">Return to OS</a>
+              </div>
+            </div>
+
+            <div class="close-support-rail">
+              <article class="surface proof-card">
+                <div class="label">what this means now</div>
+                <div class="heading heading-s">Current wedge first</div>
+                <div class="muted">The company still wins or loses first on current products, current buyers, current implementation, and current proof.</div>
+              </article>
+              <article class="surface proof-card">
+                <div class="label">what this points toward</div>
+                <div class="heading heading-s">Stronger judgment through repeated deployments</div>
+                <div class="muted">Each implementation can strengthen templates, market reading, and the company’s ability to see which operators are genuinely worth backing later.</div>
+              </article>
+              <article class="surface proof-card">
+                <div class="label">cta</div>
+                <div class="heading heading-s">Start with the work that already exists.</div>
+                <div class="muted">That is the sober way into the larger vision and the right way to understand the company today.</div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      // Smooth fade-in
+      window.onload = () => {
+        document.body.classList.add('loaded');
+      };
+
+      // Handle internal smooth scrolls
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+              const target = document.querySelector(this.getAttribute('href'));
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+              }
+          });
+      });
+    </script>
+  </body>
+</html>
