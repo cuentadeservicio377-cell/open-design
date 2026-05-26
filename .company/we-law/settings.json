@@ -1,21 +1,116 @@
 {
-  "_status": "PLACEHOLDER — esperando brief de We Law",
-  "_note": "Este archivo se llenará cuando Pablo envíe la información de We Law",
+  "_status": "Completo — datos extraídos del sitio real welaw.com.mx",
+  "_last_updated": "2026-05-20",
 
   "company": "We Law",
-  "tagline": "",
+  "tagline": "Documentamos tus procesos y los convertimos en protección legal",
   "design_system": "we-law",
-  "brief_file": ".company/we-law/brief.md",
-  "site_url": "",
 
-  "brand": {
-    "palette": "",
-    "colors": {},
-    "fonts": {}
+  "contact": {
+    "email": "hola@welaw.com.mx",
+    "phone": "+52 33 1146 2523",
+    "location": "Guadalajara, Jalisco, México"
   },
 
-  "pricing": {},
-  "product": {},
-  "tone": "",
-  "icp": ""
+  "urls": {
+    "site": "https://welaw.com.mx",
+    "instagram": "https://www.instagram.com/welawofficial/",
+    "tiktok": "https://www.tiktok.com/@welawofficial",
+    "facebook": "https://www.facebook.com/people/We-Law/61576333265810/",
+    "linkedin": "https://www.linkedin.com/company/we-lawmx/"
+  },
+
+  "brand": {
+    "palette": "gold-navy",
+    "colors": {
+      "primary": "#0A192F",
+      "primary_name": "Deep Navy",
+      "accent": "#9D773C",
+      "accent_name": "Gold Bronze",
+      "secondary": "#E2E8F0",
+      "text": "#2C2C2C",
+      "offwhite": "#F4F4F2",
+      "gold_light": "#C5A370",
+      "gold_warm": "#977D56",
+      "slate": "#44566E",
+      "card_bg": "#F3F7FD",
+      "bg_light": "#FBFBFB"
+    },
+    "fonts": {
+      "heading": "Poppins",
+      "heading_weights": [700, 900],
+      "body": "Roboto",
+      "body_weights": [400, 500, 600]
+    },
+    "logo": {
+      "primary": "IMAGOTIPO-FINAL-SF-200.png",
+      "favicon": "FAVICON.png",
+      "url": "https://welaw.com.mx/wp-content/uploads/2025/08/IMAGOTIPO-FINAL-SF-200.png"
+    }
+  },
+
+  "tech_stack": {
+    "cms": "WordPress 6.9.4",
+    "page_builder": "Elementor 3.31.3",
+    "addons": "Royal Elementor Addons 1.7.1031",
+    "theme": "Royal Elementor Kit",
+    "plugins": [
+      "Essential Addons for Elementor 6.3.0",
+      "Yoast SEO Premium 25.6"
+    ],
+    "tracking": {
+      "meta_pixel_id": "1037775138445157"
+    }
+  },
+
+  "business_model": {
+    "entry_point": "Diagnóstico gratuito 20 min",
+    "methodology": "Legal Design + Design Thinking",
+    "process_steps": [
+      "Diagnóstico y Propuesta",
+      "Workshop Colaborativo",
+      "Diseño de Documentos",
+      "Entrega y Capacitación"
+    ],
+    "industries": [
+      "Desarrolladores de Software",
+      "Estudios de Arquitectura y Diseño",
+      "Agencias de Marketing",
+      "Empresas de Distribución y Venta",
+      "Empresas de Servicios",
+      "Departamentos Jurídicos Internos"
+    ],
+    "price_range": {
+      "min": 2500,
+      "max": 7000,
+      "currency": "MXN",
+      "note": "Precios de referencia de docs de estrategia. Sitio no muestra precios públicos."
+    }
+  },
+
+  "tone": {
+    "personality": "El amigo inteligente que explica lo complejo en sencillo",
+    "attributes": ["directo", "cálido", "práctico", "mexicano", "empoderador"],
+    "anti_tone": ["miedo", "vergüenza", "culpa", "ansiedad", "abogadés", "condescendencia"]
+  },
+
+  "marketing": {
+    "meta_ads_monthly_budget_mxn": 18000,
+    "expected_leads_monthly": "225-450",
+    "cpl_target_mxn": "40-80",
+    "close_rate": "15%",
+    "cac_target_mxn": "<500",
+    "avg_ticket_mxn": "5000-5500",
+    "roas_target": "11x+"
+  },
+
+  "files": {
+    "brief": ".company/we-law/brief.md",
+    "design_system": "design-systems/we-law/DESIGN.md",
+    "brain": ".company/we-law/brain.md",
+    "research_docs": [
+      "WeLaw/Estrategia_Marketing_Despacho_Legal.docx",
+      "WeLaw/Creative_Direction_System.docx"
+    ]
+  }
 }

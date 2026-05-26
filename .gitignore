@@ -54,3 +54,27 @@ specs/change/active
 
 # Local design assistant context
 .impeccable.md
+
+# Personal files — keep local, never commit
+CV Pablo Meneses*.html
+CV Pablo Meneses*.md
+edited_image.png
+od-*.png
+wsc-lat-live.png
+
+# Client proposals & documents (local only)
+arza-plan-trabajo.*
+carta-nous-research.*
+propuesta-*.*
+para-nous/
+recuperados/
+
+# Duplicate/sandbox directories
+WeLaw/
+
+# Other agent configs (not part of OD+OpenCode flow)
+.kimi/
+
+# Vendor: prevent accidental commits of generated/build files
+vendor/gstack/node_modules/
+vendor/gstack/browse/dist/

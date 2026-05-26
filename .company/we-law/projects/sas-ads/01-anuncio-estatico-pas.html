@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Law — SAS Estático Directo con Precio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px; height: 1080px;
+    background: #0A192F;
+    font-family: 'Roboto', sans-serif;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+
+  /* Gold accent line top */
+  .accent-line {
+    width: 100%; height: 6px;
+    background: linear-gradient(90deg, #C5A370 0%, #9D773C 100%);
+  }
+
+  /* Badge */
+  .badge {
+    position: absolute; top: 30px; right: 30px;
+    background: rgba(157, 119, 60, 0.15);
+    border: 1px solid #9D773C;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: #C5A370;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* Main content area */
+  .content {
+    flex: 1;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    position: relative;
+  }
+
+  /* Hook line */
+  .hook {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px; font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .hook .gold {
+    color: #9D773C;
+  }
+
+  /* Sub-hook */
+  .sub-hook {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px; font-weight: 600;
+    color: #E2E8F0;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    max-width: 700px;
+  }
+
+  /* Pain point box */
+  .pain-box {
+    background: rgba(226, 232, 240, 0.08);
+    border-left: 4px solid #9D773C;
+    border-radius: 0 8px 8px 0;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+  }
+  .pain-box p {
+    font-size: 18px; font-weight: 500;
+    color: #E2E8F0;
+    line-height: 1.6;
+  }
+  .pain-box .stat {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #9D773C;
+    font-size: 20px;
+  }
+
+  /* Solution */
+  .solution {
+    margin-bottom: 36px;
+  }
+  .solution-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px; font-weight: 700;
+    color: #C5A370;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .solution-list {
+    list-style: none;
+  }
+  .solution-list li {
+    font-size: 17px; font-weight: 500;
+    color: #FFFFFF;
+    padding: 6px 0;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .solution-list li::before {
+    content: '✓';
+    color: #9D773C;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  /* Price */
+  .price-area {
+    display: flex; align-items: baseline; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .price-from {
+    font-size: 16px; color: #E2E8F0;
+    font-weight: 500;
+  }
+  .price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px; font-weight: 900;
+    color: #9D773C;
+  }
+  .price-note {
+    font-size: 14px; color: #E2E8F0;
+    font-weight: 400;
+  }
+
+  /* CTA */
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(70deg, #C5A370 0%, #9D773C 100%);
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 2px;
+    border: none;
+    text-decoration: none;
+  }
+  .cta-sub {
+    font-size: 13px; color: #E2E8F0;
+    margin-top: 8px;
+    font-weight: 400;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    padding: 20px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(226, 232, 240, 0.1);
+  }
+  .logo-area {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: #9D773C;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900; font-size: 18px;
+    color: #0A192F;
+  }
+  .logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: #FFFFFF;
+  }
+  .url {
+    font-size: 14px; color: #9D773C;
+    font-weight: 500;
+  }
+
+  /* Decorative element */
+  .deco-circle {
+    position: absolute;
+    bottom: -120px; right: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 1px solid rgba(157, 119, 60, 0.12);
+  }
+  .deco-circle-2 {
+    position: absolute;
+    bottom: -60px; right: -20px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(157, 119, 60, 0.08);
+  }
+</style>
+</head>
+<body>
+
+<div class="accent-line"></div>
+
+<div class="badge">SIN PAPELEO · TODO POR VIDEOLLAMADA</div>
+
+<div class="content">
+  <div class="hook">
+    En México hacemos negocios<br>
+    <span class="gold">de palabra.</span>
+  </div>
+  <div class="sub-hook">
+    Hasta que la palabra no alcanza.
+  </div>
+
+  <div class="pain-box">
+    <p>
+      <span class="stat">92%</span> de los emprendedores reportan clientes que no pagan.
+      Sin contrato, no hay cómo cobrar.
+    </p>
+  </div>
+
+  <div class="solution">
+    <div class="solution-label">Tu paquete incluye</div>
+    <ul class="solution-list">
+      <li>Contrato de prestación de servicios</li>
+      <li>Términos y condiciones</li>
+      <li>Aviso de privacidad (LFPDPPP)</li>
+    </ul>
+  </div>
+
+  <div class="price-area">
+    <span class="price-from">Desde</span>
+    <span class="price">$3,500</span>
+    <span class="price-note">MXN</span>
+  </div>
+
+  <a href="#" class="cta">
+    📹 Videollamada sin costo
+  </a>
+  <div class="cta-sub">Tú hablas, nosotros hacemos todo. Tú no te preocupas de nada.</div>
+</div>
+  <div class="sub-hook">
+    Hasta que la palabra no alcanza.
+  </div>
+
+  <div class="pain-box">
+    <p>
+      <span class="stat">92%</span> de los emprendedores reportan clientes que no pagan.
+      Sin contrato, no hay cómo cobrar.
+    </p>
+  </div>
+
+  <div class="solution">
+    <div class="solution-label">Tu paquete incluye</div>
+    <ul class="solution-list">
+      <li>Contrato de prestación de servicios</li>
+      <li>Términos y condiciones</li>
+      <li>Aviso de privacidad (LFPDPPP)</li>
+    </ul>
+  </div>
+
+  <div class="price-area">
+    <span class="price-from">Desde</span>
+    <span class="price">$3,500</span>
+    <span class="price-note">MXN</span>
+  </div>
+
+  <a href="#" class="cta">
+    📹 Videollamada sin costo
+  </a>
+  <div class="cta-sub">Tú hablas, nosotros hacemos todo. Tú no te preocupas de nada.</div>
+</div>
+
+<div class="deco-circle"></div>
+<div class="deco-circle-2"></div>
+
+<div class="bottom-bar">
+  <div class="logo-area">
+    <div class="logo-icon">W</div>
+    <span class="logo-text">We Law</span>
+  </div>
+  <span class="url">welaw.com.mx</span>
+</div>
+
+</body>
+</html>

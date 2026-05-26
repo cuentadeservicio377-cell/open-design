@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=1080, initial-scale=1">
+<title>We Law — PyME Laboral Carrusel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--navy:#0A192F;--gold:#9D773C;--gold-light:#C5A370;--offwhite:#F4F4F2;--white:#FFFFFF;--text:#2C2C2C;--slate:#44566E}
+  body{font-family:'Roboto',sans-serif;background:#E2E8F0;display:flex;flex-direction:column;align-items:center;padding:40px 20px;gap:50px}
+  .section-label{font-family:'Poppins',sans-serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:10px;text-align:center}
+  .slide{width:1080px;height:1080px;border-radius:28px;overflow:hidden;display:flex;flex-direction:column;position:relative;box-shadow:0 4px 40px rgba(0,0,0,0.08)}
+  .slide-num{position:absolute;top:32px;right:40px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--gold);z-index:2;background:rgba(255,255,255,0.9);padding:6px 14px;border-radius:20px}
+  .slide-1{background:var(--navy);align-items:center;justify-content:center;text-align:center;padding:100px}
+  .slide-1::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(157,119,60,0.1) 0%,transparent 60%)}
+  .hook-emoji{font-size:65px;margin-bottom:28px;position:relative;z-index:1}
+  .slide-1 h2{font-family:'Poppins',sans-serif;font-size:42px;font-weight:900;line-height:1.15;color:var(--white);max-width:700px;position:relative;z-index:1}
+  .slide-1 h2 .gold{color:var(--gold)}
+  .swipe-hint{position:absolute;bottom:50px;font-family:'Roboto',sans-serif;font-size:16px;font-weight:500;color:rgba(255,255,255,0.5);z-index:1;animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:0.4}50%{opacity:0.8}}
+  .slide-2{background:var(--offwhite);padding:70px 80px;justify-content:center}
+  .label{display:inline-block;background:var(--navy);color:var(--gold-light);font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;padding:7px 16px;border-radius:4px;letter-spacing:0.5px;margin-bottom:24px;width:fit-content}
+  .slide-2 h2{font-family:'Poppins',sans-serif;font-size:34px;font-weight:900;line-height:1.2;color:var(--navy);margin-bottom:20px}
+  .reason-row{display:flex;flex-direction:column;gap:18px;max-width:700px}
+  .reason-item{display:flex;align-items:flex-start;gap:16px;background:var(--white);border:1px solid rgba(157,119,60,0.12);border-radius:14px;padding:22px 24px}
+  .reason-num{width:40px;height:40px;border-radius:50%;background:rgba(157,119,60,0.1);display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--gold);flex-shrink:0}
+  .reason-text{font-size:16px;font-weight:500;color:var(--text);line-height:1.5}
+  .reason-text strong{color:var(--navy)}
+  .slide-3{background:var(--navy);padding:70px 80px;justify-content:center}
+  .slide-3 h2{font-family:'Poppins',sans-serif;font-size:34px;font-weight:900;color:var(--white);text-align:center;margin-bottom:12px}
+  .slide-3 .subtitle{font-size:17px;font-weight:500;color:rgba(255,255,255,0.65);text-align:center;margin-bottom:45px}
+  .steps{display:flex;gap:30px}
+  .step{flex:1;text-align:center}
+  .step-num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:22px;font-weight:900;color:var(--white);margin:0 auto 18px}
+  .step h3{font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;color:var(--gold);margin-bottom:8px}
+  .step p{font-size:14px;font-weight:500;color:rgba(255,255,255,0.7);line-height:1.5}
+  .slide-4{background:var(--offwhite);padding:60px 80px}
+  .slide-4 h2{font-family:'Poppins',sans-serif;font-size:32px;font-weight:900;color:var(--navy);text-align:center;margin-bottom:40px}
+  .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .result-card{background:var(--white);border:1px solid rgba(157,119,60,0.12);border-radius:14px;padding:28px 24px}
+  .result-card h3{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .result-card p{font-size:14px;font-weight:500;color:#6b7280;line-height:1.5}
+  .slide-5{background:linear-gradient(160deg,var(--navy) 0%,var(--slate) 100%);align-items:center;justify-content:center;text-align:center;padding:90px}
+  .slide-5 h2{font-family:'Poppins',sans-serif;font-size:38px;font-weight:900;line-height:1.2;color:var(--white);margin-bottom:18px;max-width:650px}
+  .price-tag{display:inline-flex;align-items:baseline;gap:4px;background:rgba(157,119,60,0.15);border:1px solid rgba(157,119,60,0.3);border-radius:12px;padding:14px 28px;margin-bottom:35px}
+  .price-tag .from{font-size:13px;font-weight:500;color:rgba(255,255,255,0.6)}
+  .price-tag .amount{font-family:'Poppins',sans-serif;font-size:38px;font-weight:900;color:var(--gold);line-height:1}
+  .cta-box{background:linear-gradient(70deg,var(--gold-light),var(--gold));border-radius:16px;padding:28px 50px;display:inline-flex;align-items:center;gap:14px;cursor:pointer}
+  .cta-box .cta-icon{font-size:30px}
+  .cta-box .cta-text{font-family:'Poppins',sans-serif;font-size:19px;font-weight:700;color:var(--white);text-align:left;line-height:1.3}
+  .cta-box .cta-text small{display:block;font-family:'Roboto',sans-serif;font-size:13px;font-weight:500;opacity:0.85}
+  .note{margin-top:25px;font-size:13px;font-weight:500;color:rgba(255,255,255,0.45)}
+</style>
+</head>
+<body>
+<div class="section-label">Slide 1 — Hook</div>
+<div class="slide slide-1">
+  <div class="slide-num">1/5</div><div class="hook-emoji">👥</div>
+  <div style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--gold-light);letter-spacing:1px;margin-bottom:14px;position:relative;z-index:1">RESTAURANTES · TALLERES · SALONES · COMERCIOS</div>
+  <h2>¿Cada cuánto <span class="gold">entrenas a alguien</span> que luego se va?</h2>
+  <div class="swipe-hint">Desliza →</div>
+</div>
+<div class="section-label" style="margin-top:40px">Slide 2 — Por qué se van</div>
+<div class="slide slide-2">
+  <div class="slide-num">2/5</div>
+  <div class="label">NO ES EL SUELDO. ES ESTO.</div>
+  <h2>3 razones por las que tu gente se va sin decirte por qué.</h2>
+  <div class="reason-row">
+    <div class="reason-item"><div class="reason-num">1</div><div class="reason-text"><strong>No saben qué esperar.</strong> Sin contrato, sin reglas claras, cada día es una sorpresa. Y la gente se cansa de las sorpresas.</div></div>
+    <div class="reason-item"><div class="reason-num">2</div><div class="reason-text"><strong>No sienten que pertenecen.</strong> Sin IMSS, sin aguinaldo, sin vacaciones. Trabajan contigo pero no son parte de nada.</div></div>
+    <div class="reason-item"><div class="reason-num">3</div><div class="reason-text"><strong>Cualquier malentendido es el fin.</strong> Todo "de palabra". Un día se enojan, se van, y tú vuelves a empezar de cero.</div></div>
+  </div>
+</div>
+<div class="section-label" style="margin-top:40px">Slide 3 — Cómo lo resolvemos</div>
+<div class="slide slide-3">
+  <div class="slide-num">3/5</div>
+  <h2>En 48 horas le das la vuelta.</h2>
+  <p class="subtitle">Sin papeleo. Sin salir de tu negocio. Sin hacer nada más que hablar con nosotros.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Videollamada</h3><p>Tú nos cuentas tu negocio, cuántos empleados tienes, cómo operan. 30 minutos.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Diseñamos</h3><p>Contratos, reglamento y NOM-035. Todo con las reglas de TU negocio. No machotes.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Todo listo</h3><p>En 48h recibes tus documentos. Tu gente firma. Tú duermes tranquilo.</p></div>
+  </div>
+</div>
+<div class="section-label" style="margin-top:40px">Slide 4 — Lo que incluye</div>
+<div class="slide slide-4">
+  <div class="slide-num">4/5</div>
+  <h2>Lo que recibe tu negocio.</h2>
+  <div class="result-grid">
+    <div class="result-card"><h3>📋 Contrato individual</h3><p>Uno por cada empleado. Con nombre, salario, horario. Todo claro.</p></div>
+    <div class="result-card"><h3>📖 Reglamento interior</h3><p>Las reglas de tu negocio por escrito. Sin sorpresas para nadie.</p></div>
+    <div class="result-card"><h3>✅ NOM-035</h3><p>Una política sencilla de una página. Sin cuestionarios. Sin rollos.</p></div>
+    <div class="result-card"><h3>📹 Sesión grabada</h3><p>La videollamada queda grabada. Soporte post-entrega incluido.</p></div>
+  </div>
+</div>
+<div class="section-label" style="margin-top:40px">Slide 5 — CTA</div>
+<div class="slide slide-5">
+  <div class="slide-num">5/5</div>
+  <h2>Deja de entrenar gente <span class="gold">que no se queda.</span></h2>
+  <div class="price-tag"><span class="from">Inversión única</span><span class="amount">$5,000</span><span style="font-size:15px;font-weight:500;color:rgba(255,255,255,0.5)">MXN</span></div>
+  <div class="cta-box"><span class="cta-icon">💬</span><span class="cta-text">Escríbenos por WhatsApp<small>Videollamada sin costo · Tú no te preocupas de nada</small></span></div>
+  <p class="note">Documentos hechos para tu negocio. No machotes. Sin letra chiquita.</p>
+</div>
+</body>
+</html>

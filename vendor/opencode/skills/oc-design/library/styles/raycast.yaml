@@ -1,0 +1,117 @@
+# Raycast Style
+name: "Raycast"
+philosophy: "Glowing orb on gradient, productivity launcher aesthetic. Dark-first with vibrant accent interactions."
+primary_mode: "dark"
+brand_domain: "productivity / launcher"
+brand_type: "ui-rich"
+
+diales:
+  variance: 6
+  motion: 8
+  density: 5
+
+primitives:
+  colors:
+    neutral:
+      50: "#FFFFFF"
+      100: "#E5E5E5"
+      400: "#737373"
+      500: "#525252"
+      700: "#262626"
+      800: "#171717"
+      900: "#0D0D0D"
+      950: "#050505"
+    brand:
+      300: "#FF6B6B"
+      400: "#FF4F4F"
+      500: "#FF3366"
+      600: "#E62B5C"
+
+  radii: [0, 6, 8, 12, 999]
+
+tokens:
+  colors:
+    dark:
+      background: "{neutral.950}"
+      surface1: "{neutral.900}"
+      surface2: "{neutral.800}"
+      border: "{neutral.800}"
+      text1: "#FFFFFF"
+      text2: "{neutral.400}"
+      accent: "{brand.400}"
+
+  typography:
+    display:
+      family: "Geist"
+      size: "32px"
+      weight: 600
+      line_height: 1.1
+      letter_spacing: "-0.02em"
+    body:
+      family: "Geist"
+      size: "14px"
+      weight: 400
+      line_height: 1.5
+      letter_spacing: "0em"
+    mono:
+      family: "Geist Mono"
+      size: "13px"
+      line_height: 1.6
+      letter_spacing: "0em"
+  google_fonts: ["Geist", "Geist Mono"]
+
+layout:
+  grid: "grid-cols-[1fr_2fr] lg:grid-cols-[1fr_3fr]"
+  hero_pattern: "split-left"
+  content_width: "1152px"
+  section_spacing: "80px"
+  variance_mapping:
+    low: "Centered search prompt, simple list below"
+    mid: "Command palette hero with feature grid, glow accents"
+    high: "Floating command palette with animated results, parallax feature cards, spotlight effects"
+
+responsive:
+  mobile_first: true
+  breakpoints:
+    sm: 640
+    md: 768
+    lg: 1024
+    xl: 1280
+  mobile_hero: "Stack vertically, shrink search prompt, hide glow effects"
+  mobile_nav: "Bottom tab bar with search as primary action"
+  mobile_grid: "Single column list, expandable detail sections"
+
+interaction_rules:
+  hover:
+    transition: "150ms cubic-bezier(0.16, 1, 0.3, 1)"
+    background_shift: "surface1 → surface2"
+  focus:
+    ring: "2px solid {brand.500}"
+    ring_offset: "2px"
+  active:
+    transform: "translateY(-1px)"
+  disabled:
+    opacity: 0.5
+    cursor: "not-allowed"
+
+components:
+  button_primary:
+    background: "{brand.500}"
+    radius: 12
+    padding: "10px 20px"
+    hover:
+      box_shadow: "0 0 30px rgba(255, 79, 79, 0.4)"
+  card:
+    background: "{neutral.900}"
+    border: "1px solid {neutral.800}"
+    radius: 12
+  input:
+    background: "{neutral.900}"
+    border: "none"
+    radius: 999
+
+hero_stage:
+  preset: "luminous-on-gradient"
+  background:
+    medium: "gradient"
+    color_palette: ["#FF3366", "#FF6B6B", "#050505"]

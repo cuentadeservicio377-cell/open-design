@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>We Law — Documentos Laborales para PyMEs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--navy:#0A192F;--gold:#9D773C;--gold-light:#C5A370;--offwhite:#F4F4F2;--white:#FFFFFF;--text:#2C2C2C;--text-light:#5A6270;--slate:#44566E;--border:#E2E8F0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Roboto',sans-serif;color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .container{max-width:1050px;margin:0 auto;padding:0 40px}
+  .section{padding:120px 0}
+  .section-label{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .section-title{font-family:'Poppins',sans-serif;font-size:36px;font-weight:900;line-height:1.15;color:var(--navy);margin-bottom:18px}
+  .section-sub{font-size:17px;font-weight:500;color:var(--text-light);max-width:620px;line-height:1.6;margin-bottom:50px}
+  .gold{color:var(--gold)}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;padding:14px 30px;border-radius:4px;text-decoration:none;cursor:pointer;transition:all 0.3s;border:none}
+  .btn-primary{background:linear-gradient(70deg,var(--gold-light) 0%,var(--gold) 100%);color:var(--white)}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(157,119,60,0.3)}
+  .btn-outline{background:transparent;color:var(--gold);border:1.5px solid var(--gold)}
+  .btn-outline:hover{background:var(--gold);color:var(--white)}
+  .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 0}
+  .nav .container{display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:'Poppins',sans-serif;font-size:20px;font-weight:900;color:var(--navy);text-decoration:none}
+  .nav-logo span{color:var(--gold)}
+  .hero{background:linear-gradient(180deg,var(--navy) 0%,var(--slate) 100%);padding:100px 0 90px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(157,119,60,0.12) 0%,transparent 60%);pointer-events:none}
+  .hero .container{position:relative;z-index:1}
+  .hero-tag{display:inline-block;background:rgba(157,119,60,0.12);border:1px solid rgba(157,119,60,0.25);color:var(--gold-light);font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:22px}
+  .hero h1{font-family:'Poppins',sans-serif;font-size:46px;font-weight:900;line-height:1.1;color:var(--white);max-width:650px;margin-bottom:20px}
+  .hero h1 .gold{color:var(--gold)}
+  .hero p{font-size:18px;font-weight:500;color:rgba(255,255,255,0.7);max-width:540px;line-height:1.6;margin-bottom:32px}
+  .hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+  .compare{background:var(--offwhite)}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:40px}
+  .compare-card{background:var(--white);border-radius:16px;padding:40px 35px;border:1px solid var(--border)}
+  .compare-card.alt{border-color:rgba(157,119,60,0.3);background:linear-gradient(180deg,rgba(157,119,60,0.04) 0%,var(--white) 100%)}
+  .compare-icon{font-size:32px;margin-bottom:16px}
+  .compare-card h3{font-family:'Poppins',sans-serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .compare-card .subtitle{font-size:14px;color:var(--text-light);margin-bottom:20px}
+  .compare-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .compare-list li{font-size:15px;font-weight:500;padding-left:20px;position:relative}
+  .compare-card:not(.alt) .compare-list li::before{content:'→';position:absolute;left:0;color:var(--text-light)}
+  .compare-card.alt .compare-list li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-weight:700}
+  .benefits{background:var(--white)}
+  .benefits-grid{display:grid;grid-template-columns:30% 35% 35%;gap:30px;margin-top:40px}
+  .benefit-card{background:var(--offwhite);border-radius:14px;padding:40px 36px;border:1px solid var(--border)}
+  .benefit-num{font-family:'Poppins',sans-serif;font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:12px}
+  .benefit-card h3{font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .benefit-card p{font-size:14px;font-weight:500;color:var(--text-light);line-height:1.6}
+  .process{background:var(--navy);position:relative;overflow:hidden}
+  .process::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(157,119,60,0.08) 0%,transparent 60%);pointer-events:none}
+  .process .container{position:relative;z-index:1}
+  .process .section-label{color:var(--gold-light)}
+  .process .section-title{color:var(--white)}
+  .process .section-sub{color:rgba(255,255,255,0.65)}
+  .process-steps{display:flex;gap:30px;margin-top:40px}
+  .process-step{flex:1;text-align:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:40px 25px}
+  .step-num{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:22px;font-weight:900;color:var(--white);margin:0 auto 18px}
+  .process-step h3{font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;color:var(--gold);margin-bottom:8px}
+  .process-step p{font-size:14px;font-weight:500;color:rgba(255,255,255,0.65);line-height:1.6}
+  .deliver{background:var(--offwhite)}
+  .deliver-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:40px}
+  .deliver-card{background:var(--white);border-radius:16px;padding:40px 36px;display:flex;gap:18px;border:1px solid var(--border);align-items:flex-start}
+  .deliver-icon{width:50px;height:50px;border-radius:12px;background:rgba(157,119,60,0.08);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+  .deliver-info h3{font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .deliver-info p{font-size:14px;font-weight:500;color:var(--text-light);line-height:1.5}
+  .trust{background:var(--white)}
+  .trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:40px;align-items:center}
+  .trust-testimonial{background:var(--navy);border-radius:20px;padding:40px 35px;color:var(--white)}
+  .trust-testimonial .quote{font-size:18px;font-weight:500;line-height:1.6;color:rgba(255,255,255,0.85);font-style:italic;margin-bottom:20px}
+  .trust-testimonial .author{font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;color:var(--gold)}
+  .trust-testimonial .author-sub{font-size:13px;color:rgba(255,255,255,0.5)}
+  .trust-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .trust-logo{background:var(--offwhite);border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--text-light);border:1px solid var(--border);text-align:center;min-height:70px}
+  .cta-section{background:linear-gradient(160deg,var(--navy) 0%,var(--slate) 100%);padding:120px 0;text-align:center;position:relative;overflow:hidden}
+  .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(157,119,60,0.1) 0%,transparent 70%);pointer-events:none}
+  .cta-section .container{position:relative;z-index:1}
+  .cta-section h2{font-family:'Poppins',sans-serif;font-size:40px;font-weight:900;color:var(--white);margin-bottom:14px}
+  .cta-section h2 .gold{color:var(--gold)}
+  .cta-section p{font-size:17px;font-weight:500;color:rgba(255,255,255,0.7);max-width:550px;margin:0 auto 28px;line-height:1.6}
+  .cta-note{font-size:13px;color:rgba(255,255,255,0.4);margin-top:20px}
+  .footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);padding:40px 0;text-align:center}
+  .footer p{font-size:13px;color:rgba(255,255,255,0.4)}
+  @media(max-width:768px){.container{padding:0 24px}.section{padding:50px 0}.section-title{font-size:28px}.hero h1{font-size:32px}.compare-grid,.benefits-grid,.process-steps,.deliver-grid,.trust-grid{grid-template-columns:1fr}.trust-logos{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="container"><a href="#" class="nav-logo">We<span>Law</span></a><a href="#cta" class="btn btn-primary" style="font-size:13px;padding:10px 20px">Diagnóstico gratuito</a></div></nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">Para PyMEs con empleados</div>
+    <h1>Cuando tu gente se siente protegida, se queda. Y tú dejas de entrenar gente nueva cada 3 meses.</h1>
+    <p>No es el sueldo. Es que sin contrato, sin IMSS y sin reglas claras, no sienten que pertenecen. En una videollamada te ayudamos a cambiar eso.</p>
+    <div class="hero-buttons">
+      <a href="#cta" class="btn btn-primary">Agenda tu diagnóstico gratuito</a>
+      <a href="#como-funciona" class="btn btn-outline" style="color:var(--white);border-color:rgba(255,255,255,0.3)">Cómo funciona →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section compare">
+  <div class="container">
+    <span class="section-label">La diferencia</span>
+    <h2 class="section-title">Así opera la mayoría vs. así opera un gran jefe.</h2>
+    <p class="section-sub">No es burocracia. Es proteger a tu gente y a tu empresa.</p>
+    <div class="compare-grid">
+      <div class="compare-card"><div class="compare-icon">📄</div><h3>Así opera la mayoría</h3><p class="subtitle">Lo que pasa cuando no hay papeles</p><ul class="compare-list"><li>Sin papeles</li><li>Rotación constante</li><li>Malentendidos</li><li>Todo de palabra</li><li>Gente que se va</li></ul></div>
+      <div class="compare-card alt"><div class="compare-icon">✅</div><h3>Así opera un gran jefe</h3><p class="subtitle">Lo que pasa cuando tienes todo en orden</p><ul class="compare-list"><li>Contratos claros</li><li>Reglas por escrito</li><li>IMSS en orden</li><li>Equipo estable</li><li>Gente que se queda</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section benefits">
+  <div class="container">
+    <span class="section-label">Lo que ganas</span>
+    <h2 class="section-title">3 cosas que cambian cuando pones todo por escrito.</h2>
+    <p class="section-sub">Tres beneficios directos de tener tus documentos en regla.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>Tu equipo se queda más tiempo</h3><p>Cuando la gente se siente protegida, deja de buscar en otro lado. Menos rotación, más estabilidad.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Sin malentendidos ni pleitos</h3><p>Todo está claro desde el día uno. Cada quien sabe lo que le toca. Se acabaron los "yo creí que...".</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Eres el jefe que todos quieren tener</h3><p>Tus empleados hablan bien de ti. Atraes mejor talento. Tu negocio se vuelve un lugar donde la gente quiere estar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section process" id="como-funciona">
+  <div class="container">
+    <span class="section-label">El proceso</span>
+    <h2 class="section-title">Simple, directo y sin que tengas que hacer nada.</h2>
+    <p class="section-sub">Videollamada de 30 min. Tú hablas, nosotros tomamos nota. En 48h recibes todo listo.</p>
+    <div class="process-steps">
+      <div class="process-step"><div class="step-num">1</div><h3>Videollamada contigo</h3><p>Tú nos cuentas cómo funciona tu negocio. Nosotros tomamos todos tus datos. Sin papeleo.</p></div>
+      <div class="process-step"><div class="step-num">2</div><h3>Diseñamos para ti</h3><p>Redactamos tus documentos con tu forma de trabajar. Nada genérico. Todo a tu medida.</p></div>
+      <div class="process-step"><div class="step-num">3</div><h3>Recibes todo listo</h3><p>En 48h te entregamos tus documentos en PDF. Tú no hiciste nada más que hablar con nosotros.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section deliver">
+  <div class="container">
+    <span class="section-label">Tu kit legal</span>
+    <h2 class="section-title">Todo lo que incluye.</h2>
+    <p class="section-sub">Un sistema completo para tu negocio, no solo un papel.</p>
+    <div class="deliver-grid">
+      <div class="deliver-card"><div class="deliver-icon">📋</div><div class="deliver-info"><h3>Contrato individual</h3><p>Personalizado por cada empleado. Claro, simple, profesional. Sin "abogadés".</p></div></div>
+      <div class="deliver-card"><div class="deliver-icon">📖</div><div class="deliver-info"><h3>Reglamento interior</h3><p>Normas claras para tu equipo. Todos saben qué esperar. Tú tienes con qué respaldarte.</p></div></div>
+      <div class="deliver-card"><div class="deliver-icon">✅</div><div class="deliver-info"><h3>NOM-035</h3><p>Cumplimiento total con la norma de riesgos psicosociales. Cero multas. Todo en regla.</p></div></div>
+      <div class="deliver-card"><div class="deliver-icon">📹</div><div class="deliver-info"><h3>Sesión grabada</h3><p>Recibes la grabación de tu videollamada. Vuelve a consultarla cuando quieras.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section trust">
+  <div class="container">
+    <span class="section-label">Quién confía en nosotros</span>
+    <h2 class="section-title">Empresas que ya tienen a su gente en regla.</h2>
+    <div class="trust-grid">
+      <div class="trust-testimonial"><p class="quote">"Desde que tengo a mi gente con contrato, nadie se ha ido. Y los que llegan saben que aquí las cosas son en serio."</p><div class="author">Rosa Mendoza</div><div class="author-sub">Dueña de restaurante, CDMX</div></div>
+      <div><h3 style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px">Empresas que confían en We Law</h3><div class="trust-logos"><div class="trust-logo">Noctua Marketing</div><div class="trust-logo">Slash Web</div><div class="trust-logo">Omma Cash</div><div class="trust-logo">Motor Mayorista</div><div class="trust-logo">Accion Aquatro</div><div class="trust-logo">+40 negocios</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="cta">
+  <div class="container">
+    <h2>Ser un gran jefe es más fácil de lo que crees.</h2>
+    <p>Diagnóstico gratuito por videollamada. Te decimos exactamente qué necesita tu negocio. Sin compromiso.</p>
+    <a href="#" class="btn btn-primary" style="font-size:16px;padding:18px 40px">💬 Escríbenos por WhatsApp</a>
+    <p class="cta-note">Videollamada sin costo · 20 minutos · Tú no te preocupas de nada</p>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 We Law · welaw.com.mx · hola@welaw.com.mx · +52 33 1146 2523</p></div></footer>
+
+</body>
+</html>

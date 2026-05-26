@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<title>We Law — Médicos Carrusel (5 slides)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  :root {
+    --navy: #0A192F;
+    --gold: #9D773C;
+    --gold-light: #C5A370;
+    --offwhite: #F4F4F2;
+    --white: #FFFFFF;
+    --text: #2C2C2C;
+    --slate: #44566E;
+    --bg-card: #F3F7FD;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #E2E8F0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 50px;
+  }
+
+  .section-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: #6b7280;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  /* SLIDE STYLES */
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    border-radius: 28px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+  }
+
+  .slide-num {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    z-index: 2;
+    background: rgba(255,255,255,0.9);
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* SLIDE 1 — HOOK */
+  .slide-1 {
+    background: var(--navy);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px;
+  }
+
+  .slide-1::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(157,119,60,0.1) 0%, transparent 60%);
+  }
+
+  .slide-1 .hook-emoji {
+    font-size: 80px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-1 h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--white);
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-1 h2 .gold { color: var(--gold); }
+
+  .slide-1 .swipe-hint {
+    position: absolute;
+    bottom: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    z-index: 1;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+
+  /* SLIDE 2 — PROBLEM */
+  .slide-2 {
+    background: var(--offwhite);
+    padding: 80px 90px;
+    justify-content: center;
+  }
+
+  .slide-2 .label {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold-light);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    margin-bottom: 28px;
+    width: fit-content;
+  }
+
+  .slide-2 h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--navy);
+    margin-bottom: 30px;
+    max-width: 750px;
+  }
+
+  .slide-2 .compare-row {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 35px;
+  }
+
+  .compare-col {
+    flex: 1;
+    border-radius: 16px;
+    padding: 35px 30px;
+  }
+
+  .compare-col.bad {
+    background: rgba(10,25,47,0.04);
+    border: 1px solid rgba(10,25,47,0.08);
+  }
+
+  .compare-col.good {
+    background: rgba(157,119,60,0.08);
+    border: 1px solid rgba(157,119,60,0.2);
+  }
+
+  .compare-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .compare-col.bad .compare-title { color: #6b7280; }
+  .compare-col.good .compare-title { color: var(--gold); }
+
+  .compare-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .compare-list li {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .compare-list li::before {
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  .compare-col.bad .compare-list li::before { content: '✕'; color: #9ca3af; }
+  .compare-col.good .compare-list li::before { content: '✓'; color: var(--gold); }
+
+  .slide-2 .bottom-note {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: center;
+  }
+
+  .slide-2 .bottom-note .gold { color: var(--gold); }
+
+  /* SLIDE 3 — PROCESS */
+  .slide-3 {
+    background: var(--navy);
+    padding: 80px 90px;
+    justify-content: center;
+  }
+
+  .slide-3 h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .slide-3 .subtitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.65);
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .steps {
+    display: flex;
+    gap: 30px;
+  }
+
+  .step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+
+  .step-num {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--white);
+    margin: 0 auto 20px;
+  }
+
+  .step h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .step p {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+
+  /* SLIDE 4 — RESULT */
+  .slide-4 {
+    background: var(--offwhite);
+    padding: 80px 90px;
+    justify-content: center;
+  }
+
+  .slide-4 h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  .slide-4 h2 .gold { color: var(--gold); }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .result-card {
+    background: var(--white);
+    border: 1px solid rgba(157,119,60,0.15);
+    border-radius: 16px;
+    padding: 30px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .result-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(157,119,60,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .result-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .result-content p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  /* SLIDE 5 — CTA */
+  .slide-5 {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--slate) 100%);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px;
+  }
+
+  .slide-5 h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: 20px;
+    max-width: 700px;
+  }
+
+  .slide-5 h2 .gold { color: var(--gold); }
+
+  .slide-5 .price-tag {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    background: rgba(157,119,60,0.15);
+    border: 1px solid rgba(157,119,60,0.3);
+    border-radius: 12px;
+    padding: 16px 32px;
+    margin-bottom: 40px;
+  }
+
+  .slide-5 .price-tag .from {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .slide-5 .price-tag .amount {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .slide-5 .price-tag .mxn {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .cta-box {
+    background: linear-gradient(70deg, var(--gold-light), var(--gold));
+    border-radius: 16px;
+    padding: 30px 60px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+  }
+
+  .cta-box .cta-icon {
+    font-size: 32px;
+  }
+
+  .cta-box .cta-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    text-align: left;
+    line-height: 1.3;
+  }
+
+  .cta-box .cta-text small {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.85;
+  }
+
+  .slide-5 .note {
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+  }
+</style>
+</head>
+<body>
+
+  <!-- SECTION HEADER -->
+  <div class="section-label">Slide 1 — Hook (Detiene el scroll)</div>
+  <div class="section-desc">El usuario ve esto primero. 1.5 segundos para enganchar.</div>
+
+  <!-- SLIDE 1: HOOK -->
+  <div class="slide slide-1">
+    <div class="slide-num">1/5</div>
+    <div class="hook-emoji">⚕️</div>
+    <div style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--gold-light);letter-spacing:1px;margin-bottom:16px;position:relative;z-index:1">MÉDICOS · CIRUJANOS · CLÍNICAS</div>
+    <h2>¿Tu consentimiento informado <span class="gold">realmente</span> te protege?</h2>
+    <div class="swipe-hint">Desliza →</div>
+  </div>
+
+  <!-- SECTION HEADER -->
+  <div class="section-label" style="margin-top:40px">Slide 2 — Problema (Genera conciencia)</div>
+  <div class="section-desc">El dolor específico del médico. Comparación visual.</div>
+
+  <!-- SLIDE 2: PROBLEM -->
+  <div class="slide slide-2">
+    <div class="slide-num">2/5</div>
+    <div class="label">MÉDICOS: LA REALIDAD</div>
+    <h2>Lo que usas ahora vs. lo que un médico merece tener</h2>
+
+    <div class="compare-row">
+      <div class="compare-col bad">
+        <div class="compare-title">Consentimiento genérico</div>
+        <ul class="compare-list">
+          <li>Descargado de internet</li>
+          <li>No cubre tu especialidad</li>
+          <li>Un juez puede invalidarlo</li>
+          <li>Sin avisos COFEPRIS</li>
+          <li>Sin protección de datos</li>
+        </ul>
+      </div>
+      <div class="compare-col good">
+        <div class="compare-title">Documento We Law</div>
+        <ul class="compare-list">
+          <li>Hecho para TU especialidad</li>
+          <li>Cumple NOM-004 y legislación</li>
+          <li>Válido ante un juez</li>
+          <li>Incluye avisos COFEPRIS</li>
+          <li>Aviso de privacidad incluido</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="bottom-note">Un colega ya fue demandado. <span class="gold">Tú decides si eres el siguiente.</span></p>
+  </div>
+
+  <!-- SECTION HEADER -->
+  <div class="section-label" style="margin-top:40px">Slide 3 — Proceso (Genera confianza)</div>
+  <div class="section-desc">Muestra cómo trabajamos. Transparencia.</div>
+
+  <!-- SLIDE 3: PROCESS -->
+  <div class="slide slide-3">
+    <div class="slide-num">3/5</div>
+    <h2>Nosotros te hacemos tus documentos. <span class="gold">Tú solo cuéntanos cómo trabajas.</span></h2>
+    <p class="subtitle">Videollamada de 30 min. Tú hablas, nosotros tomamos nota. En 48h recibes todo listo. Sin papeleo.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Videollamada contigo</h3>
+        <p>Tú nos cuentas tu especialidad y cómo trabajas. Nosotros tomamos todos tus datos. Sin papeleo, sin formularios.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Diseño legal</h3>
+        <p>Redactamos tus documentos con tu vocabulario médico. Nada genérico. Todo basado en TU práctica.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Recibes todo listo</h3>
+        <p>En 48h te entregamos tus documentos en PDF. Tú no hiciste nada más que hablar con nosotros. Así de fácil.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION HEADER -->
+  <div class="section-label" style="margin-top:40px">Slide 4 — Resultado (Lo que recibe)</div>
+  <div class="section-desc">Beneficios concretos. Tangibles.</div>
+
+  <!-- SLIDE 4: RESULT -->
+  <div class="slide slide-4">
+    <div class="slide-num">4/5</div>
+    <h2>Lo que recibes en <span class="gold">48 horas</span></h2>
+
+    <div class="result-grid">
+      <div class="result-card">
+        <div class="result-icon">📋</div>
+        <div class="result-content">
+          <h3>Consentimiento informado</h3>
+          <p>Personalizado para tu especialidad. Cumple NOM-004. Válido ante cualquier juez.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon">🏥</div>
+        <div class="result-content">
+          <h3>Avisos COFEPRIS</h3>
+          <p>Aviso de funcionamiento, publicidad y responsable sanitario. Todo en regla.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon">🔒</div>
+        <div class="result-content">
+          <h3>Aviso de privacidad</h3>
+          <p>Cumple con la LFPDPPP. Proteges los datos de tus pacientes. Cero multas.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon">📹</div>
+        <div class="result-content">
+          <h3>Sesión grabada + Soporte</h3>
+          <p>Graba la sesión 1 a 1. Soporte post-entrega para dudas. No estás solo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION HEADER -->
+  <div class="section-label" style="margin-top:40px">Slide 5 — CTA (El cierre)</div>
+  <div class="section-desc">Precio claro. Botón directo a WhatsApp.</div>
+
+  <!-- SLIDE 5: CTA -->
+  <div class="slide slide-5">
+    <div class="slide-num">5/5</div>
+    <h2>Médicos que ya duermen tranquilos. <span class="gold">Tú también.</span></h2>
+
+    <div class="price-tag">
+      <span class="from">Inversión única</span>
+      <span class="amount">$7,000</span>
+      <span class="mxn">MXN</span>
+    </div>
+
+    <div class="cta-box">
+      <span class="cta-icon">💬</span>
+      <span class="cta-text">
+        Escríbenos por WhatsApp
+        <small>Videollamada sin costo · Tú no te preocupas de nada</small>
+      </span>
+    </div>
+
+    <p class="note">Hecho por abogados especializados en derecho médico. No es machote.</p>
+  </div>
+
+</body>
+</html>

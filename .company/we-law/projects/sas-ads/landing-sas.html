@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Law — Documentos legales para emprendedores | Protección legal que funciona</title>
+<meta name="description" content="Contratos, términos y condiciones y aviso de privacidad para tu negocio. Hechos a tu modelo real. Desde $3,500 MXN. Videollamada sin costo.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0A192F;
+    --accent: #9D773C;
+    --accent-light: #C5A370;
+    --text: #2C2C2C;
+    --offwhite: #F4F4F2;
+    --white: #FFFFFF;
+    --card-bg: #F3F7FD;
+    --secondary: #E2E8F0;
+    --slate: #44566E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text);
+    background: var(--offwhite);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--primary);
+    padding: 16px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 32px; height: 32px;
+    background: var(--accent);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900; font-size: 16px;
+    color: var(--primary);
+  }
+  .nav-logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--white);
+  }
+  .nav-cta {
+    background: linear-gradient(70deg, var(--accent-light) 0%, var(--accent) 100%);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px; font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--offwhite);
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+  }
+  .hero-overline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px; font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px; font-weight: 900;
+    color: var(--primary);
+    line-height: 1.12;
+    max-width: 800px;
+    margin: 0 auto 20px;
+  }
+  .hero h1 .gold { color: var(--accent); }
+  .hero-sub {
+    font-size: 20px; font-weight: 500;
+    color: var(--text);
+    max-width: 650px;
+    margin: 0 auto 36px;
+    line-height: 1.55;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(70deg, var(--accent-light) 0%, var(--accent) 100%);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    margin-bottom: 12px;
+  }
+  .hero-cta-sub {
+    font-size: 14px; color: var(--text);
+    font-weight: 400;
+  }
+
+  /* SEÑALES BAR */
+  .signals-bar {
+    background: var(--primary);
+    padding: 60px 40px;
+  }
+  .signals-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .signals-overline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: var(--accent-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .signals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .signal-card {
+    background: rgba(226, 232, 240, 0.06);
+    border-radius: 12px;
+    padding: 28px 24px;
+    border-left: 3px solid var(--accent);
+  }
+  .signal-card .signal-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .signal-card .signal-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .signal-card .signal-desc {
+    font-size: 14px; color: var(--secondary);
+    line-height: 1.5;
+  }
+
+  /* SECTION */
+  section {
+    padding: 70px 40px;
+  }
+  .section-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .section-overline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px; font-weight: 900;
+    color: var(--primary);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-title .gold { color: var(--accent); }
+  .section-sub {
+    font-size: 18px; font-weight: 500;
+    color: var(--text);
+    max-width: 700px;
+    margin-bottom: 40px;
+    line-height: 1.55;
+  }
+
+  /* PAIN SECTION */
+  .pain-section {
+    background: var(--white);
+  }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .pain-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 28px 24px;
+    border: 1px solid var(--white);
+    box-shadow: 0 2px 12px rgba(10, 25, 47, 0.04);
+  }
+  .pain-card .pain-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px; font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .pain-card .pain-label {
+    font-size: 16px; font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .pain-card .pain-desc {
+    font-size: 14px; font-weight: 400;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* SOLUTION SECTION */
+  .solution-section {
+    background: var(--offwhite);
+  }
+  .solution-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .solution-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    border: 1px solid var(--secondary);
+    box-shadow: 0 2px 12px rgba(10, 25, 47, 0.04);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .solution-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(10, 25, 47, 0.1);
+  }
+  .solution-card .card-icon {
+    width: 56px; height: 56px;
+    background: rgba(157, 119, 60, 0.1);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+  }
+  .solution-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+  .solution-card p {
+    font-size: 14px; color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* PROCESS SECTION */
+  .process-section {
+    background: var(--primary);
+    color: var(--white);
+  }
+  .process-section .section-title { color: var(--white); }
+  .process-section .section-sub { color: var(--secondary); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .process-step {
+    text-align: center;
+    padding: 24px 16px;
+  }
+  .step-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px; font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .step-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .step-desc {
+    font-size: 14px; color: var(--secondary);
+    line-height: 1.5;
+  }
+
+  /* PRICING */
+  .pricing-section {
+    background: var(--white);
+  }
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .pricing-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 24px;
+    border: 2px solid var(--secondary);
+    text-align: center;
+    position: relative;
+  }
+  .pricing-card.featured {
+    border-color: var(--accent);
+    background: var(--white);
+    box-shadow: 0 8px 32px rgba(157, 119, 60, 0.15);
+  }
+  .pricing-card.featured::before {
+    content: 'MÁS POPULAR';
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px; font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+  }
+  .pricing-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  .pricing-card .price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px; font-weight: 900;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .pricing-card .price-note {
+    font-size: 13px; color: var(--text);
+    margin-bottom: 20px;
+  }
+  .pricing-card ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+  .pricing-card li {
+    font-size: 14px; color: var(--text);
+    padding: 6px 0;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .pricing-card li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .pricing-card .card-cta {
+    display: block;
+    background: linear-gradient(70deg, var(--accent-light) 0%, var(--accent) 100%);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px; font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--primary);
+    text-align: center;
+    padding: 80px 40px;
+  }
+  .cta-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px; font-weight: 900;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .cta-section h2 .gold { color: var(--accent); }
+  .cta-section p {
+    font-size: 18px; color: var(--secondary);
+    max-width: 600px;
+    margin: 0 auto 32px;
+    line-height: 1.55;
+  }
+  .cta-section .cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(70deg, var(--accent-light) 0%, var(--accent) 100%);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    margin-bottom: 12px;
+  }
+  .cta-section .cta-sub {
+    font-size: 14px; color: var(--secondary);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--primary);
+    border-top: 1px solid rgba(226, 232, 240, 0.1);
+    padding: 40px;
+    text-align: center;
+  }
+  .footer-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .footer-logo {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin-bottom: 16px;
+  }
+  .footer-logo-icon {
+    width: 28px; height: 28px;
+    background: var(--accent);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900; font-size: 14px;
+    color: var(--primary);
+  }
+  .footer-logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 700;
+    color: var(--white);
+  }
+  .footer-links {
+    display: flex; justify-content: center; gap: 24px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-size: 13px;
+  }
+  .footer-copy {
+    font-size: 12px; color: rgba(226, 232, 240, 0.4);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 32px; }
+    .stats-grid { grid-template-columns: 1fr; gap: 24px; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .solution-cards { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .pricing-cards { grid-template-columns: 1fr; }
+    .section-title { font-size: 28px; }
+    nav { padding: 12px 20px; }
+    section { padding: 50px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">W</div>
+    <span class="nav-logo-text">We Law</span>
+  </a>
+  <a href="#diagnostico" class="nav-cta">Diagnóstico gratuito</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overline">Para emprendedores</div>
+  <h1>
+    En México hacemos negocios<br>
+    <span class="gold">de palabra.</span><br>
+    Hasta que la palabra no alcanza.
+  </h1>
+  <p class="hero-sub">
+    Ya eres empresario. Ya facturas. Ya tienes clientes. Pero si no tienes contratos, estás operando en el aire. Nosotros te damos los documentos que tu negocio necesita, hechos a tu modelo real.
+  </p>
+  <a href="#diagnostico" class="hero-cta">📹 Agenda tu diagnóstico gratuito</a>
+  <div class="hero-cta-sub">30 min por videollamada · Sin compromiso · Sin costo</div>
+</section>
+
+<!-- SEÑALES BAR -->
+<div class="signals-bar">
+  <div class="signals-inner">
+    <div class="signals-overline">3 señales de que necesitas contratos</div>
+    <div class="signals-grid">
+      <div class="signal-card">
+        <div class="signal-icon">🚪</div>
+        <div class="signal-title">Un cliente corporativo te pide contrato marco</div>
+        <div class="signal-desc">No tienes. Pierdes el cliente. No porque tu trabajo sea malo, sino porque no tienes los papeles que demuestran que eres un negocio serio.</div>
+      </div>
+      <div class="signal-card">
+        <div class="signal-icon">💸</div>
+        <div class="signal-title">Entregaste el trabajo hace meses y no te pagan</div>
+        <div class="signal-desc">Te dicen "no me quedó claro el alcance". Sin contrato que defina qué incluía, no hay cómo cobrar. La palabra no alcanza.</div>
+      </div>
+      <div class="signal-card">
+        <div class="signal-icon"></div>
+        <div class="signal-title">Tu sitio web no tiene términos ni aviso de privacidad</div>
+        <div class="signal-desc">PROFECO ya está multando tiendas en línea. Las sanciones van de $366 a $12 millones. No es si te van a alcanzar, es cuándo.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="section-inner">
+    <div class="section-overline">El problema real</div>
+    <h2 class="section-title">
+      No es que no quieras protegerte.<br>
+      <span class="gold">Es que no sabes por dónde empezar.</span>
+    </h2>
+    <p class="section-sub">
+      Estos son los dolores que reportan los emprendedores en México. Si te identificas con alguno, no estás solo.
+    </p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-num">92%</div>
+        <div class="pain-label">Clientes que no pagan</div>
+        <div class="pain-desc">"Ya le entregué el trabajo hace tres meses y me dice que no le quedó claro el alcance." Sin contrato, no hay cómo cobrar.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">85%</div>
+        <div class="pain-label">Sin procesos documentados</div>
+        <div class="pain-desc">"Si me enfermo una semana, el negocio se para porque todo está en mi cabeza."</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">78%</div>
+        <div class="pain-label">Conflictos con socios</div>
+        <div class="pain-desc">"Mi socio quiere llevar el negocio para otro lado y nunca firmamos nada."</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">72%</div>
+        <div class="pain-label">Proveedores que no cumplen</div>
+        <div class="pain-desc">"El proveedor me dejó tirado con un cliente y no tenemos nada por escrito."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION SECTION -->
+<section class="solution-section">
+  <div class="section-inner">
+    <div class="section-overline">La solución</div>
+    <h2 class="section-title">
+      3 documentos que <span class="gold">todo emprendedor necesita</span>
+    </h2>
+    <p class="section-sub">
+      No son genéricos. No son machotes de internet. Están hechos para tu modelo de negocio real, con tu vocabulario, con tus reglas.
+    </p>
+    <div class="solution-cards">
+      <div class="solution-card">
+        <div class="card-icon">📄</div>
+        <h3>Contrato de prestación de servicios</h3>
+        <p>Define alcance, entregables, plazos y términos de pago. Para que el cliente que no paga tenga con qué respaldarse.</p>
+      </div>
+      <div class="solution-card">
+        <div class="card-icon">🌐</div>
+        <h3>Términos y condiciones</h3>
+        <p>Obligatorio por ley para todo negocio en línea. Cumple con PROFECO, LFPC y evita multas de hasta $12 millones.</p>
+      </div>
+      <div class="solution-card">
+        <div class="card-icon">🔒</div>
+        <h3>Aviso de privacidad</h3>
+        <p>Cumple con la LFPDPPP. Informa cómo tratas los datos de tus clientes y protege tu negocio de sanciones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS SECTION -->
+<section class="process-section">
+  <div class="section-inner">
+    <div class="section-overline" style="color: var(--accent-light);">Cómo funciona</div>
+    <h2 class="section-title">
+      30 minutos. 48 horas.<br>
+      <span class="gold">Tu negocio protegido.</span>
+    </h2>
+    <p class="section-sub">
+      Sin papeleo. Sin salir de tu oficina. Sin lenguaje que no entiendes.
+    </p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Diagnóstico gratuito</div>
+        <div class="step-desc">30 min por videollamada. Nos cuentas tu negocio, entendemos tu modelo.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Propuesta clara</div>
+        <div class="step-desc">Te decimos exactamente qué necesitas y cuánto cuesta. Sin sorpresas.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Redacción a medida</div>
+        <div class="step-desc">Escribimos tus documentos con tu vocabulario de negocio, no con abogadés.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Entrega en 48h</div>
+        <div class="step-desc">Recibes todo en PDF, listo para usar. Si necesitas ajustes, los hacemos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING SECTION -->
+<section class="pricing-section">
+  <div class="section-inner">
+    <div class="section-overline">Paquetes</div>
+    <h2 class="section-title">
+      Elige el paquete que <span class="gold">tu negocio necesita</span>
+    </h2>
+    <p class="section-sub">
+      Precios transparentes. Sin letra chiquita. Si necesitas algo más, lo armamos a tu medida.
+    </p>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Arranca</h3>
+        <div class="price">$3,500</div>
+        <div class="price-note">MXN · Pago único</div>
+        <ul>
+          <li>Contrato de prestación de servicios</li>
+          <li>Aviso de privacidad</li>
+          <li>Hecho a tu modelo de negocio</li>
+          <li>Entrega en 48 horas</li>
+        </ul>
+        <a href="#diagnostico" class="card-cta">Agendar videollamada</a>
+      </div>
+      <div class="pricing-card featured">
+        <h3>Opera</h3>
+        <div class="price">$5,500</div>
+        <div class="price-note">MXN · Pago único</div>
+        <ul>
+          <li>Contrato de prestación de servicios</li>
+          <li>Términos y condiciones</li>
+          <li>Aviso de privacidad</li>
+          <li>Hecho a tu modelo de negocio</li>
+          <li>Entrega en 48 horas</li>
+        </ul>
+        <a href="#diagnostico" class="card-cta">Agendar videollamada</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Protege</h3>
+        <div class="price">$8,500</div>
+        <div class="price-note">MXN · Pago único</div>
+        <ul>
+          <li>Todo el paquete Opera</li>
+          <li>Convenio de socios</li>
+          <li>NDA para colaboradores</li>
+          <li>Hecho a tu modelo de negocio</li>
+          <li>Entrega en 48 horas</li>
+        </ul>
+        <a href="#diagnostico" class="card-cta">Agendar videollamada</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section" id="diagnostico">
+  <h2>
+    <span class="gold">30 minutos</span> de videollamada.<br>
+    <span class="gold">48 horas</span> después, tu negocio está protegido.
+  </h2>
+  <p>
+    Tú hablas, nosotros hacemos todo. Tú no te preocupas de nada.
+  </p>
+  <a href="https://welaw.com.mx" class="cta-btn">📹 Agenda tu diagnóstico gratuito</a>
+  <div class="cta-sub">Sin compromiso · Sin costo · Por videollamada</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="footer-logo-icon">W</div>
+      <span class="footer-logo-text">We Law</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://welaw.com.mx">welaw.com.mx</a>
+      <a href="https://www.instagram.com/welawofficial/">Instagram</a>
+      <a href="https://www.tiktok.com/@welawofficial">TikTok</a>
+      <a href="https://www.linkedin.com/company/we-lawmx/">LinkedIn</a>
+    </div>
+    <div class="footer-copy">© 2026 We Law S.C. · Guadalajara, Jalisco, México</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+# Ferrari Style
+name: "Ferrari"
+philosophy: "Chiaroscuro black-white editorial, Ferrari Red with extreme sparseness. Luxury automotive precision."
+primary_mode: "dark"
+brand_domain: "luxury automotive"
+brand_type: "content-rich"
+
+diales:
+  variance: 3
+  motion: 6
+  density: 1
+
+primitives:
+  colors:
+    neutral:
+      50: "#FFFFFF"
+      100: "#F5F5F5"
+      200: "#E5E5E5"
+      500: "#808080"
+      700: "#333333"
+      800: "#1A1A1A"
+      900: "#0D0D0D"
+      950: "#050505"
+    brand:
+      400: "#FF2800"
+      500: "#DC0000"
+      600: "#B30000"
+
+  radii: [0, 2, 4]
+
+tokens:
+  colors:
+    dark:
+      background: "{neutral.950}"
+      surface1: "{neutral.900}"
+      border: "{neutral.800}"
+      text1: "#FFFFFF"
+      text2: "{neutral.500}"
+      accent: "{brand.500}"
+
+  typography:
+    display:
+      family: "Cabinet Grotesk"
+      size: "72px"
+      weight: 700
+      line_height: 0.95
+      letter_spacing: "-0.04em"
+    body:
+      family: "Outfit"
+      size: "16px"
+      weight: 400
+      line_height: 1.6
+      letter_spacing: "0em"
+  google_fonts: ["Cabinet Grotesk", "Outfit"]
+
+layout:
+  grid: "grid-cols-[1fr_2fr] lg:grid-cols-[1fr_3fr]"
+  hero_pattern: "full-bleed"
+  content_width: "1400px"
+  section_spacing: "200px"
+  variance_mapping:
+    low: "Centered single column, extreme whitespace, cinematic negative space"
+    mid: "Left-aligned text with full-bleed photography, single accent line"
+    high: "Asymmetric split layouts, diagonal crops, scroll-triggered reveals with red flash accents"
+
+responsive:
+  mobile_first: true
+  breakpoints:
+    sm: 640
+    md: 768
+    lg: 1024
+    xl: 1280
+  mobile_hero: "Full-bleed image with text overlay, shrink display to 40px"
+  mobile_nav: "Minimal hamburger, logo-only mobile header"
+  mobile_grid: "Single column, generous vertical spacing between sections"
+
+interaction_rules:
+  hover:
+    transition: "150ms cubic-bezier(0.16, 1, 0.3, 1)"
+    background_shift: "transparent → surface1"
+  focus:
+    ring: "2px solid {brand.500}"
+    ring_offset: "2px"
+  active:
+    transform: "scale(0.98)"
+  disabled:
+    opacity: 0.5
+    cursor: "not-allowed"
+
+components:
+  button_primary:
+    background: "{brand.500}"
+    radius: 0
+    padding: "16px 32px"
+    font_weight: 600
+  card:
+    background: "{neutral.900}"
+    border: "none"
+    radius: 0
+
+hero_stage:
+  preset: "object-on-spotlight"

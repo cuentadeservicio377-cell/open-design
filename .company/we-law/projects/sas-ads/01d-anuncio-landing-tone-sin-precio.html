@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Law — SAS Landing Tone Sin Precio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px; height: 1080px;
+    background: #F4F4F2;
+    font-family: 'Roboto', sans-serif;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+
+  .accent-line {
+    width: 100%; height: 6px;
+    background: linear-gradient(90deg, #C5A370 0%, #9D773C 100%);
+  }
+
+  .badge {
+    position: absolute; top: 30px; right: 30px;
+    background: rgba(10, 25, 47, 0.08);
+    border: 1px solid #0A192F;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: #0A192F;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .content {
+    flex: 1;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    position: relative;
+  }
+
+  .overline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px; font-weight: 700;
+    color: #9D773C;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hook {
+    font-family: 'Poppins', sans-serif;
+    font-size: 44px; font-weight: 900;
+    color: #0A192F;
+    line-height: 1.12;
+    margin-bottom: 16px;
+    max-width: 750px;
+  }
+  .hook .gold {
+    color: #9D773C;
+  }
+
+  .sub-hook {
+    font-size: 19px; font-weight: 500;
+    color: #2C2C2C;
+    line-height: 1.55;
+    margin-bottom: 44px;
+    max-width: 680px;
+  }
+
+  /* Pain points as cards */
+  .pain-cards {
+    display: flex; gap: 20px;
+    margin-bottom: 40px;
+  }
+  .pain-card {
+    flex: 1;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(10, 25, 47, 0.06);
+    border: 1px solid rgba(10, 25, 47, 0.06);
+  }
+  .pain-card .number {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px; font-weight: 900;
+    color: #9D773C;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .pain-card .label {
+    font-size: 13px; color: #2C2C2C;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* Solution box */
+  .solution-box {
+    background: #0A192F;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .solution-box .label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: #C5A370;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .solution-box ul {
+    list-style: none;
+  }
+  .solution-box li {
+    font-size: 16px; font-weight: 500;
+    color: #FFFFFF;
+    padding: 5px 0;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .solution-box li::before {
+    content: '✓';
+    color: #9D773C;
+    font-weight: 700;
+  }
+
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(70deg, #C5A370 0%, #9D773C 100%);
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 2px;
+    border: none;
+    text-decoration: none;
+  }
+  .cta-sub {
+    font-size: 13px; color: #2C2C2C;
+    margin-top: 8px;
+    font-weight: 400;
+  }
+
+  .bottom-bar {
+    padding: 20px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(10, 25, 47, 0.08);
+  }
+  .logo-area {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: #0A192F;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900; font-size: 18px;
+    color: #9D773C;
+  }
+  .logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: #0A192F;
+  }
+  .url {
+    font-size: 14px; color: #9D773C;
+    font-weight: 500;
+  }
+
+  .deco-circle {
+    position: absolute;
+    bottom: -100px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(157, 119, 60, 0.08);
+  }
+</style>
+</head>
+<body>
+
+<div class="accent-line"></div>
+
+<div class="badge">SIN PAPELEO · TODO POR VIDEOLLAMADA</div>
+
+<div class="content">
+  <div class="overline">Para emprendedores</div>
+  <div class="hook">
+    Un contrato no es porque<br>
+    <span class="gold">no confíes.</span><br>
+    Es porque tu negocio ya<br>
+    <span class="gold">vale la pena.</span>
+  </div>
+  <div class="sub-hook">
+    En México confiamos en la palabra. Y está bien. Pero cuando tu negocio crece, la palabra sola ya no alcanza.
+  </div>
+
+  <div class="pain-cards">
+    <div class="pain-card">
+      <div class="number">92%</div>
+      <div class="label">Clientes que<br>no pagan</div>
+    </div>
+    <div class="pain-card">
+      <div class="number">85%</div>
+      <div class="label">Sin procesos<br>documentados</div>
+    </div>
+    <div class="pain-card">
+      <div class="number">78%</div>
+      <div class="label">Quieren dejar de<br>ser informales</div>
+    </div>
+  </div>
+
+  <div class="solution-box">
+    <div class="label">Tu paquete</div>
+    <ul>
+      <li>Contrato de prestación de servicios</li>
+      <li>Términos y condiciones</li>
+      <li>Aviso de privacidad</li>
+    </ul>
+  </div>
+
+  <a href="#" class="cta">
+    📹 Agenda tu diagnóstico gratuito
+  </a>
+  <div class="cta-sub">30 min por videollamada. Sin compromiso.</div>
+</div>
+
+<div class="deco-circle"></div>
+
+<div class="bottom-bar">
+  <div class="logo-area">
+    <div class="logo-icon">W</div>
+    <span class="logo-text">We Law</span>
+  </div>
+  <span class="url">welaw.com.mx</span>
+</div>
+
+</body>
+</html>

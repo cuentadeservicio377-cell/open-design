@@ -1,0 +1,117 @@
+# OpenCode Style
+name: "OpenCode"
+philosophy: "Developer-centric dark theme. Code assistant with terminal-native aesthetic and clear, functional UI."
+primary_mode: "dark"
+brand_domain: "AI coding assistant"
+brand_type: "ui-rich"
+
+diales:
+  variance: 5
+  motion: 5
+  density: 6
+
+primitives:
+  colors:
+    neutral:
+      50: "#FFFFFF"
+      100: "#F0F0F0"
+      200: "#E0E0E0"
+      400: "#909090"
+      500: "#707070"
+      600: "#505050"
+      700: "#303030"
+      800: "#202020"
+      900: "#101010"
+      950: "#080808"
+    brand:
+      400: "#22D3EE"
+      500: "#06B6D4"
+      600: "#0891B2"
+
+  radii: [0, 4, 6, 8]
+
+tokens:
+  colors:
+    dark:
+      background: "{neutral.950}"
+      surface1: "{neutral.900}"
+      surface2: "{neutral.800}"
+      border: "{neutral.700}"
+      text1: "#E4E4E7"
+      text2: "{neutral.400}"
+      accent: "{brand.400}"
+
+  typography:
+    display:
+      family: "Cabinet Grotesk"
+      size: "32px"
+      weight: 600
+      line_height: 1.15
+      letter_spacing: "-0.02em"
+    body:
+      family: "Geist"
+      size: "14px"
+      weight: 400
+      line_height: 1.6
+      letter_spacing: "0em"
+    mono:
+      family: "Geist Mono"
+      size: "13px"
+      line_height: 1.5
+      letter_spacing: "0.02em"
+
+google_fonts:
+  - "Cabinet Grotesk:wght@400;500;600;700"
+  - "Geist:wght@400;500;600"
+  - "Geist Mono"
+
+layout:
+  grid: "1fr min(1080px, 100%) 1fr"
+  hero_pattern: "split-left"
+  content_width: "1080px"
+  section_spacing: "80px"
+  variance_mapping:
+    low: "single-column terminal"
+    mid: "sidebar + code editor"
+    high: "multi-panel IDE layout"
+
+responsive:
+  mobile_first: true
+  breakpoints:
+    sm: 640
+    md: 768
+    lg: 1024
+    xl: 1280
+  mobile_hero: "stacked with terminal preview"
+  mobile_nav: "bottom bar with code triggers"
+  mobile_grid: "single column, collapsible panels"
+
+interaction_rules:
+  hover:
+    transition: "150ms cubic-bezier(0.16, 1, 0.3, 1)"
+    background_shift: "lighten 6%"
+  focus:
+    ring: "2px solid {brand.500}"
+    ring_offset: "2px"
+  active:
+    transform: "translateY(-1px)"
+  disabled:
+    opacity: 0.5
+    cursor: "not-allowed"
+
+components:
+  button_primary:
+    background: "{brand.500}"
+    radius: 6
+    padding: "10px 18px"
+  card:
+    background: "{neutral.900}"
+    border: "1px solid {neutral.700}"
+    radius: 8
+  input:
+    background: "{neutral.900}"
+    border: "1px solid {neutral.700}"
+    radius: 6
+
+hero_stage:
+  preset: "grid-on-dark"

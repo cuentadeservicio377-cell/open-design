@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Law — SAS Estático Directo Sin Precio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px; height: 1080px;
+    background: #0A192F;
+    font-family: 'Roboto', sans-serif;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+
+  .accent-line {
+    width: 100%; height: 6px;
+    background: linear-gradient(90deg, #C5A370 0%, #9D773C 100%);
+  }
+
+  .badge {
+    position: absolute; top: 30px; right: 30px;
+    background: rgba(157, 119, 60, 0.15);
+    border: 1px solid #9D773C;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: #C5A370;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .content {
+    flex: 1;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    position: relative;
+  }
+
+  /* Big quote style */
+  .quote-mark {
+    font-family: 'Poppins', sans-serif;
+    font-size: 120px; font-weight: 900;
+    color: rgba(157, 119, 60, 0.15);
+    line-height: 0.6;
+    margin-bottom: 20px;
+  }
+
+  .hook {
+    font-family: 'Poppins', sans-serif;
+    font-size: 46px; font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hook .gold {
+    color: #9D773C;
+  }
+
+  .sub-hook {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px; font-weight: 600;
+    color: #E2E8F0;
+    line-height: 1.4;
+    margin-bottom: 50px;
+    max-width: 650px;
+  }
+
+  /* Señales row */
+  .signals-row {
+    display: flex; flex-direction: column; gap: 16px;
+    margin-bottom: 50px;
+  }
+  .signal-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    background: rgba(226, 232, 240, 0.06);
+    border-radius: 8px;
+    padding: 18px 20px;
+    border-left: 3px solid #9D773C;
+  }
+  .signal-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .signal-text {
+    font-size: 15px; color: #E2E8F0;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .signal-text strong {
+    color: #FFFFFF;
+    font-weight: 700;
+  }
+
+  /* Solution */
+  .solution {
+    margin-bottom: 36px;
+  }
+  .solution-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px; font-weight: 700;
+    color: #C5A370;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .solution-list {
+    list-style: none;
+  }
+  .solution-list li {
+    font-size: 17px; font-weight: 500;
+    color: #FFFFFF;
+    padding: 6px 0;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .solution-list li::before {
+    content: '✓';
+    color: #9D773C;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(70deg, #C5A370 0%, #9D773C 100%);
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 2px;
+    border: none;
+    text-decoration: none;
+  }
+  .cta-sub {
+    font-size: 13px; color: #E2E8F0;
+    margin-top: 8px;
+    font-weight: 400;
+  }
+
+  .bottom-bar {
+    padding: 20px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(226, 232, 240, 0.1);
+  }
+  .logo-area {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: #9D773C;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900; font-size: 18px;
+    color: #0A192F;
+  }
+  .logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: #FFFFFF;
+  }
+  .url {
+    font-size: 14px; color: #9D773C;
+    font-weight: 500;
+  }
+
+  .deco-circle {
+    position: absolute;
+    bottom: -120px; right: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 1px solid rgba(157, 119, 60, 0.12);
+  }
+</style>
+</head>
+<body>
+
+<div class="accent-line"></div>
+
+<div class="badge">SIN PAPELEO · TODO POR VIDEOLLAMADA</div>
+
+<div class="content">
+  <div class="quote-mark">"</div>
+  <div class="hook">
+    Tu negocio ya es formal.<br>
+    <span class="gold">Tus papeles también<br>deberían serlo.</span>
+  </div>
+  <div class="sub-hook">
+    Ya eres empresario. Facturas. Tienes clientes. Pero si no tienes contratos, estás operando en el aire.
+  </div>
+
+  <div class="signals-row">
+    <div class="signal-item">
+      <div class="signal-icon">🚪</div>
+      <div class="signal-text">
+        <strong>Un cliente corporativo te pide contrato marco.</strong><br>
+        No tienes. Pierdes el cliente.
+      </div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-icon">💸</div>
+      <div class="signal-text">
+        <strong>Entregaste el trabajo hace 3 meses.</strong><br>
+        Te dicen "no me quedó claro el alcance". Sin contrato, no hay cómo cobrar.
+      </div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-icon">🌐</div>
+      <div class="signal-text">
+        <strong>Tu sitio web no tiene términos ni aviso de privacidad.</strong><br>
+        PROFECO ya está multando. Las sanciones van de $366 a $12 millones.
+      </div>
+    </div>
+  </div>
+
+  <div class="solution">
+    <div class="solution-label">Documentos que tu negocio necesita</div>
+    <ul class="solution-list">
+      <li>Contrato de prestación de servicios</li>
+      <li>Términos y condiciones</li>
+      <li>Aviso de privacidad</li>
+    </ul>
+  </div>
+
+  <a href="#" class="cta">
+    📹 Agenda tu diagnóstico gratuito
+  </a>
+  <div class="cta-sub">30 min por videollamada. Sin compromiso.</div>
+</div>
+
+<div class="deco-circle"></div>
+
+<div class="bottom-bar">
+  <div class="logo-area">
+    <div class="logo-icon">W</div>
+    <span class="logo-text">We Law</span>
+  </div>
+  <span class="url">welaw.com.mx</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+# Stripe Style
+name: "Stripe"
+philosophy: "Sky-blue accents, weight-300 elegance. Precision payments infrastructure with premium feel."
+primary_mode: "light"
+brand_domain: "payments / fintech"
+brand_type: "ui-rich"
+
+diales:
+  variance: 5
+  motion: 6
+  density: 5
+
+primitives:
+  colors:
+    neutral:
+      50: "#FFFFFF"
+      100: "#F6F9FC"
+      200: "#E3E8EE"
+      300: "#C4C9D4"
+      400: "#9DA4AE"
+      500: "#697386"
+      600: "#556CD6"
+      700: "#4A5568"
+      800: "#32325D"
+      900: "#1A1F36"
+      950: "#0A0D1A"
+    brand:
+      400: "#38BDF8"
+      500: "#0EA5E9"
+      600: "#0284C7"
+
+  radii: [0, 4, 8, 12]
+
+tokens:
+  colors:
+    light:
+      background: "{neutral.50}"
+      surface1: "{neutral.100}"
+      border: "{neutral.200}"
+      text1: "{neutral.900}"
+      text2: "{neutral.500}"
+      accent: "{brand.500}"
+
+  typography:
+    display:
+      family: "Geist"
+      size: "48px"
+      weight: 600
+      line_height: 1.05
+      letter_spacing: "-0.03em"
+    body:
+      family: "Plus Jakarta Sans"
+      size: "16px"
+      weight: 400
+      line_height: 1.6
+      letter_spacing: "0em"
+  google_fonts: ["Geist", "Plus Jakarta Sans"]
+
+layout:
+  grid: "grid-cols-[1fr_1fr] lg:grid-cols-[3fr_2fr]"
+  hero_pattern: "split-right"
+  content_width: "1200px"
+  section_spacing: "120px"
+  variance_mapping:
+    low: "Centered single column with generous margins"
+    mid: "Asymmetric split with illustration on right, text on left"
+    high: "Diagonal sections, floating cards over gradient mesh, parallax cards"
+
+responsive:
+  mobile_first: true
+  breakpoints:
+    sm: 640
+    md: 768
+    lg: 1024
+    xl: 1280
+  mobile_hero: "Stack heading above illustration, shrink display to 32px"
+  mobile_nav: "Hamburger with slide-in drawer, top-level items only"
+  mobile_grid: "Single column, cards stack vertically with reduced spacing"
+
+interaction_rules:
+  hover:
+    transition: "150ms cubic-bezier(0.16, 1, 0.3, 1)"
+    background_shift: "surface1 → surface2"
+  focus:
+    ring: "2px solid {brand.500}"
+    ring_offset: "2px"
+  active:
+    transform: "translateY(-1px)"
+  disabled:
+    opacity: 0.5
+    cursor: "not-allowed"
+
+components:
+  button_primary:
+    background: "{brand.500}"
+    radius: 8
+    padding: "12px 24px"
+    hover:
+      background: "{brand.600}"
+  card:
+    background: "{neutral.50}"
+    border: "1px solid {neutral.200}"
+    radius: 12
+    shadow: "0 2px 8px rgba(0,0,0,0.04)"
+
+hero_stage:
+  preset: "luminous-on-gradient"
+  background:
+    medium: "gradient"
+    color_palette: ["#0EA5E9", "#38BDF8", "#0A2540"]

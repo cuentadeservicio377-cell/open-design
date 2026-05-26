@@ -1,0 +1,107 @@
+# Notion Style
+name: "Notion"
+philosophy: "Warm minimalism, serif-free headings. Content-first workspace with soft, approachable surfaces."
+primary_mode: "light"
+brand_domain: "productivity / documentation"
+brand_type: "ui-rich"
+
+diales:
+  variance: 4
+  motion: 3
+  density: 5
+
+primitives:
+  colors:
+    neutral:
+      50: "#FFFFFF"
+      100: "#FBFBFA"
+      200: "#F7F6F3"
+      300: "#EBECEB"
+      400: "#E1E1E0"
+      500: "#C4C4C3"
+      600: "#9B9B9A"
+      700: "#6B6B6A"
+      800: "#3D3D3C"
+      900: "#202020"
+      950: "#191919"
+    brand:
+      500: "#FF6B6B"
+
+  radii: [0, 4, 6]
+
+tokens:
+  colors:
+    light:
+      background: "#FFFFFF"
+      surface1: "{neutral.100}"
+      border: "{neutral.300}"
+      text1: "{neutral.900}"
+      text2: "{neutral.600}"
+      accent: "{brand.500}"
+
+  typography:
+    display:
+      family: "Cabinet Grotesk"
+      size: "40px"
+      weight: 600
+      line_height: 1.15
+      letter_spacing: "-0.02em"
+    body:
+      family: "Plus Jakarta Sans"
+      size: "16px"
+      weight: 400
+      line_height: 1.6
+      letter_spacing: "0em"
+  google_fonts: ["Cabinet Grotesk", "Plus Jakarta Sans"]
+
+layout:
+  grid: "grid-cols-[1fr_1fr] lg:grid-cols-[2fr_1fr]"
+  hero_pattern: "centered"
+  content_width: "960px"
+  section_spacing: "80px"
+  variance_mapping:
+    low: "Centered single column, document-style layout, generous margins"
+    mid: "Sidebar with content area, toggle blocks, inline embeds"
+    high: "Multi-column board views, draggable cards, split-pane editors"
+
+responsive:
+  mobile_first: true
+  breakpoints:
+    sm: 640
+    md: 768
+    lg: 1024
+    xl: 1280
+  mobile_hero: "Centered text, shrink display to 28px, simplify to single column"
+  mobile_nav: "Bottom navigation bar with hamburger for workspace switcher"
+  mobile_grid: "Single column, collapsible sidebar as overlay"
+
+interaction_rules:
+  hover:
+    transition: "150ms cubic-bezier(0.16, 1, 0.3, 1)"
+    background_shift: "surface1 → surface2"
+  focus:
+    ring: "2px solid {brand.500}"
+    ring_offset: "2px"
+  active:
+    transform: "translateY(-1px)"
+  disabled:
+    opacity: 0.5
+    cursor: "not-allowed"
+
+components:
+  button_primary:
+    background: "{brand.500}"
+    radius: 4
+    padding: "8px 16px"
+  card:
+    background: "{neutral.100}"
+    border: "none"
+    radius: 6
+    shadow: "rgba(15, 15, 15, 0.05) 0px 0px 0px 1px"
+  input:
+    background: "#FFFFFF"
+    border: "1px solid {neutral.300}"
+    radius: 4
+
+hero_stage:
+  preset: "flat-blank"

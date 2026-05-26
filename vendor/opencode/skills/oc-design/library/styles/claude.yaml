@@ -1,0 +1,116 @@
+# Claude Style
+name: "Claude"
+philosophy: "Warm terracotta accent, editorial layout. Human-centered AI assistant with approachable feel."
+primary_mode: "light"
+brand_domain: "AI assistant / productivity"
+brand_type: "ui-rich"
+
+diales:
+  variance: 5
+  motion: 5
+  density: 4
+
+primitives:
+  colors:
+    neutral:
+      50: "#FFFBF5"
+      100: "#F5F0EA"
+      200: "#E8E0D5"
+      300: "#D4C9B8"
+      400: "#B8A98E"
+      500: "#9A8673"
+      600: "#7A6655"
+      700: "#5C4D40"
+      800: "#3A322A"
+      900: "#1F1A16"
+      950: "#0D0B09"
+    brand:
+      400: "#D4A574"
+      500: "#C4956A"
+      600: "#A67C52"
+
+  radii: [0, 8, 12, 16]
+
+tokens:
+  colors:
+    light:
+      background: "{neutral.50}"
+      surface1: "{neutral.100}"
+      border: "{neutral.200}"
+      text1: "{neutral.900}"
+      text2: "{neutral.600}"
+      accent: "{brand.500}"
+
+  typography:
+    display:
+      family: "Cabinet Grotesk"
+      size: "36px"
+      weight: 600
+      line_height: 1.15
+      letter_spacing: "-0.02em"
+    body:
+      family: "Geist"
+      size: "16px"
+      weight: 400
+      line_height: 1.6
+      letter_spacing: "0em"
+    mono:
+      family: "Geist Mono"
+      size: "14px"
+      line_height: 1.5
+      letter_spacing: "0.02em"
+
+google_fonts:
+  - "Cabinet Grotesk:wght@400;500;600;700"
+  - "Geist:wght@400;500;600"
+
+layout:
+  grid: "1fr min(720px, 100%) 1fr"
+  hero_pattern: "centered"
+  content_width: "720px"
+  section_spacing: "80px"
+  variance_mapping:
+    low: "single-column conversational"
+    mid: "sidebar + chat layout"
+    high: "split panel with artifacts"
+
+responsive:
+  mobile_first: true
+  breakpoints:
+    sm: 640
+    md: 768
+    lg: 1024
+    xl: 1280
+  mobile_hero: "centered warm gradient"
+  mobile_nav: "bottom bar with input"
+  mobile_grid: "full-width conversational"
+
+interaction_rules:
+  hover:
+    transition: "150ms cubic-bezier(0.16, 1, 0.3, 1)"
+    background_shift: "warm lighten 6%"
+  focus:
+    ring: "2px solid {brand.500}"
+    ring_offset: "2px"
+  active:
+    transform: "translateY(-1px)"
+  disabled:
+    opacity: 0.5
+    cursor: "not-allowed"
+
+components:
+  button_primary:
+    background: "{brand.500}"
+    radius: 12
+    padding: "12px 24px"
+  card:
+    background: "{neutral.100}"
+    border: "1px solid {neutral.200}"
+    radius: 16
+  input:
+    background: "{neutral.50}"
+    border: "1px solid {neutral.300}"
+    radius: 12
+
+hero_stage:
+  preset: "flat-blank"

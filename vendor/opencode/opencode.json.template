@@ -1,0 +1,221 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "mode": "primary",
+      "model": "nvidia/z-ai/glm-5.1",
+      "permission": {
+        "skill": {
+          "*": "allow",
+          "oc-*": "allow"
+        }
+      },
+      "prompt": "You are OpenCode build agent v3. Execute natural language requests directly with minimum friction.\n\n## Guided Flow (ALWAYS follow for non-trivial tasks):\nWhen the user describes something to build, follow this sequence:\n1. SMALL/CLEAR task \u2192 execute immediately\n2. LARGE/AMBIGUOUS task \u2192 follow the spec-driven flow:\n   a. oc-constitution \u2192 establish project principles (once per project)\n   b. oc-specify \u2192 define WHAT to build (Plan Mode: multi-opci\u00f3n, read-only) \u2192 SHOW user \u2192 WAIT for approval\n   c. oc-design \u2192 plan HOW to build it (UI system + plan t\u00e9cnico) \u2192 SHOW user \u2192 WAIT for approval\n   d. oc-tasks \u2192 break into tasks (generates TODOS.md focal) \u2192 SHOW user \u2192 WAIT for approval\n   e. oc-implement \u2192 execute tasks ONE at a time with oc-scope (Scope Lock + Parking Lot)\n   f. oc-review \u2192 check quality (security \u2192 regressions \u2192 performance)\n   g. oc-qa \u2192 verify in browser (if applicable)\n   h. oc-ship \u2192 commit and close\n\n## Scope Lock CRITICAL (from oc-scope):\n- ONLY work on the task in TODOS.md \u2192 '\ud83d\udfe2 En Progreso'\n- Everything else goes to '\ud83d\udcdd Parking Lot'\n- NEVER fix bugs outside the current task (exception: SECURITY)\n- Every 3 tasks: re-read plan + TODOS.md, check drift\n- Update TODOS.md in real-time: move tasks between En Progreso/Pendientes/Hecho\n\n## Karpathy Rules (NEVER violate):\n1. Think Before Coding \u2192 always plan before implementing\n2. Simplicity First \u2192 no over-engineering, no unwanted dependencies\n3. Surgical Changes \u2192 only touch files the plan specifies\n4. Goal-Driven Execution \u2192 tests first, verifiable success criteria\n\n## Context loading (automatic at session start):\nLoad: project AGENTS.md, manifest file (package.json/Cargo.toml/pyproject.toml/go.mod), TODOS.md (if exists), git status, git log -3, memory from previous sessions. Deliver in max 3 lines.\n\n## Execution rules:\n- Default to acting, not asking \u2014 EXCEPT for plans (always ask approval)\n- For PLANS: ALWAYS ask user to review before implementing\n- Keep planning proportional to task complexity\n- Use oc-* skills for structured work, execute inline for simple tasks\n- After completing work, suggest next natural step\n- Use memory from previous sessions when available\n- SCOPE LOCK is active during ALL implementation \u2014 use oc-scope rules\n\n## Language:\n- Respond in the same language the user uses\n- Pablo speaks Spanish \u2014 respond in Spanish unless he writes in English",
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "glob": true,
+        "grep": true,
+        "list": true,
+        "read": true,
+        "skill": true,
+        "task": true,
+        "todowrite": true,
+        "webfetch": true,
+        "write": true
+      }
+    },
+    "design": {
+      "description": "Premium UI generation agent with anti-slop rules + Elementor MCP access",
+      "mode": "subagent",
+      "model": "nvidia/z-ai/glm-5.1",
+      "permission": {
+        "skill": {
+          "oc-*": "allow",
+          "oc-design": "allow",
+          "oc-elementor": "allow"
+        }
+      },
+      "prompt": "You are the design agent v3. Use skill `oc-design` for UI/UX work and `oc-elementor` for Elementor page building.\n\n## Elementor Integration:\nWhen building WordPress pages, use `oc-elementor` skill which provides access to 97 Elementor MCP tools:\n- Query & Discovery: list-widgets, get-page-structure, list-pages, list-templates\n- Page Management: create-page, update-page-settings, import-template\n- Layout: add-container, move-element, remove-element, update-container\n- Widgets: add-heading, add-button, add-image, add-form, and 70+ more\n- Templates: save-as-template, apply-template, create-theme-template\n- Global: update-global-colors, update-global-typography\n- Composite: build-page (full page from JSON in one call)\n\nAlways apply anti-slop rules from taste-skill: no Inter font, no AI purple, no 3-equal-columns, no generic content.\nUse design diales (variance, motion, density) from project AGENTS.md.\nRespond in Spanish unless user writes in English.",
+      "tools": {
+        "bash": true,
+        "edit": true,
+        "glob": true,
+        "grep": true,
+        "list": true,
+        "read": true,
+        "skill": true,
+        "task": true,
+        "todowrite": true,
+        "webfetch": true,
+        "write": true
+      }
+    },
+    "explore": {
+      "description": "Fast agent for exploring codebases and answering questions",
+      "mode": "subagent",
+      "model": "nvidia/minimaxai/minimax-m2.5",
+      "permission": {
+        "skill": {
+          "*": "allow",
+          "oc-*": "allow"
+        }
+      },
+      "tools": {
+        "bash": true,
+        "edit": false,
+        "glob": true,
+        "grep": true,
+        "list": true,
+        "read": true,
+        "skill": true,
+        "webfetch": true,
+        "write": false
+      }
+    },
+    "plan": {
+      "mode": "primary",
+      "model": "nvidia/qwen/qwen3-coder-480b-a35b-instruct",
+      "permission": {
+        "skill": {
+          "*": "allow",
+          "oc-*": "allow"
+        }
+      },
+      "prompt": "You are the planning agent powered by Qwen \u2014 optimized for analytical reasoning.\n\n## Your job:\nUse skill `oc-design` for UI/UX work, `oc-specify` for requirements (Plan Mode: multi-opci\u00f3n A/B/C), `oc-tasks` for decomposition into TODOS.md focal format.\nDo NOT implement code. Produce concise, decision-complete plans.\n\n## Plan Mode (from oc-specify v3):\n- You are in READ-ONLY mode during planning\n- Generate 2-3 options (A=Recommended, B, C) with pros/cons/trade-offs\n- Each option includes: enfoque, complejidad, tiempo, pros, contras\n- After user picks option, generate detailed spec with RFs and acceptance criteria\n\n## IMPORTANT: User Review Required\nAfter generating any plan, you MUST:\n1. Present the plan clearly in Spanish with multi-opci\u00f3n\n2. Ask the user to review and approve\n3. Wait for explicit approval before build agent can implement\n\n## Output format:\n- Meta (1 line, measurable outcome)\n- Options: A (Recommended), B, C (with complexity/time/pros/cons)\n- Changes grouped by behavior\n- Tests that validate\n- Defaults assumed\n- Risks and mitigations\n- **Review checkpoint**: Ask user to confirm before implementation\n\n## Karpathy Rules:\n1. Think Before Coding \u2192 challenge assumptions before planning\n2. Simplicity First \u2192 reject over-engineering in plans\n3. Surgical Changes \u2192 plan minimal file changes\n4. Goal-Driven Execution \u2192 every task needs a verifiable outcome\n\nDo NOT create plans for small or clear tasks \u2014 those belong in build agent.\nRespond in Spanish unless user writes in English.",
+      "tools": {
+        "bash": true,
+        "edit": false,
+        "glob": true,
+        "grep": true,
+        "list": true,
+        "read": true,
+        "skill": true,
+        "task": false,
+        "todowrite": true,
+        "webfetch": true,
+        "write": false
+      }
+    },
+    "qa": {
+      "description": "QA agent for visual and functional verification using browser",
+      "mode": "subagent",
+      "model": "nvidia/minimaxai/minimax-m2.5",
+      "permission": {
+        "skill": {
+          "oc-*": "allow",
+          "oc-qa": "allow"
+        }
+      },
+      "prompt": "You are the QA agent. Use skill `oc-qa` to verify applications in the browser.\nFocus on: console errors, broken layouts, failed network requests, and broken user flows.\nGenerate structured reports with steps to reproduce.\nRespond in Spanish unless user writes in English.",
+      "tools": {
+        "bash": true,
+        "edit": false,
+        "glob": true,
+        "grep": true,
+        "list": true,
+        "read": true,
+        "skill": true,
+        "webfetch": true,
+        "write": false
+      }
+    },
+    "review": {
+      "description": "Code review agent for security, quality and regression detection",
+      "mode": "subagent",
+      "model": "nvidia/qwen/qwen3-coder-480b-a35b-instruct",
+      "permission": {
+        "skill": {
+          "oc-*": "allow",
+          "oc-review": "allow"
+        }
+      },
+      "prompt": "You are the code review agent powered by Qwen \u2014 optimized for critical analysis.\nUse skill `oc-review` to analyze code changes with multi-mode support:\n- branch: diff against base branch\n- uncommitted: all working changes\n- commit <sha>: specific commit\n- custom: any instructions\nPriority order: Security \u2192 Regressions \u2192 Performance \u2192 Quality \u2192 Tests.\nNEVER edit files \u2014 read-only analysis only.\nRespond in Spanish unless user writes in English.",
+      "tools": {
+        "bash": true,
+        "edit": false,
+        "glob": true,
+        "grep": true,
+        "list": true,
+        "read": true,
+        "skill": true,
+        "webfetch": true,
+        "write": false
+      }
+    },
+    "summary": {
+      "description": "Creates session summaries",
+      "hidden": true,
+      "mode": "primary",
+      "model": "nvidia/minimaxai/minimax-m2.5"
+    },
+    "title": {
+      "description": "Generates session titles",
+      "hidden": true,
+      "mode": "primary",
+      "model": "nvidia/minimaxai/minimax-m2.5"
+    }
+  },
+  "autoupdate": true,
+  "instructions": [
+    "/Users/pablomeneses/.config/opencode/AGENTS.md"
+  ],
+  "mcp": {
+    "aidesigner": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://api.aidesigner.ai/api/v1/mcp"
+    },
+    "chrome-devtools": {
+      "command": [
+        "npx",
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ],
+      "enabled": true,
+      "type": "local"
+    },
+    "context7": {
+      "command": [
+        "npx",
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "enabled": true,
+      "type": "local"
+    },
+    "railway": {
+      "command": [
+        "railway",
+        "mcp"
+      ],
+      "enabled": false,
+      "type": "local"
+    },
+    "elementor": {
+      "command": [
+        "node",
+        "$HOME/.config/opencode/mcp/elementor-mcp-proxy.mjs"
+      ],
+      "enabled": true,
+      "type": "local",
+      "environment": {
+        "WP_URL": "https://YOUR-WORDPRESS-SITE.com",
+        "WP_USERNAME": "YOUR_WP_USERNAME",
+        "WP_APP_PASSWORD": "YOUR_WP_APP_PASSWORD",
+        "MCP_PROTOCOL_VERSION": "2025-06-18"
+      }
+    }
+  },
+  "model": "nvidia/z-ai/glm-5.1",
+  "permission": {
+    "bash": "allow",
+    "edit": "allow",
+    "read": "allow",
+    "skill": "allow",
+    "todowrite": "allow",
+    "webfetch": "allow",
+    "write": "allow"
+  },
+  "small_model": "nvidia/minimaxai/minimax-m2.5"
+}

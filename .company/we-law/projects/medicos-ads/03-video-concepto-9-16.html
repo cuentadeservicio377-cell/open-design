@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=540, initial-scale=1">
+<title>We Law — Médicos Video Concepto (9:16)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  :root {
+    --navy: #0A192F;
+    --gold: #9D773C;
+    --gold-light: #C5A370;
+    --offwhite: #F4F4F2;
+    --white: #FFFFFF;
+    --text: #2C2C2C;
+    --slate: #44566E;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #E2E8F0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    gap: 50px;
+    color: var(--text);
+  }
+
+  .page-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--navy);
+    text-align: center;
+  }
+
+  .page-sub {
+    font-size: 16px;
+    color: #6b7280;
+    text-align: center;
+    max-width: 600px;
+  }
+
+  /* STORYBOARD CARD */
+  .storyboard {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  .shot {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--gold);
+    display: flex;
+    gap: 30px;
+  }
+
+  .shot-meta {
+    flex-shrink: 0;
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .shot-number {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .shot-time {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    background: rgba(157,119,60,0.1);
+    padding: 4px 12px;
+    border-radius: 6px;
+    width: fit-content;
+  }
+
+  .shot-type {
+    font-size: 12px;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .shot-content {
+    flex: 1;
+  }
+
+  .shot-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+
+  .shot-content h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 14px 0 6px;
+  }
+
+  .shot-content p, .shot-content li {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .shot-content ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .shot-content ul li::before {
+    content: '→ ';
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .text-overlay-preview {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.3;
+    position: relative;
+  }
+
+  .text-overlay-preview .gold { color: var(--gold); }
+
+  .overlay-label {
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* SPECS SECTION */
+  .specs-section {
+    max-width: 900px;
+    width: 100%;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+  }
+
+  .specs-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #E2E8F0;
+  }
+
+  .spec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .spec-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .spec-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .spec-value code {
+    background: rgba(157,119,60,0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--gold);
+  }
+
+  /* AUDIO SECTION */
+  .audio-section {
+    max-width: 900px;
+    width: 100%;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--navy);
+  }
+
+  .audio-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+
+  .audio-section p {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .audio-section .highlight {
+    background: rgba(157,119,60,0.08);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  /* VIDEO FRAME PREVIEW */
+  .frame-preview {
+    width: 270px;
+    height: 480px;
+    margin: 0 auto;
+    background: var(--navy);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  }
+
+  .frame-preview .frame-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  .frame-preview .frame-text .gold { color: var(--gold); }
+
+  .frame-preview .frame-cta {
+    margin-top: 20px;
+    background: linear-gradient(70deg, var(--gold-light), var(--gold));
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .frame-preview .frame-swipe {
+    position: absolute;
+    bottom: 20px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+  }
+</style>
+</head>
+<body>
+
+  <h1 class="page-title">Video para Meta Ads — Médicos · Cirujanos · Clínicas</h1>
+  <p class="page-sub">Formato 9:16 vertical (1080×1920) · Duración: 25-35 segundos<br>
+  Framework: 4Cs (Clarity, Credibility, Connection, Conversion) + Autoridad</p>
+
+  <!-- QUICK PREVIEW FRAME -->
+  <div style="text-align:center; margin-bottom: -15px;">
+    <p class="page-sub" style="margin-bottom:10px;">Así se ve en el feed:</p>
+  </div>
+  <div class="frame-preview">
+    <p class="frame-text" style="font-size:14px">Abogados para<br><span class="gold" style="font-size:16px">MÉDICOS</span><br><br>¿Tu consentimiento<br>te protege?</p>
+    <div class="frame-cta">WhatsApp 💬</div>
+    <div class="frame-swipe">Más info →</div>
+  </div>
+
+  <!-- STORYBOARD -->
+  <div class="storyboard">
+    <h2 style="font-family:Poppins;font-size:24px;font-weight:700;color:var(--navy);text-align:center;margin-bottom:-10px">Storyboard — Plano por Plano</h2>
+
+    <!-- SHOT 1 -->
+    <div class="shot">
+      <div class="shot-meta">
+        <div class="shot-number">01</div>
+        <div class="shot-time">0:00–0:03</div>
+        <div class="shot-type">Talking Head</div>
+      </div>
+      <div class="shot-content">
+        <h3>Hook Visual — "El Face Stop"</h3>
+        <p>El fundador hablando directo a cámara. Plano medio. Iluminación cálida desde ventana. Fondo ligeramente desenfocado (consultorio moderno o espacio clean).</p>
+        <h4>Acción</h4>
+        <p>Habla con expresión seria pero tranquila. No alarmista. No sonríe — está diciendo algo importante.</p>
+        <h4>Audio (voz en off o directo)</h4>
+        <p>"Operas pacientes todos los días. Pero tu consentimiento informado... ¿está a la altura de tu práctica?"</p>
+        <div class="text-overlay-preview">
+          <span class="overlay-label">Overlay 0:01</span>
+          <span class="gold">MÉDICOS:</span> ¿Tu consentimiento informado realmente te protege?
+        </div>
+      </div>
+    </div>
+
+    <!-- SHOT 2 -->
+    <div class="shot">
+      <div class="shot-meta">
+        <div class="shot-number">02</div>
+        <div class="shot-time">0:03–0:08</div>
+        <div class="shot-type">B-Roll + Overlay</div>
+      </div>
+      <div class="shot-content">
+        <h3>El Problema Visualizado</h3>
+        <p>Plano detalle: manos sosteniendo un documento impreso de internet. Se nota genérico, mal formateado. Contraste con un documento premium de We Law después (transición suave).</p>
+        <h4>Acción</h4>
+        <p>Corte A: documento genérico (luz fría, papel barato) → Corte B: documento We Law (luz cálida, papel texturizado, tipografía limpia).</p>
+        <div class="text-overlay-preview">
+          <span class="overlay-label">Overlay 0:04</span>
+          78% de los médicos usa consentimientos <span class="gold">genéricos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHOT 3 -->
+    <div class="shot">
+      <div class="shot-meta">
+        <div class="shot-number">03</div>
+        <div class="shot-time">0:08–0:14</div>
+        <div class="shot-type">Talking Head</div>
+      </div>
+      <div class="shot-content">
+        <h3>Conexión Personal</h3>
+        <p>El fundador de nuevo. Ahora más cerca (plano medio-corto). Expresión empática. Está contando algo que le importa.</p>
+        <h4>Audio</h4>
+        <p>"Soy abogado especializado en derecho médico. Trabajo con médicos y clínicas que quieren tener sus documentos en orden sin preocuparse de nada. Ellos hablan, yo hago el resto."</p>
+        <div class="text-overlay-preview">
+          <span class="overlay-label">Overlay 0:10</span>
+          Tú hablas, <span class="gold">nosotros hacemos todo.</span> Sin papeleo.
+        </div>
+      </div>
+    </div>
+
+    <!-- SHOT 4 -->
+    <div class="shot">
+      <div class="shot-meta">
+        <div class="shot-number">04</div>
+        <div class="shot-time">0:14–0:20</div>
+        <div class="shot-type">Proceso B-Roll</div>
+      </div>
+      <div class="shot-content">
+        <h3>El Proceso (Transparencia)</h3>
+        <p>Montaje rápido de 3 clips:</p>
+        <ul>
+          <li>Video call (Zoom/Meet) — "Sesión 1 a 1"</li>
+          <li>Pantalla con documento redactándose — "Diseñamos para ti"</li>
+          <li>Email de entrega con PDF — "Recibes en 48h"</li>
+        </ul>
+        <div class="text-overlay-preview">
+          <span class="overlay-label">Overlay 0:14</span>
+          Sesión 1 a 1 → Diseño legal → <span class="gold">Entrega 48h</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHOT 5 -->
+    <div class="shot">
+      <div class="shot-meta">
+        <div class="shot-number">05</div>
+        <div class="shot-time">0:20–0:26</div>
+        <div class="shot-type">Talking Head</div>
+      </div>
+      <div class="shot-content">
+        <h3>Beneficio + Prueba Social</h3>
+        <p>El fundador, plano medio. Ahora más relajado. Está contando un resultado real.</p>
+        <h4>Audio</h4>
+        <p>"Ya ayudamos a médicos y clínicas en todo México. Duermen tranquilos porque su documento está hecho para SU especialidad. No es un machote."</p>
+        <div class="text-overlay-preview">
+          <span class="overlay-label">Overlay 0:21</span>
+          +40 médicos protegidos en México 🇲🇽
+        </div>
+      </div>
+    </div>
+
+    <!-- SHOT 6 -->
+    <div class="shot">
+      <div class="shot-meta">
+        <div class="shot-number">06</div>
+        <div class="shot-time">0:26–0:30</div>
+        <div class="shot-type">CTA</div>
+      </div>
+      <div class="shot-content">
+        <h3>Cierre y Llamado a la Acción</h3>
+        <p>Plano final. El fundador sonríe por primera vez. Confianza, no urgencia.</p>
+        <h4>Audio</h4>
+        <p>"Tu primer diagnóstico es por videollamada, sin costo. 20 minutos. Sin compromiso. Tú cuentas tu caso, nosotros te decimos cómo podemos ayudarte."</p>
+        <div class="text-overlay-preview">
+          <span class="overlay-label">Overlay 0:26</span>
+          Diagnóstico gratuito para <span class="gold">Médicos</span> 💬 · 20 min
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECHNICAL SPECS -->
+  <div class="specs-section">
+    <h2>Especificaciones Técnicas</h2>
+    <div class="spec-grid">
+      <div class="spec-item">
+        <span class="spec-label">Formato</span>
+        <span class="spec-value">9:16 vertical (1080×1920px)</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Duración total</span>
+        <span class="spec-value">25-35 segundos</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Relación de aspecto</span>
+        <span class="spec-value"><code>9:16</code></span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Safe zone (texto)</span>
+        <span class="spec-value">65% central del frame</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Thumb zone (evitar)</span>
+        <span class="spec-value">25-30% inferior</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Formato de archivo</span>
+        <span class="spec-value">MP4 (H.264)</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Color grade</span>
+        <span class="spec-value">Cálido, ligeramente desaturado</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Tipografía overlays</span>
+        <span class="spec-value"><code>Poppins Bold</code> (700-900)</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Color texto overlay</span>
+        <span class="spec-value">Blanco <code>#FFFFFF</code> + Gold <code>#9D773C</code> para "MÉDICOS"</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Fondo overlays</span>
+        <span class="spec-value">Semi-transparente navy o sin fondo</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Subtítulos</span>
+        <span class="spec-value">SÍ — obligatorios (85% ven sin audio)</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">CTA final</span>
+        <span class="spec-value">"Enviar mensaje de WhatsApp"</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIO DIRECTION -->
+  <div class="audio-section">
+    <h2>Dirección de Audio</h2>
+    <p><strong>Voz:</strong> Masculina, 30-40 años. Tono <span class="highlight">tranquilo, seguro, sin prisa</span>. Como un colega que te da un consejo importante, no como un vendedor.</p>
+    <p><strong>Pacing:</strong> Pausado. Dejar respirar las frases importantes. <span class="highlight">No cortar palabras.</span> El silencio también comunica confianza.</p>
+    <p style="margin-top:16px"><strong>Música de fondo:</strong></p>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px;">
+      <li>→ Instrumental, minimalista</li>
+      <li>→ Piano suave o guitarra acústica</li>
+      <li>→ Tempo: lento-medio (70-90 BPM)</li>
+      <li>→ Tono: cálido, contemplativo, profesional</li>
+      <li>→ Volumen: muy bajo, casi imperceptible. La voz manda.</li>
+      <li>→ Referencia: playlist "Focus" o "Deep Work" de Spotify</li>
+    </ul>
+    <p style="margin-top:16px"><strong>Efectos de sonido:</strong> Mínimos o ninguno. Si acaso, un sutil "whoosh" en transiciones de texto. Nada llamativo.</p>
+  </div>
+
+  <!-- PRODUCTION NOTES -->
+  <div class="specs-section" style="border-left:5px solid var(--gold)">
+    <h2>Notas de Producción</h2>
+    <div class="spec-grid">
+      <div class="spec-item">
+        <span class="spec-label">Iluminación</span>
+        <span class="spec-value">Luz natural de ventana + relleno cálido. Nada de estudio frío ni hospital.</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Cámara</span>
+        <span class="spec-value">iPhone 15 Pro o superior. 4K 60fps. Lente principal. Estabilización activada.</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Vestuario</span>
+        <span class="spec-value">Camisa casual-profesional. Colores neutros (blanco, beige, gris). Sin corbata.</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Fondo</span>
+        <span class="spec-value">Consultorio moderno, oficina clean o espacio con luz natural. Nada de hospital estéril.</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Edición</span>
+        <span class="spec-value">CapCut o DaVinci Resolve. Transiciones limpias. Sin efectos llamativos.</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Duración máxima</span>
+        <span class="spec-value">35 segundos. Si pasa de 35s, cortar.</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<title>We Law — Pequeño Empresario (Directo · Con Precio)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--navy:#0A192F;--gold:#9D773C;--gold-light:#C5A370;--offwhite:#F4F4F2;--white:#FFFFFF}
+  body{width:1080px;height:1080px;overflow:hidden;font-family:'Roboto',sans-serif;background:var(--offwhite);display:flex;align-items:center;justify-content:center}
+  .ad-card{width:1000px;height:1000px;background:var(--navy);border-radius:24px;padding:60px 70px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .ad-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 25%,rgba(157,119,60,0.1) 0%,transparent 60%);pointer-events:none}
+  .top-section{position:relative;z-index:1}
+  .icon-row{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+  .icon-circle{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--white);flex-shrink:0}
+  .icon-label{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--gold-light);letter-spacing:0.5px}
+  .badge{display:inline-block;background:rgba(157,119,60,0.12);border:1px solid rgba(157,119,60,0.25);color:var(--gold);font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;padding:7px 16px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+  .headline{font-family:'Poppins',sans-serif;font-size:40px;font-weight:900;line-height:1.15;color:var(--white);margin-bottom:16px;max-width:780px}
+  .headline .gold{color:var(--gold)}
+  .subhead{font-family:'Roboto',sans-serif;font-size:20px;font-weight:500;line-height:1.5;color:rgba(255,255,255,0.75);max-width:680px}
+  .middle-section{position:relative;z-index:1}
+  .stat-row{display:flex;gap:50px;margin-bottom:35px}
+  .stat-item{text-align:center}
+  .stat-number{font-family:'Poppins',sans-serif;font-size:30px;font-weight:900;color:var(--gold);line-height:1}
+  .stat-label{font-family:'Roboto',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);margin-top:6px;max-width:160px}
+  .what-you-get{display:flex;gap:14px;flex-wrap:wrap}
+  .get-item{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:11px 16px}
+  .get-check{color:var(--gold);font-size:15px;font-weight:700}
+  .get-text{font-family:'Roboto',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.85)}
+  .bottom-section{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between}
+  .price-block{display:flex;flex-direction:column}
+  .price-from{font-size:13px;font-weight:500;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.5px}
+  .price-amount{font-family:'Poppins',sans-serif;font-size:46px;font-weight:900;color:var(--gold);line-height:1}
+  .cta-button{display:flex;align-items:center;gap:12px;background:linear-gradient(70deg,var(--gold-light) 0%,var(--gold) 100%);border:none;border-radius:8px;padding:20px 36px;cursor:pointer}
+  .cta-icon{width:32px;height:32px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--white)}
+  .cta-text{font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;color:var(--white)}
+  .cta-sub{font-family:'Roboto',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.8)}
+</style>
+</head>
+<body>
+<div class="ad-card">
+  <div class="top-section">
+    <div class="icon-row">
+      <div class="icon-circle">🏪</div>
+      <span class="icon-label">NEGOCIOS · SERVICIOS · COMERCIOS</span>
+    </div>
+    <div class="badge">SIN PAPELEO · TODO POR VIDEOLLAMADA</div>
+    <h1 class="headline">Los negocios que crecen tienen algo en común: <span class="gold">todo por escrito.</span></h1>
+    <p class="subhead">Formalizar no es burocracia. Es crecer con orden. Tú solo cuéntanos cómo trabajas en una videollamada. Del resto nos encargamos nosotros.</p>
+  </div>
+
+  <div class="middle-section">
+    <div class="stat-row">
+      <div class="stat-item"><div class="stat-number">📹</div><div class="stat-label">Videollamada sin salir de tu negocio</div></div>
+      <div class="stat-item"><div class="stat-number">48h</div><div class="stat-label">Recibes tus documentos listos. Tú no haces nada más.</div></div>
+      <div class="stat-item"><div class="stat-number">🏪</div><div class="stat-label">Hecho para negocios como el tuyo</div></div>
+    </div>
+    <div class="what-you-get">
+      <div class="get-item"><span class="get-check">✓</span><span class="get-text">Contrato con clientes personalizado</span></div>
+      <div class="get-item"><span class="get-check">✓</span><span class="get-text">Registro de marca — protege tu nombre</span></div>
+      <div class="get-item"><span class="get-check">✓</span><span class="get-text">Aviso de privacidad incluido</span></div>
+      <div class="get-item"><span class="get-check">✓</span><span class="get-text">Tú solo habla. Nosotros hacemos el resto.</span></div>
+    </div>
+  </div>
+
+  <div class="bottom-section">
+    <div class="price-block">
+      <span class="price-from">Inversión única</span>
+      <span class="price-amount"><span style="font-size:22px;font-weight:700;opacity:0.7">$</span>2,500 <span style="font-size:17px;font-weight:500;color:rgba(255,255,255,0.5)">MXN</span></span>
+    </div>
+    <div class="cta-button">
+      <div class="cta-icon">💬</div>
+      <div>
+        <div class="cta-text">Escríbenos por WhatsApp</div>
+        <div class="cta-sub">Videollamada sin costo · Tú no te preocupas de nada</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+# Tech Minimal Style
+name: "TechMinimal"
+philosophy: "Clean, functional, no-nonsense. Developer-focused with monospace accents and maximum clarity."
+primary_mode: "light"
+brand_domain: "developer tools / SaaS"
+brand_type: "ui-rich"
+
+diales:
+  variance: 3
+  motion: 4
+  density: 5
+
+primitives:
+  colors:
+    neutral:
+      50: "#FFFFFF"
+      100: "#FAFAFA"
+      200: "#F0F0F0"
+      300: "#E0E0E0"
+      400: "#A0A0A0"
+      500: "#606060"
+      600: "#404040"
+      700: "#303030"
+      800: "#1A1A1A"
+      900: "#09090B"
+    brand:
+      400: "#3B82F6"
+      500: "#2563EB"
+      600: "#1D4ED8"
+
+  radii: [0, 4, 6, 8]
+
+tokens:
+  colors:
+    light:
+      background: "#FFFFFF"
+      surface1: "{neutral.100}"
+      border: "{neutral.200}"
+      text1: "{neutral.800}"
+      text2: "{neutral.500}"
+      accent: "{brand.500}"
+
+  typography:
+    display:
+      family: "Geist"
+      size: "36px"
+      weight: 600
+      line_height: 1.15
+      letter_spacing: "-0.02em"
+    body:
+      family: "Geist"
+      size: "15px"
+      weight: 400
+      line_height: 1.6
+      letter_spacing: "0em"
+    mono:
+      family: "Geist Mono"
+      size: "13px"
+      line_height: 1.5
+      letter_spacing: "0.02em"
+
+google_fonts:
+  - "Geist:wght@400;500;600;700"
+  - "Geist Mono"
+
+layout:
+  grid: "1fr min(960px, 100%) 1fr"
+  hero_pattern: "centered"
+  content_width: "960px"
+  section_spacing: "80px"
+  variance_mapping:
+    low: "single-column documentation"
+    mid: "sidebar + content with code blocks"
+    high: "three-panel with terminal output"
+
+responsive:
+  mobile_first: true
+  breakpoints:
+    sm: 640
+    md: 768
+    lg: 1024
+    xl: 1280
+  mobile_hero: "centered with terminal snippet"
+  mobile_nav: "hamburger with slide-out sidebar"
+  mobile_grid: "single column, collapsible sidebar"
+
+interaction_rules:
+  hover:
+    transition: "150ms cubic-bezier(0.16, 1, 0.3, 1)"
+    background_shift: "darken 4%"
+  focus:
+    ring: "2px solid {brand.500}"
+    ring_offset: "2px"
+  active:
+    transform: "translateY(-1px)"
+  disabled:
+    opacity: 0.5
+    cursor: "not-allowed"
+
+components:
+  button_primary:
+    background: "{brand.500}"
+    radius: 6
+    padding: "10px 20px"
+  card:
+    background: "#FFFFFF"
+    border: "1px solid {neutral.200}"
+    radius: 8
+  input:
+    background: "#FFFFFF"
+    border: "1px solid {neutral.300}"
+    radius: 4
+
+hero_stage:
+  preset: "flat-blank"

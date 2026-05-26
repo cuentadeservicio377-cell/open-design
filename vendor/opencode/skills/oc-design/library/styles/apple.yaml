@@ -1,0 +1,112 @@
+# Apple Style
+name: "Apple"
+philosophy: "Premium white space, SF Pro Display typography, cinematic imagery. Minimal chrome, content-first."
+primary_mode: "light"
+brand_domain: "consumer electronics"
+brand_type: "content-rich"
+
+diales:
+  variance: 4
+  motion: 8
+  density: 2
+
+primitives:
+  colors:
+    neutral:
+      50: "#FFFFFF"
+      100: "#F5F5F7"
+      200: "#E8E8ED"
+      300: "#D2D2D7"
+      400: "#86868B"
+      500: "#6E6E73"
+      600: "#424245"
+      700: "#333336"
+      800: "#1D1D1F"
+      900: "#0A0A0A"
+    brand:
+      500: "#0071E3"
+      600: "#0077ED"
+
+  radii: [0, 8, 12, 18]
+
+tokens:
+  colors:
+    light:
+      background: "{neutral.50}"
+      surface1: "{neutral.100}"
+      border: "{neutral.200}"
+      text1: "{neutral.800}"
+      text2: "{neutral.500}"
+      accent: "{brand.500}"
+
+  typography:
+    display:
+      family: "SF Pro Display"
+      size: "56px"
+      weight: 600
+      line_height: 1.08
+      letter_spacing: "-0.02em"
+    body:
+      family: "Outfit"
+      size: "17px"
+      weight: 400
+      line_height: 1.65
+      letter_spacing: "0em"
+    mono:
+      family: "SF Mono"
+      size: "13px"
+      line_height: 1.5
+      letter_spacing: "0em"
+  google_fonts: ["Outfit"]
+
+layout:
+  grid: "grid-cols-1 lg:grid-cols-[1fr_1fr]"
+  hero_pattern: "editorial"
+  content_width: "980px"
+  section_spacing: "160px"
+  variance_mapping:
+    low: "Centered single column, cinematic photography, extreme whitespace"
+    mid: "Split sections with photo left, text right, staggered feature rows"
+    high: "Full-bleed photo strips, scroll-triggered reveals, floating product shots"
+
+responsive:
+  mobile_first: true
+  breakpoints:
+    sm: 640
+    md: 768
+    lg: 1024
+    xl: 1280
+  mobile_hero: "Full-width image with text overlay, shrink display to 36px"
+  mobile_nav: "Hamburger with slide-in drawer, simplified navigation"
+  mobile_grid: "Single column, images stacked above text"
+
+interaction_rules:
+  hover:
+    transition: "150ms cubic-bezier(0.16, 1, 0.3, 1)"
+    background_shift: "surface1 → surface2"
+  focus:
+    ring: "2px solid {brand.500}"
+    ring_offset: "2px"
+  active:
+    transform: "scale(0.98)"
+  disabled:
+    opacity: 0.5
+    cursor: "not-allowed"
+
+components:
+  button_primary:
+    background: "{brand.500}"
+    radius: 18
+    padding: "12px 28px"
+    font_weight: 500
+  card:
+    background: "{neutral.50}"
+    border: "none"
+    radius: 18
+    shadow: "0 4px 20px rgba(0,0,0,0.08)"
+
+hero_stage:
+  preset: "editorial-photo"
+  background:
+    medium: "photo"
+    intensity: "bold"

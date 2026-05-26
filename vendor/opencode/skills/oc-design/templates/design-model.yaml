@@ -1,0 +1,1157 @@
+# ═══════════════════════════════════════════════════════════════
+# design-model.yaml — Single Source of Truth
+# ALL design generation flows from this file.
+# DESIGN.md, preview.html, components — all derived, never hand-edited.
+# ═══════════════════════════════════════════════════════════════
+
+name: "ProjectName"
+philosophy: "One composition per viewport. Every element earns its place. Quiet until it speaks."
+primary_mode: "dark"  # dark | light
+
+# ─────────────────────────────────────────────────────────────
+# DIALES — Control knobs that map to CONCRETE CSS decisions
+# Each value 1–10. Every dial must resolve to specific tokens.
+# ─────────────────────────────────────────────────────────────
+
+diales:
+  variance: 8    # Symmetry → Asymmetry
+  motion: 6     # Static → Cinematic
+  density: 4    # Airy → Cockpit
+
+  # ── VARIANCE MAPPING ──────────────────────────────────────
+  # variance | Grid pattern        | Layout behavior              | Hero composition
+  # ---------|---------------------|-------------------------------|------------------
+  #  1–3     | 12-col symmetric    | Center-aligned, even gutters | Centered, balanced
+  #  4–7     | 12-col offset       | Offset 2+1, staggered blocks | Left-aligned, offset
+  #  8–10    | Asymmetric 7+5      | Zig-zag, negative space hero | Split, diagonal crops
+  #
+  # CSS output for variance=8:
+  #   grid-template-columns: 7fr 5fr;   (desktop)
+  #   grid-template-columns: 1fr;        (mobile)
+  #   section text alignment: left
+  #   hero image crop: diagonal at 18deg
+  #   card grid: 2+1 zig-zag, never 3-equal
+
+  # ── MOTION MAPPING ────────────────────────────────────────
+  # motion | Spring config        | Duration scale | Choreography
+  # --------|---------------------|-----------------|---------------
+  #  1–3    | tension:170,fric:26 | 0ms (none)     | Instant swap, no transitions
+  #  4–7    | tension:180,fric:20 | 150–300ms      | Fade-in stagger, hover lifts
+  #  8–10   | tension:210,fric:16 | 300–600ms      | Spring entrance, scroll-linked parallax
+  #
+  # CSS output for motion=6:
+  #   transition: all 200ms cubic-bezier(0.2, 0, 0, 1);
+  #   --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  #   --enter: 200ms cubic-bezier(0.2, 0, 0, 1);
+  #   --exit: 150ms cubic-bezier(0.4, 0, 1, 1);
+
+  # ── DENSITY MAPPING ────────────────────────────────────────
+  # density | Spacing scale      | Gap scale  | Type scale factor | Padding (card/section)
+  # --------|--------------------|------------|--------------------|-----------------------
+  #  1–3    | ×1.5 (airy)        | 32–48px    | ×1.25 (larger)     | 32px / 96px
+  #  4–7    | ×1.0 (default)     | 16–24px    | ×1.0               | 24px / 64px
+  #  8–10   | ×0.625 (cockpit)   | 8–12px     | ×0.875 (smaller)   | 16px / 32px
+  #
+  # CSS output for density=4:
+  #   --space-xs: 4px;  --space-sm: 8px;  --space-md: 16px;
+  #   --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
+  #   --gap: 20px;
+  #   card padding: 24px
+  #   section padding: 64px 0
+
+# ─────────────────────────────────────────────────────────────
+# PRIMITIVES — Raw material scales, never used directly in CSS
+# Always reference via semantic tokens below.
+# ─────────────────────────────────────────────────────────────
+
+primitives:
+  colors:
+    neutral:
+      50: "#FAFAFA"
+      100: "#F4F4F5"
+      200: "#E4E4E7"
+      300: "#D4D4D8"
+      400: "#A1A1AA"
+      500: "#71717A"
+      600: "#52525B"
+      700: "#3F3F46"
+      800: "#27272A"
+      900: "#18181B"
+      950: "#09090B"   # TRUE black replacement. NEVER use #000000.
+
+    brand:
+      # Emerald — developer-tool accent. NEVER violet/purple.
+      50: "#ECFDF5"
+      100: "#D1FAE5"
+      200: "#A7F3D0"
+      300: "#6EE7B7"
+      400: "#34D399"
+      500: "#10B981"    # PRIMARY brand accent
+      600: "#059669"
+      700: "#047857"
+      800: "#065F46"
+      900: "#064E3B"
+      950: "#022C22"
+
+    cyan:
+      50: "#ECFEFF"
+      100: "#CFFAFE"
+      200: "#A5F3FC"
+      300: "#67E8F9"
+      400: "#22D3EE"
+      500: "#06B6D4"
+      600: "#0891B2"
+      700: "#0E7490"
+      800: "#155E75"
+      900: "#164E63"
+      950: "#083344"
+
+    amber:
+      50: "#FFFBEB"
+      100: "#FEF3C7"
+      200: "#FDE68A"
+      300: "#FCD34D"
+      400: "#FBBF24"
+      500: "#F59E0B"
+      600: "#D97706"
+      700: "#B45309"
+      800: "#92400E"
+      900: "#78350F"
+      950: "#451A03"
+
+    red:
+      50: "#FEF2F2"
+      100: "#FEE2E2"
+      200: "#FECACA"
+      300: "#FCA5A5"
+      400: "#F87171"
+      500: "#EF4444"
+      600: "#DC2626"
+      700: "#B91C1C"
+      800: "#991B1B"
+      900: "#7F1D1D"
+      950: "#450A0A"
+
+  spacing: [0, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 128]
+  radii: [0, 2, 4, 6, 8, 12, 16, 24, 999]
+
+# ─────────────────────────────────────────────────────────────
+# TOKENS — Semantic layer. These are what components reference.
+# ─────────────────────────────────────────────────────────────
+
+tokens:
+  colors:
+    dark:
+      background: "{neutral.950}"           # #09090B — NEVER #000000
+      surface1: "{neutral.900}"              # #18181B
+      surface2: "{neutral.800}"              # #27272A
+      surface3: "{neutral.700}"              # #3F3F46
+      surface4: "{neutral.600}"              # #52525B (hovered surface)
+      border: "{neutral.800}"                # #27272A
+      border_visible: "{neutral.700}"       # #3F3F46
+      text1: "{neutral.50}"                  # #FAFAFA
+      text2: "{neutral.300}"                 # #D4D4D8
+      text3: "{neutral.400}"                 # #A1A1AA
+      text4: "{neutral.500}"                 # #71717A
+      accent: "{brand.400}"                  # #34D399
+      accent_hover: "{brand.300}"            # #6EE7B7
+      accent_subtle: "rgba(16, 185, 129, 0.12)"
+      accent_muted: "rgba(16, 185, 129, 0.08)"
+      success: "{brand.500}"                 # #10B981
+      warning: "{amber.500}"                 # #F59E0B
+      error: "{red.500}"                     # #EF4444
+      info: "{cyan.500}"                     # #06B6D4
+      overlay: "rgba(0, 0, 0, 0.6)"
+      scrim: "rgba(9, 9, 11, 0.85)"
+
+    light:
+      background: "#FFFFFF"
+      surface1: "{neutral.50}"               # #FAFAFA
+      surface2: "{neutral.100}"              # #F4F4F5
+      surface3: "{neutral.200}"              # #E4E4E7
+      surface4: "{neutral.300}"              # #D4D4D8
+      border: "{neutral.200}"                # #E4E4E7
+      border_visible: "{neutral.300}"        # #D4D4D8
+      text1: "{neutral.950}"                 # #09090B
+      text2: "{neutral.600}"                 # #52525B
+      text3: "{neutral.500}"                 # #71717A
+      text4: "{neutral.400}"                 # #A1A1AA
+      accent: "{brand.600}"                  # #059669
+      accent_hover: "{brand.700}"             # #047857
+      accent_subtle: "rgba(5, 150, 105, 0.10)"
+      accent_muted: "rgba(5, 150, 105, 0.06)"
+      success: "{brand.600}"                  # #059669
+      warning: "{amber.600}"                  # #D97706
+      error: "{red.600}"                      # #DC2626
+      info: "{cyan.700}"                      # #0E7490
+      overlay: "rgba(0, 0, 0, 0.4)"
+      scrim: "rgba(255, 255, 255, 0.90)"
+
+  spacing:
+    2xs: 2
+    xs: 4
+    sm: 8
+    md: 16
+    lg: 24
+    xl: 32
+    2xl: 48
+    3xl: 64
+    4xl: 96
+    5xl: 128
+
+  radii:
+    element: 4       # checkboxes, tags, small indicators
+    control: 6       # buttons, inputs, toggles
+    component: 8     # cards, panels, dropdowns
+    container: 12    # modals, sheets, dialogs
+    pill: 999       # pills, badges, avatars
+
+  typography:
+    display:
+      family: "Geist"
+      size_min: "36px"
+      size_max: "72px"
+      weight: 600
+      line_height: 1.05
+      letter_spacing: "-0.03em"
+      source: "https://cdn.jsdelivr.net/npm/geist@1/dist/fonts/geist-sans/style.css"
+
+    heading1:
+      family: "Geist"
+      size_min: "30px"
+      size_max: "48px"
+      weight: 600
+      line_height: 1.15
+      letter_spacing: "-0.025em"
+
+    heading2:
+      family: "Geist"
+      size_min: "24px"
+      size_max: "36px"
+      weight: 600
+      line_height: 1.2
+      letter_spacing: "-0.02em"
+
+    heading3:
+      family: "Geist"
+      size: "20px"
+      weight: 600
+      line_height: 1.3
+      letter_spacing: "-0.015em"
+
+    heading4:
+      family: "Geist"
+      size: "16px"
+      weight: 600
+      line_height: 1.4
+      letter_spacing: "-0.01em"
+
+    body:
+      family: "Geist"
+      size: "14px"
+      weight: 400
+      line_height: 1.6
+      letter_spacing: "0em"
+
+    body_sm:
+      family: "Geist"
+      size: "13px"
+      weight: 400
+      line_height: 1.55
+      letter_spacing: "0em"
+
+    label:
+      family: "Geist"
+      size: "12px"
+      weight: 500
+      line_height: 1.4
+      letter_spacing: "0.02em"
+      text_transform: "uppercase"
+
+    mono:
+      family: "Geist Mono"
+      size: "13px"
+      weight: 400
+      line_height: 1.6
+      letter_spacing: "-0.01em"
+      source: "https://cdn.jsdelivr.net/npm/geist@1/dist/fonts/geist-mono/style.css"
+
+  elevation:
+    strategy: "subtle"
+    dark:
+      none: "none"
+      sm: "0 1px 2px rgba(0,0,0,0.3)"
+      md: "0 4px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3)"
+      lg: "0 8px 24px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.4)"
+      glow: "0 0 20px rgba(16,185,129,0.15), 0 4px 12px rgba(0,0,0,0.4)"
+    light:
+      none: "none"
+      sm: "0 1px 2px rgba(0,0,0,0.05)"
+      md: "0 4px 8px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04)"
+      lg: "0 8px 24px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)"
+      glow: "0 0 20px rgba(5,150,105,0.12), 0 4px 12px rgba(0,0,0,0.08)"
+
+  motion:
+    personality: "smooth"
+    easing:
+      standard: "cubic-bezier(0.2, 0, 0, 1)"
+      decelerate: "cubic-bezier(0, 0, 0, 1)"
+      accelerate: "cubic-bezier(0.4, 0, 1, 1)"
+      spring: "cubic-bezier(0.34, 1.56, 0.64, 1)"
+      ease_out: "cubic-bezier(0, 0, 0.2, 1)"
+    duration:
+      instant: "0ms"
+      fast: "100ms"
+      normal: "200ms"
+      slow: "350ms"
+      slower: "500ms"
+      entrance: "600ms"
+    spring_config:
+      tension: 180
+      friction: 20
+      mass: 1
+
+# ─────────────────────────────────────────────────────────────
+# LAYOUT — How variance/density diales resolve to grid patterns
+# ─────────────────────────────────────────────────────────────
+
+layout:
+  grid:
+    variance_1_to_3:
+      columns: 12
+      pattern: "symmetric"
+      gutters: "24px"
+      margins: "auto"
+      behavior: "Center-aligned, even distribution. All columns equal weight."
+      css: |
+        .container { max-width: 1200px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+
+    variance_4_to_7:
+      columns: "7+5 offset"
+      pattern: "offset"
+      gutters: "20px"
+      margins: "auto"
+      behavior: "Offset proportions. Content-heavy left, accent right. Staggered blocks."
+      css: |
+        .container { max-width: 1200px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: 7fr 5fr; gap: 20px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+    variance_8_to_10:
+      columns: "7+5 zig-zag"
+      pattern: "asymmetric"
+      gutters: "20px"
+      margins: "0 auto 0 0"
+      behavior: "Asymmetric grid. Negative space hero. Zig-zag sections. Diagonal image crops."
+      css: |
+        .container { max-width: 1200px; }
+        .grid { display: grid; grid-template-columns: 7fr 5fr; gap: 20px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .section:nth-child(even) .grid { grid-template-columns: 5fr 7fr; }
+
+  composition_rules:
+    one_composition: "The first viewport must read as a single composition. No competing elements."
+    one_job_per_section: "Each section has one purpose, one takeaway, one visual thesis."
+    two_typefaces_max: "Geist (display + body) + Geist Mono (code). NEVER a third typeface."
+    one_accent: "Emerald. Cyan for info. Amber for warning. Red for error. No other colors."
+    no_cards_in_hero: "Hero sections are full-bleed composition. Cards live BELOW the fold."
+    brand_first: "The product name must read at hero-level scale on any branded page."
+
+  hero_rules:
+    full_bleed: true
+    min_height: "100dvh"
+    background: "Always tinted or patterned. NEVER pure flat #09090B or #FFFFFF."
+    headline_weight: 600
+    headline_max_chars: 48
+    subheadline_max_chars: 120
+    cta_alignment: "left"
+    prohibited:
+      - "Cards inside the hero viewport"
+      - "More than 2 CTAs in hero"
+      - "Centered text with centered image (use split instead)"
+      - "More than 1 typeface in hero"
+
+  section_spacing:
+    density_1_to_3:
+      padding_y: "96px"
+      gap_between_sections: "80px"
+      inner_gap: "32px"
+    density_4_to_7:
+      padding_y: "64px"
+      gap_between_sections: "48px"
+      inner_gap: "24px"
+    density_8_to_10:
+      padding_y: "32px"
+      gap_between_sections: "24px"
+      inner_gap: "12px"
+
+# ─────────────────────────────────────────────────────────────
+# RESPONSIVE — Mobile-first breakpoints and fluid scaling
+# ─────────────────────────────────────────────────────────────
+
+responsive:
+  breakpoints:
+    sm: 640    # Small tablets / large phones
+    md: 768    # Tablets (portrait)
+    lg: 1024   # Tablets (landscape) / small laptops
+    xl: 1280   # Desktops
+    2xl: 1536  # Large desktops
+
+  strategy: "mobile-first"
+
+  container_widths:
+    sm: "100%"
+    md: "640px"
+    lg: "960px"
+    xl: "1200px"
+    2xl: "1400px"
+
+  container_padding:
+    mobile: "16px"
+    tablet: "24px"
+    desktop: "32px"
+
+  fluid_type_scale:
+    # Uses CSS clamp() for smooth type scaling
+    display: "clamp(36px, 5vw + 12px, 72px)"
+    heading1: "clamp(30px, 3.5vw + 8px, 48px)"
+    heading2: "clamp(24px, 2.5vw + 6px, 36px)"
+    heading3: "clamp(18px, 1.5vw + 4px, 20px)"
+    heading4: "16px"
+    body: "14px"
+    body_sm: "13px"
+    label: "12px"
+    mono: "13px"
+
+  grid_adaptation:
+    mobile:
+      columns: 1
+      gap: "16px"
+    tablet:
+      columns: 2
+      gap: "20px"
+    desktop:
+      columns: "var(--grid-columns)"  # Set by variance dial
+      gap: "24px"
+
+  responsive_rules:
+    - "Mobile-first: write base styles for mobile, override with min-width media queries"
+    - "Navigation collapses to hamburger below md breakpoint"
+    - "Sidebar becomes overlay drawer below lg breakpoint"
+    - "Data tables become card-lists below md breakpoint"
+    - "Images load with aspect-ratio boxes, never layout shift"
+    - "Touch targets minimum 44px × 44px on mobile"
+
+# ─────────────────────────────────────────────────────────────
+# INTERACTION STATES — For ALL interactive elements
+# ─────────────────────────────────────────────────────────────
+
+interaction_states:
+  hover:
+    background_shift: "brightness(1.08)"
+    border_color: "{border_visible}"
+    transition: "all {duration.fast} {easing.standard}"
+    lift: "0px"
+    scale: "1"
+    description: "Subtle brightness increase. Border becomes visible. No transforms."
+
+  focus:
+    outline: "2px solid {accent}"
+    outline_offset: "2px"
+    border_color: "{accent}"
+    transition: "outline {duration.fast} {easing.standard}"
+    description: "Visible 2px accent outline. MUST be present for accessibility. Never outline:none."
+
+  focus_visible:
+    selector: ":focus-visible"
+    outline: "2px solid {accent}"
+    outline_offset: "2px"
+    description: "Only show focus ring for keyboard navigation. Mouse click = no ring."
+
+  active:
+    background_shift: "brightness(0.92)"
+    scale: "0.98"
+    transition: "all {duration.instant} linear"
+    description: "Pressed state. Slight scale-down. Instant response."
+
+  disabled:
+    opacity: "0.38"
+    cursor: "not-allowed"
+    pointer_events: "none"
+    description: "38% opacity (WCAG AA minimum for disabled discernibility). No interaction."
+
+  loading:
+    opacity: "0.7"
+    cursor: "wait"
+    description: "Reduced opacity while async operation in progress."
+
+  pressed:
+    background: "{surface3}"
+    description: "Persistent pressed state for toggle buttons, active nav items."
+
+  drag:
+    elevation: "{elevation.lg}"
+    scale: "1.02"
+    opacity: "0.9"
+    description: "Item being dragged. Elevated shadow, slight scale-up."
+
+  state_matrix:
+    button_primary:   { hover: "bg_lighten", focus: "ring", active: "scale_0.98", disabled: "opacity_38", loading: "spinner" }
+    button_secondary: { hover: "bg_surface1", focus: "ring", active: "scale_0.98", disabled: "opacity_38", loading: "spinner" }
+    card:             { hover: "border_lighten", focus: "ring", active: "none", disabled: "opacity_38" }
+    input:            { hover: "border_lighten", focus: "ring_accent", active: "none", disabled: "opacity_38 bg_muted" }
+    nav_item:         { hover: "bg_surface2", focus: "ring", active: "bg_surface3", disabled: "opacity_38" }
+    sidebar_item:      { hover: "bg_surface2", focus: "ring", active: "accent_bar_left", disabled: "opacity_38" }
+    link:              { hover: "underline", focus: "ring", active: "color_accent", disabled: "opacity_38 strikethrough" }
+    toggle:            { hover: "border_accent", focus: "ring", active: "color_accent", disabled: "opacity_38" }
+    checkbox:          { hover: "border_accent", focus: "ring", active: "scale_0.95", disabled: "opacity_38" }
+    dropdown:          { hover: "bg_surface1", focus: "ring", active: "bg_surface2", disabled: "opacity_38" }
+
+# ─────────────────────────────────────────────────────────────
+# COMPONENTS — Concrete specs for every component
+# ─────────────────────────────────────────────────────────────
+
+components:
+  button_primary:
+    source: "derived"
+    background: "{brand.500}"
+    color: "#FFFFFF"
+    padding: "10px 20px"
+    min_height: "44px"
+    radius: "{radii.control}"
+    font:
+      family: "Geist"
+      size: "14px"
+      weight: 600
+      line_height: 1
+      letter_spacing: "0.01em"
+    border: "none"
+    gap: "8px"
+    hover:
+      background: "{brand.400}"
+      description: "Lighten brand color 1 step"
+    focus:
+      outline: "2px solid {brand.400}"
+      outline_offset: "2px"
+    active:
+      background: "{brand.600}"
+      transform: "scale(0.98)"
+    disabled:
+      background: "{neutral.700}"
+      color: "{neutral.400}"
+      opacity: "1"
+      cursor: "not-allowed"
+    loading:
+      content: "spinner 16px"
+      opacity: "0.7"
+
+  button_secondary:
+    source: "derived"
+    background: "transparent"
+    color: "{text1}"
+    border: "1px solid {border_visible}"
+    padding: "10px 20px"
+    min_height: "44px"
+    radius: "{radii.control}"
+    font:
+      family: "Geist"
+      size: "14px"
+      weight: 500
+      line_height: 1
+      letter_spacing: "0.01em"
+    gap: "8px"
+    hover:
+      background: "{surface1}"
+      border_color: "{text4}"
+    focus:
+      outline: "2px solid {accent}"
+      outline_offset: "2px"
+    active:
+      background: "{surface2}"
+      transform: "scale(0.98)"
+    disabled:
+      opacity: "0.38"
+      cursor: "not-allowed"
+
+  card:
+    source: "derived"
+    background: "{surface1}"
+    border: "1px solid {border}"
+    radius: "{radii.component}"
+    padding: "{spacing.lg}"
+    overflow: "hidden"
+    hover:
+      border_color: "{border_visible}"
+      description: "Border lightens on hover. No shadow change."
+    focus:
+      outline: "2px solid {accent}"
+      outline_offset: "2px"
+    variants:
+      flat:
+        description: "Border only, no shadow. Default for data-dense dashboards."
+        elevation: "none"
+        border: "1px solid {border}"
+      elevated:
+        description: "Subtle shadow for standalone feature cards."
+        elevation: "{elevation.md}"
+        border: "1px solid transparent"
+      interactive:
+        description: "Clickable card. Adds hover and cursor."
+        cursor: "pointer"
+        hover:
+          border_color: "{accent}"
+          elevation: "{elevation.sm}"
+        active:
+          transform: "scale(0.99)"
+    prohibited:
+      - "Generic cards with box-shadow in data-dense dashboards (use border-t or divide-y)"
+      - "Equal 3-column card grids (use 2+1 zig-zag)"
+
+  input:
+    source: "derived"
+    background: "{surface2}"
+    border: "1px solid {border}"
+    radius: "{radii.control}"
+    padding: "10px 12px"
+    min_height: "44px"
+    font:
+      family: "Geist"
+      size: "14px"
+      weight: 400
+      color: "{text1}"
+    placeholder_color: "{text4}"
+    hover:
+      border_color: "{border_visible}"
+    focus:
+      border_color: "{accent}"
+      outline: "2px solid {accent}"
+      outline_offset: "2px"
+      description: "Accent border + accent outline ring"
+    disabled:
+      background: "{surface1}"
+      color: "{text4}"
+      opacity: "1"
+      cursor: "not-allowed"
+    error:
+      border_color: "{error}"
+      outline: "2px solid {error}"
+      message_color: "{error}"
+      message_size: "12px"
+
+  nav:
+    source: "derived"
+    background: "{background}"
+    border_bottom: "1px solid {border}"
+    height: "56px"
+    padding: "0 {spacing.lg}"
+    position: "sticky"
+    top: "0"
+    z_index: 40
+    logo:
+      font_family: "Geist"
+      font_weight: 600
+      font_size: "18px"
+      color: "{text1}"
+      letter_spacing: "-0.02em"
+    items:
+      font_family: "Geist"
+      font_size: "14px"
+      font_weight: 500
+      color: "{text3}"
+      gap: "{spacing.lg}"
+      hover:
+        color: "{text1}"
+      active:
+        color: "{accent}"
+    mobile:
+      breakpoint: "md"
+      trigger: "hamburger"
+      drawer_side: "right"
+      drawer_background: "{background}"
+      drawer_width: "280px"
+      overlay: true
+
+  sidebar:
+    source: "derived"
+    background: "{surface1}"
+    border_right: "1px solid {border}"
+    width: "240px"
+    padding: "{spacing.md} {spacing.sm}"
+    position: "fixed"
+    collapsed_width: "64px"
+    items:
+      padding: "8px 12px"
+      radius: "{radii.control}"
+      gap: "8px"
+      color: "{text3}"
+      hover:
+        background: "{surface2}"
+        color: "{text1}"
+      active:
+        background: "{accent_subtle}"
+        color: "{accent}"
+        border_left: "2px solid {accent}"
+    mobile:
+      breakpoint: "lg"
+      behavior: "overlay_drawer"
+      drawer_side: "left"
+      drawer_width: "280px"
+
+  hero_section:
+    source: "derived"
+    min_height: "100dvh"
+    background: "{surface1}"
+    padding: "0"
+    display: "flex"
+    align_items: "center"
+    composition: "split"
+    grid_columns: "7fr 5fr"
+    headline:
+      font_family: "Geist"
+      font_weight: 600
+      size: "{typography.display}"
+      color: "{text1}"
+      letter_spacing: "-0.03em"
+      line_height: 1.05
+      max_width: "14ch"
+    subheadline:
+      font_family: "Geist"
+      font_size: "18px"
+      font_weight: 400
+      color: "{text2}"
+      line_height: 1.6
+      max_width: "52ch"
+      margin_top: "{spacing.md}"
+    cta_group:
+      gap: "{spacing.sm}"
+      margin_top: "{spacing.lg}"
+    prohibited:
+      - "Cards inside hero viewport"
+      - "More than 2 CTAs"
+      - "Centered text over centered image"
+      - "More than 1 typeface"
+      - "h-screen (use min-h-[100dvh])"
+
+  kpi_card:
+    source: "derived"
+    background: "{surface1}"
+    border: "1px solid {border}"
+    radius: "{radii.component}"
+    padding: "{spacing.lg}"
+    layout: "vertical"
+    label:
+      font_family: "Geist"
+      font_size: "12px"
+      font_weight: 500
+      color: "{text4}"
+      letter_spacing: "0.02em"
+      text_transform: "uppercase"
+    value:
+      font_family: "Geist"
+      font_size: "32px"
+      font_weight: 600
+      color: "{text1}"
+      letter_spacing: "-0.02em"
+      line_height: 1
+      margin_top: "4px"
+    delta:
+      font_family: "Geist"
+      font_size: "13px"
+      font_weight: 500
+      positive_color: "{success}"
+      negative_color: "{error}"
+      margin_top: "8px"
+    hover:
+      border_color: "{border_visible}"
+    prohibited:
+      - "Shadow on KPI cards in data-dense layouts (use border-t or divide-y)"
+
+  data_table:
+    source: "derived"
+    background: "{surface1}"
+    border: "1px solid {border}"
+    radius: "{radii.component}"
+    overflow: "hidden"
+    header:
+      background: "{surface2}"
+      font_family: "Geist"
+      font_size: "12px"
+      font_weight: 500
+      color: "{text3}"
+      letter_spacing: "0.02em"
+      text_transform: "uppercase"
+      padding: "12px 16px"
+      border_bottom: "1px solid {border}"
+    row:
+      padding: "12px 16px"
+      border_bottom: "1px solid {border}"
+      hover:
+        background: "{surface2}"
+      selected:
+        background: "{accent_subtle}"
+    cell:
+      font_family: "Geist"
+      font_size: "14px"
+      font_weight: 400
+      color: "{text1}"
+      padding: "12px 16px"
+    alternating_rows: false
+    mobile_behavior: "card_list"
+    mobile_breakpoint: "md"
+
+# ─────────────────────────────────────────────────────────────
+# PAGE TYPES — Section structure + layout rules per page type
+# ─────────────────────────────────────────────────────────────
+
+page_types:
+  landing:
+    visual_thesis: "The product is the fastest path from idea to outcome."
+    sections:
+      - name: "hero"
+        type: "full_bleed"
+        composition: "split_7_5"
+        min_height: "100dvh"
+        rules: ["Brand name at display scale", "One headline ≤14ch", "One subhead ≤120 chars", "Max 2 CTAs", "No cards"]
+      - name: "social_proof"
+        type: "section"
+        composition: "centered"
+        rules: ["Logo strip ≤6", "No description, just names"]
+      - name: "features"
+        type: "section"
+        composition: "zig_zag"
+        rules: ["2+1 grid at variance≥8", "One job per feature block", "Feature = headline + 3 lines max"]
+      - name: "how_it_works"
+        type: "section"
+        composition: "numbered_steps"
+        rules: ["3–5 steps max", "Step = number + title + 1 line"]
+      - name: "testimonials"
+        type: "section"
+        composition: "offset_grid"
+        rules: ["3 testimonials max", "Names must be specific and realistic (not John Doe)"]
+      - name: "cta"
+        type: "section"
+        composition: "centered"
+        rules: ["One CTA", "Max 10 words", "No new information"]
+    layout_rules:
+      - "Full-bleed hero by default"
+      - "Each section has one visual thesis (1 sentence)"
+      - "Content plan per section before building"
+      - "Negative space > decoration"
+
+  dashboard:
+    visual_thesis: "Data speaks. Interface gets out of the way."
+    sections:
+      - name: "topbar"
+        type: "fixed"
+        height: "56px"
+        composition: "horizontal"
+        rules: ["Logo left", "Search center", "Avatar right", "Sticky top-0"]
+      - name: "sidebar"
+        type: "fixed"
+        width: "240px"
+        composition: "vertical"
+        rules: ["Collapses to 64px below lg", "Becomes drawer below md", "Active item = accent left bar"]
+      - name: "main_content"
+        type: "fluid"
+        composition: "grid"
+        rules: ["KPI cards row at top", "Data table or chart below", "No hero on dashboards"]
+    layout_rules:
+      - "No cards with shadows in data-dense areas (use border-t, divide-y)"
+      - "KPI values use organic numbers (47.2% not 50%)"
+      - "Sidebars become drawers on mobile"
+      - "Tables become card-lists on mobile"
+      - "Cockpit density at variance 8+, airy at variance 3-"
+
+  form:
+    visual_thesis: "Clarity over cleverness. Every field earns its place."
+    sections:
+      - name: "form_header"
+        type: "section"
+        composition: "centered"
+        max_width: "640px"
+        rules: ["Clear title", "Optional subtitle", "No decoration"]
+      - name: "form_body"
+        type: "section"
+        composition: "single_column"
+        max_width: "640px"
+        rules: ["One field per row", "Labels above inputs", "Group related fields", "Progressive disclosure"]
+      - name: "form_actions"
+        type: "section"
+        composition: "right_aligned"
+        rules: ["Primary action right", "Cancel left", "Loading state on submit"]
+    layout_rules:
+      - "Max-width 640px for forms"
+      - "44px minimum touch target for all inputs"
+      - "Validation on blur, not on type"
+      - "Error messages appear below field, never alerts"
+      - "Multi-step forms show progress indicator"
+
+  docs:
+    visual_thesis: "The answer is findable in under 10 seconds."
+    sections:
+      - name: "nav"
+        type: "fixed"
+        composition: "sidebar_left"
+        width: "280px"
+        rules: ["Table of contents", "Search", "Version selector"]
+      - name: "content"
+        type: "fluid"
+        composition: "single_column"
+        max_width: "780px"
+        rules: ["71ch max line length", "Headings are navigation anchors", "Code blocks have copy button"]
+      - name: "toc"
+        type: "fixed"
+        composition: "sidebar_right"
+        width: "200px"
+        rules: ["Current heading highlighted", "Sticky on desktop", "Hidden on mobile"]
+    layout_rules:
+      - "71ch max content width"
+      - "Three-column: sidebar | content | toc"
+      - "Sidebar and toc collapse on tablet"
+      - "Search is always accessible"
+      - "Code blocks always have language label + copy"
+
+  e_commerce:
+    visual_thesis: "The product is the hero. Navigation is invisible."
+    sections:
+      - name: "nav"
+        type: "sticky"
+        composition: "horizontal"
+        rules: ["Logo left", "Categories center", "Cart right", "Always visible"]
+      - name: "hero"
+        type: "full_bleed"
+        composition: "image_forward"
+        rules: ["Product image ≥60% viewport", "Minimal text overlay", "Shop now CTA"]
+      - name: "product_grid"
+        type: "section"
+        composition: "responsive_grid"
+        rules: ["3 cols desktop, 2 tablet, 1 mobile", "Image + title + price only", "Hover shows quick-add"]
+      - name: "product_detail"
+        type: "section"
+        composition: "split_7_5"
+        rules: ["Image gallery left 70%", "Details right 30%", "Price prominent", "Add to cart sticky"]
+      - name: "cart"
+        type: "section"
+        composition: "two_column"
+        max_width: "1200px"
+        rules: ["Items left", "Summary right sticky", "Checkout CTA prominent"]
+    layout_rules:
+      - "Images always have aspect-ratio"
+      - "Prices never decorative — always functional"
+      - "Cart count always visible in nav"
+      - "Checkout = fewest possible steps"
+
+# ─────────────────────────────────────────────────────────────
+# MOTION CHOREOGRAPHY — Connected to motion dial
+# ─────────────────────────────────────────────────────────────
+
+motion_choreography:
+  # The motion dial determines how much animation the page uses.
+  # Pick exactly 3 intentional motions. No more, no fewer.
+
+  motion_1_to_3:
+    description: "Static. Zero motion budget. Everything appears instantly."
+    entrance: "none — elements render in place"
+    scroll_linked: "none — no parallax, no reveal on scroll"
+    hover_reveal: "opacity change only, 100ms"
+    budget: []
+    spring_config: { tension: 170, friction: 26 }
+
+  motion_4_to_7:
+    description: "Smooth. Intentional transitions. Elements enter with purpose."
+    entrance: "staggered fade-in with upward drift, 200ms per element, 50ms stagger delay"
+    scroll_linked: "sections fade in on scroll intersection (IntersectionObserver, 0.1 threshold)"
+    hover_reveal: "border lighten + subtle lift (translateY -1px), 150ms ease-out"
+    budget:
+      - name: "hero_entrance"
+        elements: ["headline", "subheadline", "cta_group"]
+        timing: "stagger 80ms, 200ms each, ease-out"
+        trigger: "page load + 200ms"
+      - name: "scroll_reveal"
+        elements: ["section blocks"]
+        timing: "opacity 0→1, translateY 8px→0, 300ms ease-out"
+        trigger: "IntersectionObserver, threshold 0.1"
+      - name: "hover_micro"
+        elements: ["cards", "buttons", "nav items"]
+        timing: "150ms ease-out"
+        trigger: "hover state"
+    spring_config: { tension: 180, friction: 20 }
+
+  motion_8_to_10:
+    description: "Cinematic. Spring physics. Scroll-linked parallax. Elements breathe."
+    entrance: "spring entrance from below with overshoot, 400ms per section"
+    scroll_linked: "parallax layers at 0.5x, 0.3x, 0.15x depth. Reveal on scroll."
+    hover_reveal: "scale 1.02 + shadow elevation + border accent, 200ms spring"
+    budget:
+      - name: "hero_entrance"
+        elements: ["headline", "subheadline", "cta_group", "hero_image"]
+        timing: "stagger 120ms, spring overshoot 400ms each"
+        trigger: "page load + 300ms"
+        spring: { tension: 210, friction: 16 }
+      - name: "scroll_parallax"
+        elements: ["background_layer", "midground_layer", "foreground_layer"]
+        timing: "continuous, transform translateY on scroll"
+        speeds: [0.15, 0.3, 0.5]
+        trigger: "scroll position"
+      - name: "hover_reveal"
+        elements: ["cards", "buttons", "nav items", "sidebar items"]
+        timing: "200ms cubic-bezier(0.34, 1.56, 0.64, 1)"
+        trigger: "hover state"
+        scale: "1.02"
+        shadow: "elevation.md"
+    spring_config: { tension: 210, friction: 16 }
+
+  reduced_motion:
+    description: "Respects prefers-reduced-motion. All animations become instant."
+    rule: "@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }"
+
+# ─────────────────────────────────────────────────────────────
+# HERO STAGE — 9 presets with full visual spec
+# ─────────────────────────────────────────────────────────────
+
+hero_stage:
+  presets:
+    luminous_on_gradient:
+      background:
+        medium: "gradient"
+        colors: ["{brand.600}", "{brand.400}"]
+        angle: "135deg"
+        intensity: "full"
+      subject: "luminous"
+      subject_render: "Glowing product shot or abstract luminous shape on gradient"
+      relation: "emissive"
+      foreground_color: "#FFFFFF"
+      description: "Luminous object on brand gradient. Product appears to emit light."
+
+    device_on_mesh:
+      background:
+        medium: "mesh"
+        colors: ["{neutral.950}", "{neutral.800}", "{brand.950}"]
+        intensity: "subtle"
+      subject: "device"
+      subject_render: "Browser or app frame floating on mesh gradient"
+      relation: "shadow-only"
+      foreground_color: "{text1}"
+      description: "Device mockup on subtle mesh gradient. Professional and grounded."
+
+    painterly_no_hero:
+      background:
+        medium: "painterly"
+        colors: ["{neutral.950}", "{brand.950}", "{brand.800}"]
+        intensity: "medium"
+      subject: "none"
+      subject_render: "No device or object. Pure atmosphere."
+      relation: "flat"
+      foreground_color: "{text1}"
+      description: "No hero object. Paint and atmosphere carry the composition. Content-first."
+
+    grid_on_dark:
+      background:
+        medium: "pattern"
+        pattern: "dot-grid"
+        pattern_size: "24px"
+        pattern_color: "{neutral.800}"
+        background_color: "{neutral.950}"
+        intensity: "subtle"
+      subject: "none"
+      subject_render: "No central object. Grid texture creates depth."
+      relation: "flat"
+      foreground_color: "{text1}"
+      description: "Dot or line grid on dark background. Developer-tool aesthetic. Clean and technical."
+
+    object_on_spotlight:
+      background:
+        medium: "gradient"
+        colors: ["{neutral.950}", "{neutral.900}"]
+        angle: "radial from center"
+        intensity: "subtle"
+      subject: "object"
+      subject_render: "3D object or product on dark with radial spotlight underneath"
+      relation: "halo"
+      foreground_color: "{text1}"
+      description: "Object on dark with radial glow beneath. Dramatic and focused."
+
+    editorial_photo:
+      background:
+        medium: "photo"
+        intensity: "full"
+      subject: "photo-cutout"
+      subject_render: "Full-bleed editorial photograph with text overlay"
+      relation: "flat"
+      foreground_color: "#FFFFFF"
+      description: "Full-bleed photo. Text overlaid with scrim. Editorial feel."
+
+    shader_ambient:
+      background:
+        medium: "shader"
+        intensity: "subtle"
+      subject: "none"
+      subject_render: "WebGL shader creating ambient motion background"
+      relation: "emissive"
+      foreground_color: "{text1}"
+      description: "Ambient shader background. Subtle motion. Futuristic without being distracting."
+
+    flat_blank:
+      background:
+        medium: "absent"
+        background_color: "{surface1}"
+        intensity: "none"
+      subject: "none"
+      subject_render: "Nothing. Pure flat background. Typography carries everything."
+      relation: "flat"
+      foreground_color: "{text1}"
+      description: "No background treatment at all. Pure typography and whitespace. Maximum restraint."
+
+    sculptural_field:
+      background:
+        medium: "sculptural"
+        colors: ["{neutral.900}", "{neutral.800}"]
+        intensity: "medium"
+      subject: "composition"
+      subject_render: "Abstract 3D sculptural field. No product shot. Atmosphere as product."
+      relation: "shadow-only"
+      foreground_color: "{text1}"
+      description: "Abstract 3D sculptural forms. No product shot. Architecture as identity."
+
+# ─────────────────────────────────────────────────────────────
+# ICONOGRAPHY
+# ─────────────────────────────────────────────────────────────
+
+iconography:
+  primary_kit:
+    name: "Phosphor"
+    weight: "regular"
+    cdn: "https://unpkg.com/@phosphor-icons/web@2/src/regular/style.css"
+    icon_class_prefix: "ph ph-"
+    size_scale:
+      xs: "14px"
+      sm: "16px"
+      md: "20px"
+      lg: "24px"
+      xl: "32px"
+
+  stroke_width: 1.5
+
+  alignment: "centered"   # centered | left (for label pairs)
+
+  interactive_sizes:
+    nav_icon: "20px"
+    button_icon: "18px"
+    card_icon: "20px"
+    inline_icon: "16px"
+    kpi_icon: "24px"
+
+  color_rules:
+    default: "{text3}"
+    hover: "{text1}"
+    active: "{accent}"
+    disabled: "{text4}"
+    decorative: "{text4}"
+
+  prohibited:
+    - "Emoji as icons"
+    - "Mixed icon styles (stick to one kit)"
+    - "Icons without 44px touch target"
+
+  disclaimer: "Icons in generated preview are best-match fallback from Phosphor kit. Replace with project-specific icons when available."

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Law — SAS Carrusel 5 Slides Directo con Precio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    background: #1a1a2e;
+    font-family: 'Roboto', sans-serif;
+    padding: 40px;
+  }
+  .slides-label {
+    text-align: center;
+    color: #E2E8F0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .slides-container {
+    display: flex; gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+  .slide {
+    min-width: 1080px; height: 1080px;
+    background: #0A192F;
+    border-radius: 16px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    flex-shrink: 0;
+  }
+  .accent-line {
+    width: 100%; height: 6px;
+    background: linear-gradient(90deg, #C5A370 0%, #9D773C 100%);
+  }
+  .badge {
+    position: absolute; top: 28px; right: 28px;
+    background: rgba(157, 119, 60, 0.15);
+    border: 1px solid #9D773C;
+    border-radius: 4px;
+    padding: 7px 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px; font-weight: 700;
+    color: #C5A370;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .slide-number {
+    position: absolute; top: 28px; left: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px; font-weight: 700;
+    color: rgba(226, 232, 240, 0.4);
+  }
+  .content {
+    flex: 1;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 60px 70px;
+  }
+  .hook {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px; font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1.12;
+    margin-bottom: 16px;
+  }
+  .hook .gold { color: #9D773C; }
+  .sub {
+    font-size: 20px; font-weight: 500;
+    color: #E2E8F0;
+    line-height: 1.5;
+    margin-bottom: 36px;
+  }
+  .stat-big {
+    font-family: 'Poppins', sans-serif;
+    font-size: 80px; font-weight: 900;
+    color: #9D773C;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .stat-label {
+    font-size: 22px; font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+  }
+  .list {
+    list-style: none;
+    margin-bottom: 30px;
+  }
+  .list li {
+    font-size: 18px; font-weight: 500;
+    color: #FFFFFF;
+    padding: 8px 0;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .list li::before {
+    content: '→';
+    color: #9D773C;
+    font-weight: 700;
+  }
+  .price-area {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 20px;
+  }
+  .price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px; font-weight: 900;
+    color: #9D773C;
+  }
+  .price-note {
+    font-size: 16px; color: #E2E8F0;
+  }
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(70deg, #C5A370 0%, #9D773C 100%);
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+  }
+  .cta-sub {
+    font-size: 13px; color: #E2E8F0;
+    margin-top: 8px;
+  }
+  .bottom-bar {
+    padding: 18px 70px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(226, 232, 240, 0.08);
+  }
+  .logo-area { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 32px; height: 32px;
+    background: #9D773C;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900; font-size: 16px;
+    color: #0A192F;
+  }
+  .logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 700;
+    color: #FFFFFF;
+  }
+  .url { font-size: 13px; color: #9D773C; font-weight: 500; }
+  .deco {
+    position: absolute; bottom: -80px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(157, 119, 60, 0.1);
+  }
+  /* Slide-specific */
+  .slide-2 .content { align-items: center; text-align: center; }
+  .slide-2 .sub { max-width: 600px; }
+  .slide-5 .content { align-items: center; text-align: center; }
+  .slide-5 .sub { max-width: 600px; }
+  .slide-5 .cta { margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<div class="slides-label">CARRUSEL 5 SLIDES — TONO DIRECTO · CON PRECIO</div>
+
+<div class="slides-container">
+
+  <!-- SLIDE 1: Hook -->
+  <div class="slide">
+    <div class="accent-line"></div>
+    <div class="slide-number">1/5</div>
+    <div class="badge">SIN PAPELEO · TODO POR VIDEOLLAMADA</div>
+    <div class="content">
+      <div class="hook">
+        En México hacemos negocios<br>
+        <span class="gold">de palabra.</span>
+      </div>
+      <div class="sub">
+        Hasta que la palabra no alcanza.<br><br>
+        Si eres emprendedor y aún operas sin contratos, este carrusel es para ti.
+      </div>
+    </div>
+    <div class="deco"></div>
+    <div class="bottom-bar">
+      <div class="logo-area">
+        <div class="logo-icon">W</div>
+        <span class="logo-text">We Law</span>
+      </div>
+      <span class="url">welaw.com.mx</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: El problema -->
+  <div class="slide slide-2">
+    <div class="accent-line"></div>
+    <div class="slide-number">2/5</div>
+    <div class="badge">SIN PAPELEO · TODO POR VIDEOLLAMADA</div>
+    <div class="content">
+      <div class="stat-big">92%</div>
+      <div class="stat-label">de emprendedores tienen clientes<br>que no les pagan</div>
+      <div class="sub" style="margin-top: 20px;">
+        Sin contrato, no hay cómo cobrar.<br>
+        No es que no quieras. Es que no tienes con qué respaldar tu trabajo.
+      </div>
+    </div>
+    <div class="deco"></div>
+    <div class="bottom-bar">
+      <div class="logo-area">
+        <div class="logo-icon">W</div>
+        <span class="logo-text">We Law</span>
+      </div>
+      <span class="url">welaw.com.mx</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: Más dolores -->
+  <div class="slide">
+    <div class="accent-line"></div>
+    <div class="slide-number">3/5</div>
+    <div class="badge">SIN PAPELEO · TODO POR VIDEOLLAMADA</div>
+    <div class="content">
+      <div class="hook" style="font-size: 38px;">
+        Y no es solo el dinero<br>
+        <span class="gold">que no llega.</span>
+      </div>
+      <ul class="list">
+        <li>92% tiene clientes que no pagan</li>
+        <li>85% no tiene procesos documentados</li>
+        <li>78% quiere dejar de operar informal</li>
+        <li>72% ha tenido proveedores que no cumplen</li>
+      </ul>
+      <div class="sub" style="margin-bottom: 0;">
+        Todo esto se resuelve con documentos. No con buena voluntad.
+      </div>
+    </div>
+    <div class="deco"></div>
+    <div class="bottom-bar">
+      <div class="logo-area">
+        <div class="logo-icon">W</div>
+        <span class="logo-text">We Law</span>
+      </div>
+      <span class="url">welaw.com.mx</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: La solución -->
+  <div class="slide">
+    <div class="accent-line"></div>
+    <div class="slide-number">4/5</div>
+    <div class="badge">SIN PAPELEO · TODO POR VIDEOLLAMADA</div>
+    <div class="content">
+      <div class="hook" style="font-size: 36px;">
+        Tu <span class="gold">paquete</span><br>
+        incluye todo esto:
+      </div>
+      <ul class="list">
+        <li>Contrato de prestación de servicios</li>
+        <li>Términos y condiciones para tu web</li>
+        <li>Aviso de privacidad (LFPDPPP)</li>
+        <li>Hecho a tu modelo de negocio real</li>
+        <li>Entrega en 48 horas por PDF</li>
+      </ul>
+      <div class="price-area">
+        <span class="price">$3,500</span>
+        <span class="price-note">MXN</span>
+      </div>
+    </div>
+    <div class="deco"></div>
+    <div class="bottom-bar">
+      <div class="logo-area">
+        <div class="logo-icon">W</div>
+        <span class="logo-text">We Law</span>
+      </div>
+      <span class="url">welaw.com.mx</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: CTA -->
+  <div class="slide slide-5">
+    <div class="accent-line"></div>
+    <div class="slide-number">5/5</div>
+    <div class="badge">SIN PAPELEO · TODO POR VIDEOLLAMADA</div>
+    <div class="content">
+      <div class="hook" style="font-size: 42px;">
+        <span class="gold">30 minutos</span> de videollamada.<br>
+        <span class="gold">48 horas</span> después,<br>
+        tu negocio está protegido.
+      </div>
+      <div class="sub">
+        Tú hablas, nosotros hacemos todo.<br>
+        Tú no te preocupas de nada.
+      </div>
+      <a href="#" class="cta">📹 Agenda tu diagnóstico gratuito</a>
+      <div class="cta-sub">Sin compromiso · Sin costo · Por videollamada</div>
+    </div>
+    <div class="deco"></div>
+    <div class="bottom-bar">
+      <div class="logo-area">
+        <div class="logo-icon">W</div>
+        <span class="logo-text">We Law</span>
+      </div>
+      <span class="url">welaw.com.mx</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

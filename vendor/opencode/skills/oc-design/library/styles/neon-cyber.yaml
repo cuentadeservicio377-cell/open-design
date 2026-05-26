@@ -1,0 +1,118 @@
+# Neon Cyber Style
+name: "NeonCyber"
+philosophy: "Dark surfaces with vibrant neon accents. Cyberpunk-inspired for gaming, crypto, or edgy tech products."
+primary_mode: "dark"
+brand_domain: "gaming / crypto / cutting-edge tech"
+brand_type: "ui-rich"
+
+diales:
+  variance: 7
+  motion: 8
+  density: 6
+
+primitives:
+  colors:
+    neutral:
+      50: "#FFFFFF"
+      400: "#6B6B6B"
+      500: "#4A4A4A"
+      600: "#2A2A2A"
+      700: "#1A1A1A"
+      800: "#121212"
+      900: "#0A0A0A"
+      950: "#050505"
+    brand:
+      cyan: "#06B6D4"
+      magenta: "#EC4899"
+      yellow: "#EAB308"
+      primary: "#06B6D4"
+
+  radii: [0, 4, 8, 999]
+
+tokens:
+  colors:
+    dark:
+      background: "{neutral.950}"
+      surface1: "{neutral.900}"
+      surface2: "{neutral.800}"
+      border: "{neutral.700}"
+      text1: "#FFFFFF"
+      text2: "{neutral.400}"
+      accent: "{brand.primary}"
+
+  typography:
+    display:
+      family: "Satoshi"
+      size: "40px"
+      weight: 700
+      line_height: 1.05
+      letter_spacing: "-0.03em"
+    body:
+      family: "Satoshi"
+      size: "15px"
+      weight: 400
+      line_height: 1.6
+      letter_spacing: "0em"
+    mono:
+      family: "JetBrains Mono"
+      size: "13px"
+      line_height: 1.5
+      letter_spacing: "0.02em"
+
+google_fonts:
+  - "Satoshi:wght@400;500;700"
+  - "JetBrains Mono"
+
+layout:
+  grid: "1fr min(1200px, 100%) 1fr"
+  hero_pattern: "full-bleed"
+  content_width: "1200px"
+  section_spacing: "100px"
+  variance_mapping:
+    low: "stacked neon-bordered sections"
+    mid: "two-column with glowing dividers"
+    high: "asymmetric floating panels with neon edges"
+
+responsive:
+  mobile_first: true
+  breakpoints:
+    sm: 640
+    md: 768
+    lg: 1024
+    xl: 1280
+  mobile_hero: "centered with neon glow effect"
+  mobile_nav: "hamburger with slide-in overlay"
+  mobile_grid: "single column, full-bleed cards with neon borders"
+
+interaction_rules:
+  hover:
+    transition: "150ms cubic-bezier(0.16, 1, 0.3, 1)"
+    background_shift: "neon glow intensify"
+  focus:
+    ring: "2px solid {brand.cyan}"
+    ring_offset: "2px"
+  active:
+    transform: "translateY(-1px) scale(0.98)"
+  disabled:
+    opacity: 0.5
+    cursor: "not-allowed"
+
+components:
+  button_primary:
+    background: "{brand.primary}"
+    color: "#09090B"
+    radius: 8
+    padding: "12px 24px"
+    hover:
+      box_shadow: "0 0 20px rgba(6, 182, 212, 0.5)"
+  card:
+    background: "{neutral.900}"
+    border: "1px solid {brand.primary}"
+    radius: 8
+  input:
+    background: "{neutral.900}"
+    border: "1px solid {brand.primary}"
+    radius: 4
+
+hero_stage:
+  preset: "shader-ambient"
